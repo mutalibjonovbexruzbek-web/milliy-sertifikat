@@ -1,0 +1,458 @@
+```html
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Milliy Sertifikat</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #070b16;
+            color: white;
+        }
+
+        header {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            border-bottom: 1px solid #20263a;
+
+            background: #070b16;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #7657ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #aab2c5;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .login {
+            padding: 10px 18px;
+
+            border-radius: 10px;
+
+            background: white;
+            color: #070b16;
+
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            min-height: 600px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(112, 82, 255, 0.20),
+                    transparent 55%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid #473a8d;
+
+            border-radius: 30px;
+
+            color: #a998ff;
+
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: 65px;
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+        }
+
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #8c75ff,
+                #5fdcff
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: #9da7bc;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+        }
+
+        .start {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #7657ff,
+                #4f8cff
+            );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            box-shadow: 0 15px 40px rgba(90, 80, 255, 0.25);
+        }
+
+        .subjects {
+            padding: 90px 7%;
+
+            background: #090e1b;
+        }
+
+        .title {
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .title small {
+            color: #8067ff;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .title h2 {
+            font-size: 42px;
+
+            margin-top: 10px;
+        }
+
+        .cards {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+
+            min-height: 190px;
+
+            border: 1px solid #20263a;
+
+            border-radius: 18px;
+
+            background: #0d1322;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+
+            border-color: #6e57ff;
+        }
+
+        .icon {
+            font-size: 35px;
+
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #8f99ae;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 30px;
+
+            text-align: center;
+
+            color: #687288;
+
+            border-top: 1px solid #20263a;
+        }
+
+        @media (max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            h1 {
+                font-size: 45px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            MILLIY<span>.</span>
+        </div>
+
+        <nav>
+            <a href="#">Bosh sahifa</a>
+            <a href="#fanlar">Fanlar</a>
+            <a href="#haqida">Platforma</a>
+        </nav>
+
+        <a href="#" class="login">
+            Kirish
+        </a>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🇺🇿 MILLIY SERTIFIKATGA TAYYORLANISH
+            </div>
+
+            <h1>
+                Imtihonga
+                <span class="gradient">
+                    ishonch bilan
+                </span>
+                tayyorlan.
+            </h1>
+
+            <p>
+                O‘zbekiston milliy sertifikatiga tayyorgarlik
+                uchun zamonaviy test platformasi.
+                Faningizni tanlang, testlarni ishlang
+                va natijangizni tahlil qiling.
+            </p>
+
+            <a href="#fanlar" class="start">
+                Testni boshlash →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="subjects" id="fanlar">
+
+        <div class="title">
+
+            <small>
+                FANLAR
+            </small>
+
+            <h2>
+                O‘zingizga kerakli fanni tanlang
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="icon">
+                    📐
+                </div>
+
+                <h3>
+                    Matematika
+                </h3>
+
+                <p>
+                    Algebra, geometriya, funksiyalar
+                    va boshqa mavzular.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🇬🇧
+                </div>
+
+                <h3>
+                    Ingliz tili
+                </h3>
+
+                <p>
+                    Grammar, vocabulary, reading
+                    va test mashqlari.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    📖
+                </div>
+
+                <h3>
+                    Ona tili va adabiyot
+                </h3>
+
+                <p>
+                    Til qoidalari, adabiyot va
+                    matn asosidagi savollar.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Fizika
+                </h3>
+
+                <p>
+                    Mexanika, elektr, optika
+                    va boshqa mavzular.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    💰
+                </div>
+
+                <h3>
+                    Iqtisodiyot
+                </h3>
+
+                <p>
+                    Iqtisodiy tushunchalar,
+                    bozor va moliya.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Tarix
+                </h3>
+
+                <p>
+                    O‘zbekiston va jahon tarixi
+                    bo‘yicha testlar.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer id="haqida">
+
+        © 2026 MILLIY. Milliy sertifikatga tayyorgarlik platformasi.
+
+    </footer>
+
+</body>
+</html>
+```
