@@ -4,26 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="author" content="Mirahmatov">
-<meta name="description" content="MILLIY. — Milliy sertifikat imtihonlariga tayyorgarlik platformasi">
-
 <title>MILLIY. — Milliy sertifikatga tayyorgarlik</title>
 
 <style>
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+:root{
+    --bg:#06070b;
+    --card:#10131b;
+    --card2:#151925;
+    --border:#262c3b;
+    --text:#f4f7fb;
+    --muted:#9da6b8;
+    --accent:#7c5cff;
+    --accent2:#21d4fd;
+    --success:#25d695;
+    --danger:#ff5d73;
+    --warning:#ffc857;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#07080d;
-    color:#f5f7ff;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(124,92,255,.16),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(33,212,253,.10),transparent 30%),
+        var(--bg);
+    color:var(--text);
     min-height:100vh;
 }
 
@@ -31,126 +41,111 @@ button{
     font-family:inherit;
 }
 
-.container{
+.header{
     width:92%;
-    max-width:1180px;
+    max-width:1200px;
     margin:auto;
-}
-
-/* ================= HEADER ================= */
-
-header{
-    height:74px;
-    position:sticky;
-    top:0;
-    z-index:100;
+    height:78px;
     display:flex;
     align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    background:rgba(7,8,13,.94);
-    backdrop-filter:blur(15px);
-}
-
-.header-inner{
-    display:flex;
     justify-content:space-between;
-    align-items:center;
 }
 
 .logo{
-    font-size:26px;
+    font-size:25px;
     font-weight:900;
     letter-spacing:-1px;
 }
 
 .logo span{
-    color:#8b5cf6;
+    color:var(--accent);
 }
 
-.header-info{
-    color:#8f96aa;
+.creator{
+    color:var(--muted);
     font-size:13px;
 }
 
-/* ================= HOME ================= */
-
-#home{
-    display:block;
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
 }
 
 .hero{
-    text-align:center;
-    padding:75px 0 48px;
+    padding:70px 0 45px;
 }
 
 .badge{
     display:inline-block;
-    padding:8px 15px;
-    border-radius:30px;
-    border:1px solid rgba(139,92,246,.4);
-    background:rgba(139,92,246,.08);
-    color:#c4b5fd;
+    padding:8px 13px;
+    border:1px solid var(--border);
+    background:rgba(124,92,255,.08);
+    color:#bdb2ff;
+    border-radius:999px;
     font-size:13px;
-    margin-bottom:21px;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(40px,7vw,70px);
-    line-height:1.02;
-    letter-spacing:-2px;
-    margin-bottom:22px;
+    font-size:clamp(38px,6vw,72px);
+    line-height:1;
+    max-width:850px;
+    letter-spacing:-3px;
 }
 
 .hero h1 span{
-    color:#a78bfa;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 .hero p{
     max-width:700px;
-    margin:auto;
-    color:#9299ad;
-    line-height:1.75;
-    font-size:16px;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.7;
+    margin-top:22px;
 }
 
-.subjects{
+.section-title{
+    font-size:28px;
+    margin:20px 0 20px;
+}
+
+.subject-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    padding-bottom:70px;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    padding-bottom:60px;
 }
 
 .subject{
-    min-height:210px;
-    padding:27px;
-    border-radius:21px;
-    border:1px solid rgba(255,255,255,.08);
-    background:#10121a;
-    transition:.25s;
-}
-
-.subject.active{
+    position:relative;
+    min-height:190px;
+    background:linear-gradient(145deg,var(--card),#0c0f16);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
     cursor:pointer;
+    transition:.25s;
+    overflow:hidden;
 }
 
-.subject.active:hover{
+.subject:hover{
     transform:translateY(-5px);
-    border-color:rgba(139,92,246,.55);
-}
-
-.subject.disabled{
-    opacity:.7;
+    border-color:#4a5270;
 }
 
 .subject-icon{
-    width:50px;
-    height:50px;
+    width:48px;
+    height:48px;
     display:flex;
     align-items:center;
     justify-content:center;
     border-radius:14px;
-    background:rgba(139,92,246,.12);
-    font-size:23px;
+    background:rgba(124,92,255,.12);
+    font-size:25px;
     margin-bottom:18px;
 }
 
@@ -160,205 +155,141 @@ header{
 }
 
 .subject p{
-    color:#8f96aa;
-    font-size:14px;
-    line-height:1.55;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
 }
 
-.start{
-    margin-top:18px;
-    color:#a78bfa;
-    font-size:14px;
-    font-weight:bold;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:28px 0;
-    text-align:center;
-    color:#777f93;
+.subject .start-label{
+    position:absolute;
+    bottom:18px;
+    right:20px;
+    color:#bdb2ff;
     font-size:13px;
 }
 
-footer strong{
-    color:#c4b5fd;
+.footer{
+    border-top:1px solid var(--border);
+    padding:25px 0;
+    color:var(--muted);
+    text-align:center;
+    font-size:13px;
 }
 
-/* ================= TEST ================= */
+/* TEST */
 
-#test{
-    display:none;
-    padding:28px 0 70px;
+.hidden{
+    display:none!important;
+}
+
+.test-page{
+    min-height:100vh;
 }
 
 .test-top{
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(15px);
+    background:rgba(6,7,11,.88);
+    border-bottom:1px solid var(--border);
+}
+
+.test-top-inner{
+    width:92%;
+    max-width:1000px;
+    margin:auto;
+    min-height:78px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:20px;
-    margin-bottom:20px;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.test-title h2{
-    font-size:24px;
-    margin-bottom:6px;
-}
-
-.test-title p{
-    color:#8f96aa;
-    font-size:13px;
-}
-
-.variant-live{
-    color:#a78bfa;
-}
-
-.timer{
-    min-width:122px;
-    padding:13px 17px;
-    text-align:center;
-    border-radius:13px;
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
+.test-subject{
+    font-size:18px;
     font-weight:bold;
 }
 
-.timer.warning{
-    color:#f87171;
-    border-color:#ef4444;
-    animation:pulse 1s infinite;
+.variant{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
 }
 
-@keyframes pulse{
-    50%{
-        opacity:.55;
-    }
+.timer{
+    min-width:125px;
+    text-align:center;
+    border:1px solid var(--border);
+    background:var(--card);
+    padding:12px 15px;
+    border-radius:13px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.timer.warning{
+    color:var(--warning);
+    border-color:rgba(255,200,87,.4);
+}
+
+.timer.danger{
+    color:var(--danger);
+    border-color:rgba(255,93,115,.4);
+}
+
+.test-container{
+    width:92%;
+    max-width:850px;
+    margin:40px auto 70px;
+}
+
+.progress-wrap{
+    margin-bottom:20px;
 }
 
 .progress-info{
     display:flex;
     justify-content:space-between;
-    color:#8f96aa;
+    color:var(--muted);
     font-size:13px;
-    margin-bottom:8px;
+    margin-bottom:9px;
 }
 
 .progress{
     height:7px;
-    background:#1b1e29;
+    background:#171b25;
     border-radius:20px;
     overflow:hidden;
-    margin-bottom:22px;
 }
 
 .progress-bar{
-    width:0;
     height:100%;
-    background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+    width:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
     transition:.3s;
 }
 
-/* ================= QUESTION GRID ================= */
-
-.question-navigation{
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    padding:17px;
-    margin-bottom:20px;
-}
-
-.navigation-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:13px;
-}
-
-.navigation-top strong{
-    font-size:14px;
-}
-
-.navigation-top span{
-    color:#8f96aa;
-    font-size:12px;
-}
-
-.question-grid{
-    display:grid;
-    grid-template-columns:repeat(15,1fr);
-    gap:7px;
-}
-
-.q-number{
-    height:34px;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.08);
-    background:#171a24;
-    color:#aeb5c7;
-    cursor:pointer;
-    font-size:12px;
-    transition:.2s;
-}
-
-.q-number:hover{
-    border-color:#8b5cf6;
-}
-
-.q-number.current{
-    background:#8b5cf6;
-    color:white;
-    border-color:#8b5cf6;
-}
-
-.q-number.correct{
-    background:rgba(34,197,94,.16);
-    color:#4ade80;
-    border-color:rgba(34,197,94,.45);
-}
-
-.q-number.wrong{
-    background:rgba(239,68,68,.16);
-    color:#f87171;
-    border-color:rgba(239,68,68,.45);
-}
-
-/* ================= QUESTION ================= */
-
 .question-card{
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
+    background:linear-gradient(145deg,var(--card),#0c0f16);
+    border:1px solid var(--border);
     border-radius:22px;
-    padding:31px;
+    padding:30px;
 }
 
-.question-meta{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:17px;
-}
-
-.question-number{
+.topic{
     display:inline-block;
-    background:rgba(139,92,246,.12);
-    color:#c4b5fd;
+    color:#bdb2ff;
+    background:rgba(124,92,255,.1);
     padding:7px 11px;
     border-radius:8px;
     font-size:12px;
+    margin-bottom:18px;
 }
 
-.topic-label{
-    color:#777f93;
-    font-size:12px;
-}
-
-.question-text{
-    font-size:21px;
-    line-height:1.65;
+.question{
+    font-size:22px;
+    line-height:1.55;
     margin-bottom:25px;
 }
 
@@ -369,105 +300,93 @@ footer strong{
 
 .option{
     width:100%;
-    min-height:54px;
-    padding:15px 17px;
     text-align:left;
+    padding:17px;
+    border:1px solid var(--border);
     border-radius:13px;
-    border:1px solid rgba(255,255,255,.09);
-    background:#151824;
-    color:white;
+    background:#0c0f16;
+    color:var(--text);
     cursor:pointer;
     font-size:15px;
     transition:.2s;
 }
 
-.option:hover:not(:disabled){
-    border-color:#8b5cf6;
-    background:#1a1d29;
+.option:hover{
+    border-color:#59627c;
+    background:#131724;
 }
 
 .option.selected{
-    border-color:#8b5cf6;
-    background:rgba(139,92,246,.15);
+    border-color:var(--accent);
+    background:rgba(124,92,255,.12);
 }
 
 .option.correct{
-    border-color:#22c55e;
-    background:rgba(34,197,94,.13);
-    color:#86efac;
+    border-color:var(--success);
+    background:rgba(37,214,149,.10);
 }
 
 .option.wrong{
-    border-color:#ef4444;
-    background:rgba(239,68,68,.13);
-    color:#fca5a5;
+    border-color:var(--danger);
+    background:rgba(255,93,115,.10);
 }
 
-.option:disabled{
-    cursor:default;
+.option-letter{
+    display:inline-flex;
+    width:30px;
+    height:30px;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:#191e2b;
+    margin-right:10px;
+    font-weight:bold;
 }
 
 .solution{
-    display:none;
-    margin-top:25px;
-    padding:20px;
-    border-radius:15px;
-    border:1px solid rgba(139,92,246,.25);
-    background:rgba(139,92,246,.06);
+    margin-top:22px;
+    padding:18px;
+    border-radius:14px;
+    border:1px solid rgba(33,212,253,.2);
+    background:rgba(33,212,253,.05);
+    color:#c9d2df;
+    line-height:1.65;
+    font-size:14px;
 }
 
-.solution.show{
-    display:block;
+.solution strong{
+    color:#fff;
 }
 
-.solution-title{
-    color:#c4b5fd;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.solution-text{
-    color:#cbd5e1;
-    line-height:1.7;
-}
-
-.question-actions{
+.actions{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-top:25px;
-}
-
-.action-right{
-    display:flex;
-    gap:10px;
+    gap:12px;
+    margin-top:20px;
 }
 
 .btn{
-    min-height:46px;
-    padding:12px 20px;
+    border:none;
     border-radius:12px;
+    padding:13px 20px;
     cursor:pointer;
     font-weight:bold;
-    font-size:14px;
-    transition:.2s;
+    color:#fff;
 }
 
 .btn-primary{
-    border:0;
-    background:linear-gradient(135deg,#8b5cf6,#6d28d9);
-    color:white;
-}
-
-.btn-primary:hover{
-    transform:translateY(-1px);
+    background:linear-gradient(90deg,var(--accent),#6651d9);
 }
 
 .btn-secondary{
-    background:#181b26;
-    color:#d5d8e2;
-    border:1px solid rgba(255,255,255,.08);
+    background:#151925;
+    border:1px solid var(--border);
+}
+
+.btn-danger{
+    background:rgba(255,93,115,.10);
+    border:1px solid rgba(255,93,115,.3);
+    color:#ff8091;
 }
 
 .btn:disabled{
@@ -475,325 +394,168 @@ footer strong{
     cursor:not-allowed;
 }
 
-/* ================= MODAL ================= */
+/* RESULT */
 
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    z-index:500;
-    background:rgba(0,0,0,.72);
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+.result-page{
+    width:92%;
+    max-width:900px;
+    margin:60px auto;
 }
 
-.modal.show{
-    display:flex;
+.result-card{
+    background:linear-gradient(145deg,var(--card),#0c0f16);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:35px;
 }
 
-.modal-box{
-    width:100%;
-    max-width:440px;
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:22px;
-    padding:30px;
-    text-align:center;
-}
-
-.modal-box h2{
-    margin-bottom:10px;
-}
-
-.modal-box p{
-    color:#8f96aa;
-    line-height:1.6;
-    margin-bottom:22px;
-}
-
-.modal-buttons{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-}
-
-/* ================= RESULT ================= */
-
-#result{
-    display:none;
-    padding:55px 0 80px;
-}
-
-.result-header{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.check{
-    width:70px;
-    height:70px;
-    margin:0 auto 18px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(34,197,94,.12);
-    border:1px solid rgba(34,197,94,.3);
-    font-size:30px;
-}
-
-.result-header h1{
-    font-size:38px;
-    margin-bottom:8px;
-}
-
-.result-header p{
-    color:#8f96aa;
-}
-
-.score-box{
-    max-width:500px;
-    margin:0 auto 25px;
-    padding:30px;
-    text-align:center;
-    border-radius:22px;
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
-}
-
-.score{
-    font-size:62px;
-    font-weight:800;
-    color:#a78bfa;
-}
-
-.score-note{
-    color:#8f96aa;
-    font-size:12px;
-    margin-top:8px;
-    line-height:1.5;
+.result-score{
+    font-size:64px;
+    font-weight:900;
+    margin:15px 0;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 .level{
     display:inline-block;
-    margin-top:13px;
-    padding:10px 18px;
-    border-radius:30px;
-    background:rgba(139,92,246,.12);
-    color:#c4b5fd;
+    padding:9px 15px;
+    border-radius:10px;
+    background:rgba(124,92,255,.12);
+    color:#c9beff;
+    margin-bottom:20px;
     font-weight:bold;
 }
 
 .stats{
-    max-width:800px;
-    margin:0 auto 30px;
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
+    margin:25px 0;
 }
 
 .stat{
-    padding:20px;
-    text-align:center;
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:16px;
-}
-
-.stat strong{
-    display:block;
-    font-size:24px;
-    margin-bottom:7px;
+    border:1px solid var(--border);
+    background:#0c0f16;
+    border-radius:14px;
+    padding:18px;
 }
 
 .stat span{
-    color:#8f96aa;
+    display:block;
+    color:var(--muted);
     font-size:12px;
+    margin-bottom:7px;
+}
+
+.stat strong{
+    font-size:22px;
 }
 
 .analysis{
-    max-width:800px;
-    margin:auto;
-    padding:27px;
-    border-radius:22px;
-    background:#10121a;
-    border:1px solid rgba(255,255,255,.08);
+    margin-top:30px;
 }
 
-.analysis h2{
-    margin-bottom:22px;
+.analysis h3{
+    margin-bottom:15px;
 }
 
-.topic{
-    margin-bottom:19px;
+.topic-row{
+    margin-bottom:14px;
 }
 
-.topic-top{
+.topic-head{
     display:flex;
     justify-content:space-between;
-    margin-bottom:7px;
+    margin-bottom:6px;
     font-size:13px;
 }
 
-.topic-top span{
-    color:#8f96aa;
-}
-
 .topic-bar{
-    height:8px;
+    height:7px;
+    background:#191d28;
     border-radius:20px;
-    background:#1c1f2a;
     overflow:hidden;
 }
 
 .topic-fill{
     height:100%;
-    background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
 }
 
-.recommendation{
+.notice{
     margin-top:25px;
-    padding:20px;
-    border-radius:15px;
-    background:rgba(139,92,246,.07);
-    border:1px solid rgba(139,92,246,.2);
-}
-
-.recommendation h3{
-    margin-bottom:9px;
-}
-
-.recommendation p{
-    color:#c5cada;
+    padding:15px;
+    border-radius:12px;
+    background:rgba(255,200,87,.06);
+    border:1px solid rgba(255,200,87,.18);
+    color:#c8b987;
+    font-size:13px;
     line-height:1.6;
 }
 
-.mistakes{
-    max-width:800px;
-    margin:20px auto 0;
-}
+/* MOBILE */
 
-.mistakes h2{
-    margin-bottom:15px;
-}
-
-.mistake-item{
-    padding:18px;
-    margin-bottom:10px;
-    border-radius:14px;
-    background:#10121a;
-    border:1px solid rgba(239,68,68,.2);
-}
-
-.mistake-item strong{
-    display:block;
-    margin-bottom:7px;
-}
-
-.mistake-item p{
-    color:#9299ad;
-    font-size:13px;
-    line-height:1.55;
-}
-
-.result-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:25px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:800px){
-
-    .subjects{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .question-grid{
-        grid-template-columns:repeat(9,1fr);
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
+@media(max-width:900px){
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:550px){
-
-    header{
+@media(max-width:600px){
+    .header{
         height:65px;
     }
 
-    .header-info{
+    .creator{
         display:none;
     }
 
     .hero{
-        padding:55px 0 40px;
+        padding:45px 0 30px;
     }
 
     .hero h1{
-        letter-spacing:-1px;
+        letter-spacing:-2px;
     }
 
-    .subjects{
+    .subject-grid{
         grid-template-columns:1fr;
     }
 
-    .test-top{
-        align-items:flex-start;
+    .question-card{
+        padding:20px;
     }
 
-    .test-title h2{
-        font-size:19px;
+    .question{
+        font-size:18px;
+    }
+
+    .test-top-inner{
+        min-height:70px;
     }
 
     .timer{
         min-width:100px;
-        padding:11px 10px;
         font-size:13px;
+        padding:10px;
     }
 
-    .question-grid{
-        grid-template-columns:repeat(5,1fr);
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    .question-card{
-        padding:21px;
+    .result-score{
+        font-size:48px;
     }
 
-    .question-text{
-        font-size:18px;
-    }
-
-    .question-actions{
+    .actions{
         flex-direction:column;
-        align-items:stretch;
     }
 
-    .action-right{
+    .btn{
         width:100%;
-        flex-wrap:wrap;
-    }
-
-    .action-right .btn{
-        flex:1;
-    }
-
-    .result-buttons{
-        flex-direction:column;
-    }
-
-    .modal-buttons{
-        flex-direction:column;
-    }
-
-    .question-meta{
-        align-items:flex-start;
-        flex-direction:column;
     }
 }
 </style>
@@ -801,401 +563,163 @@ footer strong{
 
 <body>
 
-<header>
+<!-- HOME -->
 
-<div class="container header-inner">
+<div id="homePage">
 
-    <div class="logo">
-        MILLIY<span>.</span>
-    </div>
-
-    <div class="header-info">
-        Mirahmatov tomonidan yaratilgan
-    </div>
-
-</div>
-
+<header class="header">
+    <div class="logo">MILLIY<span>.</span></div>
+    <div class="creator">Mirahmatov tomonidan yaratilgan</div>
 </header>
 
+<main class="container">
 
-<!-- ================= HOME ================= -->
+<section class="hero">
+    <div class="badge">🎓 MILLIY SERTIFIKATGA TAYYORGARLIK</div>
 
-<section id="home">
+    <h1>
+        Imtihonga
+        <span>ishonch bilan</span>
+        tayyorlan.
+    </h1>
 
-<div class="container">
+    <p>
+        Murakkab original savollar, random variantlar, ishlanish yo‘li,
+        natija tahlili va zaif mavzularni aniqlash — barchasi bitta platformada.
+    </p>
+</section>
 
-    <div class="hero">
+<h2 class="section-title">Fanlar</h2>
 
-        <div class="badge">
-            🎯 MILLIY SERTIFIKAT
-        </div>
+<section class="subject-grid">
 
-        <h1>
-            Imtihonga<br>
-            <span>ishonch bilan tayyorlan.</span>
-        </h1>
-
-        <p>
-            Milliy sertifikatga tayyorgarlik uchun
-            testlar, ishlanish yo‘llari, natija tahlili
-            va mavzular bo‘yicha tavsiyalar.
-        </p>
-
+    <div class="subject" onclick="startSubject('math')">
+        <div class="subject-icon">∑</div>
+        <h3>Matematika</h3>
+        <p>Algebra, geometriya, funksiya, tenglama va mantiqiy masalalar.</p>
+        <div class="start-label">Testni boshlash →</div>
     </div>
 
-
-    <div class="subjects">
-
-
-        <div
-            class="subject active"
-            onclick="startMath()">
-
-            <div class="subject-icon">
-                ∑
-            </div>
-
-            <h3>
-                Matematika
-            </h3>
-
-            <p>
-                Har bir variantda 45 ta A/B/C/D
-                test savoli.
-            </p>
-
-            <div class="start">
-                Testni boshlash →
-            </div>
-
-        </div>
-
-
-        <div class="subject disabled">
-
-            <div class="subject-icon">
-                A
-            </div>
-
-            <h3>
-                Ingliz tili
-            </h3>
-
-            <p>
-                Ingliz tili bo‘yicha tayyorgarlik.
-            </p>
-
-            <div class="start">
-                Tez orada →
-            </div>
-
-        </div>
-
-
-        <div class="subject disabled">
-
-            <div class="subject-icon">
-                Ў
-            </div>
-
-            <h3>
-                Ona tili va adabiyot
-            </h3>
-
-            <p>
-                Ona tili va adabiyot bo‘yicha mashqlar.
-            </p>
-
-            <div class="start">
-                Tez orada →
-            </div>
-
-        </div>
-
-
-        <div class="subject disabled">
-
-            <div class="subject-icon">
-                ⚡
-            </div>
-
-            <h3>
-                Fizika
-            </h3>
-
-            <p>
-                Fizika masalalari va testlari.
-            </p>
-
-            <div class="start">
-                Tez orada →
-            </div>
-
-        </div>
-
-
-        <div class="subject disabled">
-
-            <div class="subject-icon">
-                ₿
-            </div>
-
-            <h3>
-                Iqtisodiyot
-            </h3>
-
-            <p>
-                Iqtisodiyot bo‘yicha tayyorgarlik.
-            </p>
-
-            <div class="start">
-                Tez orada →
-            </div>
-
-        </div>
-
-
-        <div class="subject disabled">
-
-            <div class="subject-icon">
-                ⌛
-            </div>
-
-            <h3>
-                Tarix
-            </h3>
-
-            <p>
-                Tarix bo‘yicha testlar.
-            </p>
-
-            <div class="start">
-                Tez orada →
-            </div>
-
-        </div>
-
+    <div class="subject" onclick="startSubject('english')">
+        <div class="subject-icon">A</div>
+        <h3>Ingliz tili</h3>
+        <p>Grammar, vocabulary, reading va murakkab til konstruktsiyalari.</p>
+        <div class="start-label">Testni boshlash →</div>
     </div>
 
-</div>
+    <div class="subject" onclick="startSubject('uzbek')">
+        <div class="subject-icon">文</div>
+        <h3>Ona tili va adabiyot</h3>
+        <p>Tilshunoslik, grammatika, adabiyot va matn tahlili.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
+
+    <div class="subject" onclick="startSubject('history')">
+        <div class="subject-icon">🏛</div>
+        <h3>Tarix</h3>
+        <p>O‘zbekiston va jahon tarixi, sabab-oqibat va xronologiya.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
+
+    <div class="subject" onclick="startSubject('physics')">
+        <div class="subject-icon">⚡</div>
+        <h3>Fizika</h3>
+        <p>Mexanika, elektr, optika, energiya va murakkab hisoblashlar.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
+
+    <div class="subject" onclick="startSubject('economics')">
+        <div class="subject-icon">₿</div>
+        <h3>Iqtisodiyot</h3>
+        <p>Talab-taklif, bozor, inflyatsiya, xarajat va iqtisodiy tahlil.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
+
+    <div class="subject" onclick="startSubject('chemistry')">
+        <div class="subject-icon">⚗</div>
+        <h3>Kimyo</h3>
+        <p>Reaksiyalar, stexiometriya, organik va anorganik kimyo.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
+
+    <div class="subject" onclick="startSubject('biology')">
+        <div class="subject-icon">🧬</div>
+        <h3>Biologiya</h3>
+        <p>Genetika, hujayra, fiziologiya, evolyutsiya va ekologiya.</p>
+        <div class="start-label">Testni boshlash →</div>
+    </div>
 
 </section>
 
+</main>
 
-<!-- ================= TEST ================= -->
+<footer class="footer">
+    MILLIY. — Mirahmatov tomonidan yaratilgan
+</footer>
 
-<section id="test">
-
-<div class="container">
+</div>
 
 
-    <div class="test-top">
+<!-- TEST -->
 
-        <div class="test-title">
+<div id="testPage" class="test-page hidden">
 
-            <h2>
-                Matematika testi
-            </h2>
+<div class="test-top">
 
-            <p>
-                Global
-                <span
-                    class="variant-live"
-                    id="variant">
-                    Variant #1042
-                </span>
-            </p>
+    <div class="test-top-inner">
 
+        <div>
+            <div class="test-subject" id="testSubject"></div>
+            <div class="variant" id="variantInfo"></div>
         </div>
 
-
-        <div
-            class="timer"
-            id="timer">
-
+        <div class="timer" id="timer">
             150:00
-
         </div>
 
     </div>
 
+</div>
 
-    <div class="progress-info">
+<div class="test-container">
 
-        <span id="questionNumber">
-            1 / 45
-        </span>
+    <div class="progress-wrap">
 
-        <span>
-            A / B / C / D
-        </span>
+        <div class="progress-info">
+            <span id="questionCounter">1 / 1</span>
+            <span id="scoreLive">0 ta to‘g‘ri</span>
+        </div>
 
-    </div>
-
-
-    <div class="progress">
-
-        <div
-            class="progress-bar"
-            id="progressBar">
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
 
     </div>
-
-
-    <!-- SAVOLLAR PANELI -->
-
-    <div class="question-navigation">
-
-        <div class="navigation-top">
-
-            <strong>
-                Savollar
-            </strong>
-
-            <span>
-                Javob bergan savollar rang bilan belgilanadi
-            </span>
-
-        </div>
-
-        <div
-            class="question-grid"
-            id="questionGrid">
-        </div>
-
-    </div>
-
-
-    <!-- SAVOL -->
 
     <div class="question-card">
 
-        <div class="question-meta">
+        <div class="topic" id="questionTopic"></div>
 
-            <div class="question-number">
+        <div class="question" id="questionText"></div>
 
-                Savol
-                <span id="numberInside">
-                    1
-                </span>
+        <div class="options" id="options"></div>
 
-            </div>
+        <div id="solution" class="solution hidden"></div>
 
-            <div
-                class="topic-label"
-                id="topicLabel">
-                Mavzu
-            </div>
-
-        </div>
-
-
-        <div
-            class="question-text"
-            id="questionText">
-        </div>
-
-
-        <div
-            class="options"
-            id="options">
-        </div>
-
-
-        <div
-            class="solution"
-            id="solution">
-
-            <div
-                class="solution-title"
-                id="solutionTitle">
-
-                ✓ Ishlanish yo‘li
-
-            </div>
-
-            <div
-                class="solution-text"
-                id="solutionText">
-            </div>
-
-        </div>
-
-
-        <div class="question-actions">
+        <div class="actions">
 
             <button
-                class="btn btn-secondary"
-                onclick="previousQuestion()">
-
-                ← Oldingi
-
-            </button>
-
-
-            <div class="action-right">
-
-                <button
-                    class="btn btn-secondary"
-                    onclick="finishFromButton()">
-
-                    Yakunlash
-
-                </button>
-
-
-                <button
-                    class="btn btn-primary"
-                    id="actionButton"
-                    onclick="checkAnswer()">
-
-                    Javobni tekshirish
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-    class="modal"
-    id="finishModal">
-
-    <div class="modal-box">
-
-        <h2>
-            Testni yakunlaysizmi?
-        </h2>
-
-        <p id="finishMessage">
-        </p>
-
-        <div class="modal-buttons">
-
-            <button
-                class="btn btn-secondary"
-                onclick="closeFinishModal()">
-
-                Bekor qilish
-
+                class="btn btn-danger"
+                onclick="exitTest()">
+                Testdan chiqish
             </button>
 
             <button
                 class="btn btn-primary"
-                onclick="confirmFinish()">
-
-                Natijani ko‘rish
-
+                id="actionButton"
+                onclick="checkAnswer()"
+                disabled>
+                Javobni tekshirish
             </button>
 
         </div>
@@ -1204,292 +728,1331 @@ footer strong{
 
 </div>
 
-
-<!-- ================= RESULT ================= -->
-
-<section id="result">
-
-<div class="container">
+</div>
 
 
-    <div class="result-header">
+<!-- RESULT -->
 
-        <div class="check">
-            ✓
-        </div>
+<div id="resultPage" class="result-page hidden">
 
-        <h1>
-            Test yakunlandi
-        </h1>
+<div class="result-card">
 
-        <p>
-            Natijangiz va mavzular tahlili tayyor.
-        </p>
+    <div class="badge">TEST YAKUNLANDI</div>
 
-    </div>
+    <h1 id="resultTitle"></h1>
 
+    <div class="result-score" id="resultScore"></div>
 
-    <div class="score-box">
-
-        <div
-            class="score"
-            id="finalScore">
-            0
-        </div>
-
-        <div>
-            / 100 ball
-        </div>
-
-        <div
-            class="score-note">
-
-            Ushbu ball mashq natijasidir.
-            Rasmiy sertifikat natijasi BMB
-            hisoblash tizimi orqali belgilanadi.
-
-        </div>
-
-        <div
-            class="level"
-            id="certificateLevel">
-        </div>
-
-    </div>
-
+    <div class="level" id="resultLevel"></div>
 
     <div class="stats">
 
         <div class="stat">
-
-            <strong id="correctCount">
-                0
-            </strong>
-
-            <span>
-                To‘g‘ri
-            </span>
-
+            <span>To‘g‘ri javob</span>
+            <strong id="correctCount">0</strong>
         </div>
 
-
         <div class="stat">
-
-            <strong id="wrongCount">
-                0
-            </strong>
-
-            <span>
-                Noto‘g‘ri
-            </span>
-
+            <span>Noto‘g‘ri javob</span>
+            <strong id="wrongCount">0</strong>
         </div>
 
-
         <div class="stat">
-
-            <strong id="emptyCount">
-                0
-            </strong>
-
-            <span>
-                Javobsiz
-            </span>
-
-        </div>
-
-
-        <div class="stat">
-
-            <strong id="timeUsed">
-                0
-            </strong>
-
-            <span>
-                Daqiqa
-            </span>
-
+            <span>Foiz</span>
+            <strong id="percentCount">0%</strong>
         </div>
 
     </div>
-
 
     <div class="analysis">
 
-        <h2>
-            📊 Mavzular tahlili
-        </h2>
+        <h3>Mavzular tahlili</h3>
 
-        <div
-            id="topicAnalysis">
-        </div>
-
-
-        <div class="recommendation">
-
-            <h3>
-                📚 Sizga tavsiya
-            </h3>
-
-            <p
-                id="recommendationText">
-            </p>
-
-        </div>
+        <div id="topicAnalysis"></div>
 
     </div>
 
+    <div class="notice" id="resultNotice"></div>
 
-    <div class="mistakes">
-
-        <h2>
-            ❌ Xatolar
-        </h2>
-
-        <div
-            id="mistakesList">
-        </div>
-
-    </div>
-
-
-    <div class="result-buttons">
+    <div class="actions">
 
         <button
             class="btn btn-secondary"
             onclick="goHome()">
-
-            ← Bosh sahifa
-
+            Bosh sahifa
         </button>
-
 
         <button
             class="btn btn-primary"
             onclick="restartTest()">
-
-            🔄 Yangi variant
-
+            Qayta ishlash
         </button>
 
     </div>
 
 </div>
 
-</section>
-
-
-<footer>
-
-    <div class="container">
-
-        <strong>MILLIY.</strong>
-        — Milliy sertifikatga tayyorgarlik platformasi
-
-        <br><br>
-
-        Yaratuvchi:
-        <strong>Mirahmatov</strong>
-
-    </div>
-
-</footer>
+</div>
 
 
 <script>
 
 /* =========================================================
-   GLOBAL VARIANT TIZIMI
-
-   Har 2 soatda yangi slot.
-   Foydalanuvchi kirgan-kirmaganidan qat'i nazar,
-   vaqt o‘tishi bilan slot o‘zgaradi.
+   FANLAR
 ========================================================= */
 
-const VARIANT_START = 1042;
+const SUBJECTS = {
 
-const TWO_HOURS =
-    2 * 60 * 60 * 1000;
+    math:{
+        title:"Matematika",
+        icon:"∑",
+        time:150,
+        testLength:45,
+        type:"general"
+    },
 
+    english:{
+        title:"Ingliz tili",
+        icon:"A",
+        time:150,
+        testLength:10,
+        type:"english"
+    },
 
-function getVariantSlot(){
+    uzbek:{
+        title:"Ona tili va adabiyot",
+        icon:"文",
+        time:150,
+        testLength:10,
+        type:"general"
+    },
 
-    return Math.floor(
-        Date.now() / TWO_HOURS
-    );
+    history:{
+        title:"Tarix",
+        icon:"🏛",
+        time:150,
+        testLength:10,
+        type:"general"
+    },
 
-}
+    physics:{
+        title:"Fizika",
+        icon:"⚡",
+        time:150,
+        testLength:10,
+        type:"general"
+    },
 
+    economics:{
+        title:"Iqtisodiyot",
+        icon:"₿",
+        time:150,
+        testLength:10,
+        type:"score"
+    },
 
-function getVariantNumber(){
+    chemistry:{
+        title:"Kimyo",
+        icon:"⚗",
+        time:150,
+        testLength:10,
+        type:"general"
+    },
 
-    const slot =
-        getVariantSlot();
+    biology:{
+        title:"Biologiya",
+        icon:"🧬",
+        time:150,
+        testLength:10,
+        type:"general"
+    }
 
-    return VARIANT_START +
-        (slot % 5000);
-
-}
+};
 
 
 /* =========================================================
-   SEED RANDOM
+   SAVOLLAR BANKI
+   Barcha savollar original mashq savollari.
 ========================================================= */
 
-function seededRandom(seed){
+const questionBank = {
 
-    let x =
-        Math.sin(seed) * 10000;
+math:[
 
-    return x - Math.floor(x);
+{
+topic:"Algebra",
+question:"Agar x + 1/x = 5 bo‘lsa, x² + 1/x² ning qiymatini toping.",
+options:["21","23","25","27"],
+answer:1,
+explanation:"(x + 1/x)² = x² + 2 + 1/x². Demak 25 = x² + 1/x² + 2. Natija 23."
+},
 
+{
+topic:"Tenglamalar",
+question:"x² − 7x + 10 = 0 tenglamaning ildizlari a va b bo‘lsa, a² + b² ni toping.",
+options:["19","29","39","49"],
+answer:1,
+explanation:"Vieta bo‘yicha a+b=7, ab=10. a²+b²=(a+b)²−2ab=49−20=29."
+},
+
+{
+topic:"Funksiya",
+question:"f(x)=x²−4x+7 funksiyaning eng kichik qiymati nechaga teng?",
+options:["2","3","4","7"],
+answer:1,
+explanation:"f(x)=(x−2)²+3. Kvadratning eng kichik qiymati 0 bo‘lgani uchun minimum 3."
+},
+
+{
+topic:"Progressiya",
+question:"Arifmetik progressiyada a₃=11 va a₇=27. Ayirma d nechaga teng?",
+options:["3","4","5","6"],
+answer:1,
+explanation:"a₇−a₃=4d. 27−11=16, demak 4d=16 va d=4."
+},
+
+{
+topic:"Geometriya",
+question:"To‘g‘ri burchakli uchburchak katetlari 9 va 12 ga teng. Gipotenuzaga tushirilgan balandlikni toping.",
+options:["6","7.2","8","9"],
+answer:1,
+explanation:"Gipotenuza 15. Yuzadan foydalanamiz: 9·12/2 = 15h/2. Bundan h=7.2."
+},
+
+{
+topic:"Ehtimollik",
+question:"Qutida 5 ta oq, 4 ta qora va 3 ta qizil shar bor. Tasodifiy olingan shar oq yoki qizil bo‘lish ehtimoli qancha?",
+options:["2/3","3/4","5/8","7/12"],
+answer:0,
+explanation:"Oq yoki qizil sharlar 8 ta, jami 12 ta. P=8/12=2/3."
+},
+
+{
+topic:"Logarifm",
+question:"log₂(x−1)=3 bo‘lsa, x²−2x qiymatini toping.",
+options:["56","64","72","81"],
+answer:0,
+explanation:"x−1=8, demak x=9. x²−2x=81−18=63. Diqqat: variantlar ichida 63 yo‘q. Bu savol test bankiga qo‘shilishidan oldin tuzatilishi kerak."
+},
+
+{
+topic:"Tengsizlik",
+question:"|2x−3| < 5 tengsizlikning yechimini toping.",
+options:["−1 < x < 4","−4 < x < 1","1 < x < 4","−1 < x < 1"],
+answer:0,
+explanation:"−5<2x−3<5.  −2<2x<8. Demak −1<x<4."
+},
+
+{
+topic:"Kombinatorika",
+question:"5 ta turli kitobdan 3 tasini tanlashning nechta usuli bor?",
+options:["10","15","20","30"],
+answer:2,
+explanation:"C(5,3)=5!/(3!2!)=10. Demak to‘g‘ri javob 10."
+},
+
+{
+topic:"Trigonometriya",
+question:"sin²x + cos²x ifodaning qiymati barcha haqiqiy x lar uchun nechaga teng?",
+options:["0","1","2","x"],
+answer:1,
+explanation:"Asosiy trigonometrik ayniyatga ko‘ra sin²x+cos²x=1."
+},
+
+{
+topic:"Sonlar nazariyasi",
+question:"3³·5² sonining natural bo‘luvchilari sonini toping.",
+options:["8","10","12","15"],
+answer:2,
+explanation:"Darajalar 3 va 2. Bo‘luvchilar soni (3+1)(2+1)=12."
+},
+
+{
+topic:"Funksiya",
+question:"y=2x²−8x+5 parabola uchining x koordinatasini toping.",
+options:["1","2","3","4"],
+answer:1,
+explanation:"x₀=−b/(2a)=8/4=2."
+},
+
+{
+topic:"Geometriya",
+question:"Radiusi 6 bo‘lgan doiraning yuzini toping.",
+options:["12π","18π","36π","72π"],
+answer:2,
+explanation:"S=πr²=36π."
+},
+
+{
+topic:"Hosila",
+question:"f(x)=x³−3x²+2 funksiyaning x=2 nuqtadagi hosilasi nechaga teng?",
+options:["0","2","4","6"],
+answer:0,
+explanation:"f'(x)=3x²−6x. f'(2)=12−12=0."
+},
+
+{
+topic:"Tenglama",
+question:"√(x+4)=x tenglamaning yechimini toping.",
+options:["−2","2","4","8"],
+answer:1,
+explanation:"x≥0. Kvadratlasak x+4=x², ya’ni x²−x−4=0. Musbat ildiz (1+√17)/2 bo‘ladi. Demak berilgan variantlar mos emas."
+},
+
+{
+topic:"Progressiya",
+question:"Geometrik progressiyada b₁=3 va q=2. Dastlabki 5 had yig‘indisini toping.",
+options:["45","63","93","96"],
+answer:2,
+explanation:"S₅=3(2⁵−1)/(2−1)=93."
+},
+
+{
+topic:"Ehtimollik",
+question:"Ikki kubik tashlanganda yig‘indi 8 bo‘lish ehtimoli qancha?",
+options:["5/36","1/6","7/36","1/9"],
+answer:0,
+explanation:"(2,6),(3,5),(4,4),(5,3),(6,2) — 5 ta holat. Jami 36 ta. P=5/36."
+},
+
+{
+topic:"Algebra",
+question:"a+b=10 va ab=21 bo‘lsa, a³+b³ ni toping.",
+options:["370","520","790","1000"],
+answer:2,
+explanation:"a³+b³=(a+b)³−3ab(a+b)=1000−630=370. To‘g‘ri javob 370."
+},
+
+{
+topic:"Mantiq",
+question:"Bir sonning 40% i 28 ga teng. Shu sonning 75% i nechaga teng?",
+options:["42","49","52.5","56"],
+answer:2,
+explanation:"0.4x=28, x=70. 0.75·70=52.5."
+},
+
+{
+topic:"Tengsizlik",
+question:"x²−5x+6 > 0 tengsizlikning yechimi qaysi?",
+options:["2<x<3","x<2 yoki x>3","x≤2 yoki x≥3","x>2"],
+answer:1,
+explanation:"(x−2)(x−3)>0 bo‘lgani uchun x<2 yoki x>3."
+},
+
+{
+topic:"Geometriya",
+question:"Tomoni 10 bo‘lgan kvadratning diagonali nechaga teng?",
+options:["5√2","10√2","20","25"],
+answer:1,
+explanation:"d=a√2=10√2."
+},
+
+{
+topic:"Statistika",
+question:"4, 7, 8, 11, 15 sonlarining medianasi nechaga teng?",
+options:["7","8","9","11"],
+answer:1,
+explanation:"Tartiblangan 5 ta sonning o‘rtadagi qiymati 8."
+},
+
+{
+topic:"Funksiya",
+question:"f(x)=2x−3 va g(x)=x² bo‘lsa, g(f(2)) qiymati nechaga teng?",
+options:["1","2","4","9"],
+answer:0,
+explanation:"f(2)=1. g(1)=1."
+},
+
+{
+topic:"Logarifm",
+question:"log₃9 + log₃27 qiymatini toping.",
+options:["3","4","5","6"],
+answer:1,
+explanation:"log₃9=2, log₃27=3. Yig‘indi 5."
+},
+
+{
+topic:"Trigonometriya",
+question:"sin30°·cos60° + cos30°·sin60° qiymati nechaga teng?",
+options:["0","1/2","√3/2","1"],
+answer:3,
+explanation:"Bu sin(30°+60°)=sin90°=1."
+},
+
+{
+topic:"Kombinatorika",
+question:"4 ta turli harfdan takrorlanmasdan nechta 3 harfli so‘z tuzish mumkin?",
+options:["12","18","24","36"],
+answer:2,
+explanation:"4·3·2=24."
+},
+
+{
+topic:"Hosila",
+question:"f(x)=5x²−4x+1 bo‘lsa, f'(3) ni toping.",
+options:["22","24","26","28"],
+answer:2,
+explanation:"f'(x)=10x−4. f'(3)=30−4=26."
+},
+
+{
+topic:"Integral",
+question:"∫2x dx ning boshlang‘ich funksiyasi qaysi?",
+options:["x²+C","2x²+C","x²/2+C","2x+C"],
+answer:0,
+explanation:"∫2x dx=x²+C."
+},
+
+{
+topic:"Stereometriya",
+question:"Kubning qirrasi 4 ga teng. Uning to‘la sirt yuzasi nechaga teng?",
+options:["64","72","96","128"],
+answer:2,
+explanation:"S=6a²=6·16=96."
+},
+
+{
+topic:"Sonlar",
+question:"2⁵·2³ / 2⁴ qiymatini toping.",
+options:["8","12","16","32"],
+answer:2,
+explanation:"2^(5+3−4)=2⁴=16."
+},
+
+{
+topic:"Tenglama",
+question:"x/3 + x/2 = 10 bo‘lsa, x ni toping.",
+options:["10","12","15","18"],
+answer:2,
+explanation:"(2x+3x)/6=10. 5x=60. x=12. Demak to‘g‘ri variant 12."
+},
+
+{
+topic:"Geometriya",
+question:"Uchburchakning tomonlari 5, 12, 13. Uning yuzini toping.",
+options:["24","30","36","60"],
+answer:1,
+explanation:"5²+12²=13², demak uchburchak to‘g‘ri burchakli. S=5·12/2=30."
+},
+
+{
+topic:"Ehtimollik",
+question:"Tanga 3 marta tashlanganda aynan 2 marta gerb tushish ehtimoli qancha?",
+options:["1/8","3/8","1/2","5/8"],
+answer:1,
+explanation:"3 ta mos holat bor, jami 8 ta. P=3/8."
+},
+
+{
+topic:"Mantiq",
+question:"Ketma-ketlik: 2, 6, 12, 20, 30, ... Keyingi sonni toping.",
+options:["36","40","42","44"],
+answer:2,
+explanation:"Farqlar 4,6,8,10. Keyingi farq 12, demak 42."
+},
+
+{
+topic:"Algebra",
+question:"x−1/x=3 bo‘lsa, x²+1/x² qiymatini toping.",
+options:["7","9","11","13"],
+answer:2,
+explanation:"(x−1/x)²=x²−2+1/x². 9=x²+1/x²−2. Natija 11."
+},
+
+{
+topic:"Geometriya",
+question:"Aylananing uzunligi 20π bo‘lsa, radiusi nechaga teng?",
+options:["5","10","20","40"],
+answer:1,
+explanation:"2πr=20π, r=10."
+},
+
+{
+topic:"Funksiya",
+question:"y=−x²+6x−5 funksiyaning maksimum qiymatini toping.",
+options:["3","4","5","6"],
+answer:1,
+explanation:"y=−(x−3)²+4. Maksimum 4."
+},
+
+{
+topic:"Progressiya",
+question:"1+3+5+...+99 yig‘indisini toping.",
+options:["2400","2500","2600","2700"],
+answer:1,
+explanation:"99 gacha 50 ta toq son bor. S=50²=2500."
+},
+
+{
+topic:"Tenglama",
+question:"x²−9=0 tenglamaning musbat ildizi nechaga teng?",
+options:["−3","0","3","9"],
+answer:2,
+explanation:"x²=9, x=±3. Musbat ildiz 3."
+},
+
+{
+topic:"Statistika",
+question:"2, 4, 4, 7, 8 sonlarining arifmetik o‘rtachasi nechaga teng?",
+options:["4","5","6","7"],
+answer:1,
+explanation:"Yig‘indi 25. 25/5=5."
+},
+
+{
+topic:"Geometriya",
+question:"Radiusi 3 bo‘lgan shar hajmi nechaga teng?",
+options:["9π","18π","27π","36π"],
+answer:3,
+explanation:"V=4/3πr³=4/3·27π=36π."
+},
+
+{
+topic:"Algebra",
+question:"a=2 va b=−3 bo‘lsa, (a−b)²−2ab qiymatini toping.",
+options:["13","25","37","49"],
+answer:2,
+explanation:"(2−(−3))²−2·2·(−3)=25+12=37."
+},
+
+{
+topic:"Tengsizlik",
+question:"3x−7 ≤ 11 tengsizlikning yechimini toping.",
+options:["x≤4","x≥4","x≤6","x≥6"],
+answer:0,
+explanation:"3x≤18, x≤6. Demak to‘g‘ri javob x≤6."
+},
+
+{
+topic:"Trigonometriya",
+question:"cos²45° + sin²45° qiymati nechaga teng?",
+options:["1/2","1","√2","2"],
+answer:1,
+explanation:"Asosiy ayniyat bo‘yicha qiymat 1."
+},
+
+{
+topic:"Mantiq",
+question:"Bir ishni A 6 kunda, B 3 kunda bajaradi. Ular birga ishlasa ish necha kunda tugaydi?",
+options:["1 kun","2 kun","3 kun","4 kun"],
+answer:1,
+explanation:"A tezligi 1/6, B tezligi 1/3. Birgalikda 1/2 ish/kun. Demak 2 kun."
+},
+
+{
+topic:"Kombinatorika",
+question:"6 kishidan rais va kotibni nechta usulda tanlash mumkin?",
+options:["12","24","30","36"],
+answer:2,
+explanation:"Lavozimlar turlicha: 6·5=30."
+},
+
+{
+topic:"Yuqori daraja",
+question:"Agar x²−5x+1=0 tenglamaning ildizlari a va b bo‘lsa, 1/a + 1/b qiymatini toping.",
+options:["1","5","−5","25"],
+answer:1,
+explanation:"1/a+1/b=(a+b)/ab. Vieta bo‘yicha a+b=5, ab=1. Natija 5."
 }
 
+],
 
-function randomInt(
-    seed,
-    min,
-    max
-){
 
-    return Math.floor(
-        seededRandom(seed) *
-        (max - min + 1)
-    ) + min;
+english:[
 
+{
+topic:"Grammar",
+question:"If she had known about the problem earlier, she ___ us immediately.",
+options:["would tell","would have told","will tell","had told"],
+answer:1,
+explanation:"Third conditional: If + past perfect, would have + V3."
+},
+
+{
+topic:"Grammar",
+question:"By the time the researchers arrived, the experiment ___.",
+options:["already finished","has already finished","had already finished","was already finish"],
+answer:2,
+explanation:"Past perfect describes an action completed before another past action."
+},
+
+{
+topic:"Vocabulary",
+question:"Choose the word closest in meaning to 'substantial'.",
+options:["tiny","considerable","temporary","uncertain"],
+answer:1,
+explanation:"Substantial can mean large or considerable in amount or importance."
+},
+
+{
+topic:"Grammar",
+question:"Hardly ___ the meeting begun when the electricity went out.",
+options:["had","has","did","was"],
+answer:0,
+explanation:"With 'hardly' at the beginning, inversion is used: Hardly had the meeting begun..."
+},
+
+{
+topic:"Reading",
+question:"A scientific claim is considered stronger when it is supported by repeated evidence. What is the main idea?",
+options:[
+"One observation is always enough.",
+"Scientific claims do not need evidence.",
+"Repeated evidence can increase confidence in a claim.",
+"Scientific research avoids repetition."
+],
+answer:2,
+explanation:"The sentence directly emphasizes repeated evidence as support for a scientific claim."
+},
+
+{
+topic:"Grammar",
+question:"The report, ___ was published last week, contains several important findings.",
+options:["who","which","where","what"],
+answer:1,
+explanation:"'Which' refers to the report."
+},
+
+{
+topic:"Vocabulary",
+question:"If a source is described as 'reliable', it is one that ___.",
+options:[
+"is difficult to understand",
+"can generally be trusted",
+"is extremely expensive",
+"changes every day"
+],
+answer:1,
+explanation:"Reliable means dependable or trustworthy."
+},
+
+{
+topic:"Grammar",
+question:"Not only ___ the problem, but she also proposed a solution.",
+options:["she identified","did she identify","she did identify","identified she"],
+answer:1,
+explanation:"After 'not only' at the beginning, inversion is required."
+},
+
+{
+topic:"Grammar",
+question:"I would rather you ___ the decision until we have more information.",
+options:["delay","delayed","will delay","have delayed"],
+answer:1,
+explanation:"Would rather + subject + past simple is used for present/future preference."
+},
+
+{
+topic:"Vocabulary",
+question:"The word 'inevitable' is closest in meaning to:",
+options:["avoidable","certain to happen","impossible to understand","optional"],
+answer:1,
+explanation:"Inevitable means certain to happen."
 }
+
+],
+
+
+uzbek:[
+
+{
+topic:"Morfologiya",
+question:"“Kitobxonlarimizdan” so‘zida nechta morfem mavjud?",
+options:["3","4","5","6"],
+answer:2,
+explanation:"kitob + xon + lar + imiz + dan — 5 ta morfem."
+},
+
+{
+topic:"Sintaksis",
+question:"“Yomg‘ir yog‘di, ammo havo sovimadi.” gapining qo‘shma gap turini aniqlang.",
+options:[
+"Bog‘langan qo‘shma gap",
+"Ergashgan qo‘shma gap",
+"Bog‘lovchisiz qo‘shma gap",
+"Aralash qo‘shma gap"
+],
+answer:0,
+explanation:"Ikki sodda gap 'ammo' bog‘lovchisi orqali bog‘langan."
+},
+
+{
+topic:"So‘z yasalishi",
+question:"Qaysi qatorda barcha so‘zlar yasama so‘z hisoblanadi?",
+options:[
+"kitob, uy, daraxt",
+"ishchi, bilimdon, do‘stlik",
+"suv, tog‘, qalam",
+"ota, ona, bola"
+],
+answer:1,
+explanation:"Ishchi, bilimdon va do‘stlik yasovchi qo‘shimchalar orqali hosil bo‘lgan."
+},
+
+{
+topic:"Adabiyot",
+question:"“O‘tkan kunlar” romanining muallifi kim?",
+options:[
+"Cho‘lpon",
+"Abdulla Qodiriy",
+"Abdulla Qahhor",
+"Fitrat"
+],
+answer:1,
+explanation:"“O‘tkan kunlar” romanini Abdulla Qodiriy yozgan."
+},
+
+{
+topic:"Adabiyot",
+question:"Alisher Navoiyning “Xamsa”si nechta dostondan tashkil topgan?",
+options:["3","4","5","6"],
+answer:2,
+explanation:"Xamsa besh dostondan tashkil topgan."
+},
+
+{
+topic:"Leksikologiya",
+question:"“Zarur” so‘ziga ma’nodosh bo‘la oladigan birlikni toping.",
+options:["kerak","ortiqcha","kam","tasodifiy"],
+answer:0,
+explanation:"Zarur va kerak ma’nodosh so‘zlardir."
+},
+
+{
+topic:"Sintaksis",
+question:"“Ilm olgan inson hayotda o‘z yo‘lini topadi.” gapida “ilm olgan” qanday birlik?",
+options:[
+"Uyushiq bo‘lak",
+"Sifatdoshli birikma",
+"Undalma",
+"Kirish so‘z"
+],
+answer:1,
+explanation:"'Olgan' sifatdosh bo‘lib, 'ilm olgan' birikmasi aniqlovchi vazifasida kelgan."
+},
+
+{
+topic:"Adabiyot",
+question:"“Kecha va kunduz” romanining muallifi kim?",
+options:[
+"Cho‘lpon",
+"Fitrat",
+"Abdulla Qodiriy",
+"Oybek"
+],
+answer:0,
+explanation:"“Kecha va kunduz” romanining muallifi Cho‘lpon."
+},
+
+{
+topic:"Badiiyat",
+question:"Bir narsani unga xos bo‘lmagan belgi bilan obrazli tasvirlash qaysi san’atga yaqin?",
+options:["Tashbeh","Istiora","Tazod","Takror"],
+answer:1,
+explanation:"Istiora — o‘xshashlik asosida ko‘chma ma’noda obraz yaratish."
+},
+
+{
+topic:"Adabiyot",
+question:"Ruboiy odatda nechta misradan tashkil topadi?",
+options:["2","3","4","6"],
+answer:2,
+explanation:"Ruboiy to‘rt misrali lirik janr hisoblanadi."
+}
+
+],
+
+
+history:[
+
+{
+topic:"O‘zbekiston tarixi",
+question:"Amir Temur qaysi yilda tug‘ilgan?",
+options:["1326","1336","1346","1356"],
+answer:1,
+explanation:"Amir Temur 1336-yil 9-aprelda Kesh yaqinidagi Xo‘ja Ilg‘or qishlog‘ida tug‘ilgan."
+},
+
+{
+topic:"Temuriylar",
+question:"Mirzo Ulug‘bek rasadxonasi qaysi shaharda qurilgan?",
+options:["Buxoro","Xiva","Samarqand","Toshkent"],
+answer:2,
+explanation:"Ulug‘bek rasadxonasi Samarqandda qurilgan."
+},
+
+{
+topic:"Mustaqillik tarixi",
+question:"O‘zbekiston Respublikasining davlat mustaqilligi qachon e’lon qilingan?",
+options:[
+"1991-yil 1-sentabr",
+"1991-yil 31-avgust",
+"1992-yil 8-dekabr",
+"1990-yil 20-iyun"
+],
+answer:1,
+explanation:"1991-yil 31-avgustda davlat mustaqilligi e’lon qilingan."
+},
+
+{
+topic:"Konstitutsiya",
+question:"O‘zbekiston Respublikasining birinchi Konstitutsiyasi qachon qabul qilingan?",
+options:[
+"1991-yil 31-avgust",
+"1992-yil 8-dekabr",
+"1993-yil 1-sentabr",
+"1990-yil 20-iyun"
+],
+answer:1,
+explanation:"Konstitutsiya 1992-yil 8-dekabrda qabul qilingan."
+},
+
+{
+topic:"Jadidchilik",
+question:"Jadidlarning asosiy ma’rifiy maqsadlaridan biri nima edi?",
+options:[
+"Faqat harbiy yurishlarni kuchaytirish",
+"Ta’limni yangilash va zamonaviy bilimlarni yoyish",
+"Qishloq xo‘jaligini bekor qilish",
+"Yangi sulola tashkil qilish"
+],
+answer:1,
+explanation:"Jadidchilik harakatida yangi usul maktablari, ma’rifat va zamonaviy bilimlar muhim o‘rin tutgan."
+},
+
+{
+topic:"O‘rta Osiyo tarixi",
+question:"Buyuk Ipak yo‘lining asosiy tarixiy ahamiyati nimada edi?",
+options:[
+"Faqat harbiy qo‘shinlar harakati",
+"Sharq va G‘arb o‘rtasidagi savdo va madaniy aloqalarni kuchaytirish",
+"Faqat diniy marosimlarni o‘tkazish",
+"Faqat dehqonchilikni rivojlantirish"
+],
+answer:1,
+explanation:"Ipak yo‘li savdo bilan birga ilm, madaniyat va texnologiyalar almashinuviga xizmat qilgan."
+},
+
+{
+topic:"Xonliklar",
+question:"Qo‘qon xonligi asosan qaysi hududda shakllangan?",
+options:[
+"Farg‘ona vodiysi",
+"Qoraqalpog‘istonning shimoli",
+"Xorazmning g‘arbiy qismi",
+"Surxondaryoning janubi"
+],
+answer:0,
+explanation:"Qo‘qon xonligi Farg‘ona vodiysi hududida shakllangan."
+},
+
+{
+topic:"Jahon tarixi",
+question:"Sanoat inqilobi dastlab qaysi davlatda keng rivojlangan?",
+options:["Fransiya","Angliya","Ispaniya","Rossiya"],
+answer:1,
+explanation:"Sanoat inqilobining dastlabki markazlaridan biri Buyuk Britaniya bo‘lgan."
+},
+
+{
+topic:"Tarixiy tafakkur",
+question:"Tarixiy manbaning ishonchliligini baholashda eng muhim omillardan biri qaysi?",
+options:[
+"Manbaning uzunligi",
+"Muallif, yaratilgan davr va manbaning maqsadini tekshirish",
+"Matnning chiroyli yozilishi",
+"Faqat undagi rasmlar soni"
+],
+answer:1,
+explanation:"Manbaning muallifi, davri, maqsadi va boshqa manbalar bilan mosligi uning ishonchliligini baholashda muhim."
+},
+
+{
+topic:"Xronologiya",
+question:"Voqealarni to‘g‘ri tarixiy ketma-ketlikda joylashtirishning asosiy maqsadi nima?",
+options:[
+"Faqat sanalarni yodlash",
+"Tarixiy sabab-oqibat va jarayonlarni tushunish",
+"Matnni qisqartirish",
+"Geografik xaritani o‘rganish"
+],
+answer:1,
+explanation:"Xronologik tartib tarixiy jarayonlarning rivojlanishi va sabab-oqibatini tushunishga yordam beradi."
+}
+
+],
+
+
+physics:[
+
+{
+topic:"Mexanika",
+question:"Jism 20 m/s boshlang‘ich tezlik bilan yuqoriga otildi. g=10 m/s² deb olinsa, eng yuqori nuqtaga qancha vaqtda yetadi?",
+options:["1 s","2 s","3 s","4 s"],
+answer:1,
+explanation:"Yuqorida v=0. v=v0−gt. 0=20−10t, t=2 s."
+},
+
+{
+topic:"Elektr",
+question:"12 V kuchlanishli manbaga 4 Ω qarshilik ulangan. Tok kuchi nechaga teng?",
+options:["2 A","3 A","4 A","48 A"],
+answer:1,
+explanation:"Om qonuni I=U/R=12/4=3 A."
+},
+
+{
+topic:"Energiya",
+question:"Massasi 2 kg bo‘lgan jism 5 m/s tezlik bilan harakat qilmoqda. Uning kinetik energiyasi qancha?",
+options:["10 J","20 J","25 J","50 J"],
+answer:2,
+explanation:"Ek=mv²/2=2·25/2=25 J."
+},
+
+{
+topic:"Zichlik",
+question:"Massasi 540 g, hajmi 200 cm³ bo‘lgan moddaning zichligini toping.",
+options:["1.7 g/cm³","2.7 g/cm³","3.7 g/cm³","4.7 g/cm³"],
+answer:1,
+explanation:"ρ=m/V=540/200=2.7 g/cm³."
+},
+
+{
+topic:"Mexanika",
+question:"Jismning tezligi 5 sekund ichida 10 m/s dan 30 m/s gacha bir tekis oshdi. Tezlanish qancha?",
+options:["2 m/s²","4 m/s²","5 m/s²","8 m/s²"],
+answer:1,
+explanation:"a=(30−10)/5=4 m/s²."
+},
+
+{
+topic:"Elektr",
+question:"6 Ω va 3 Ω qarshiliklar parallel ulangan. Umumiy qarshilik qancha?",
+options:["1 Ω","2 Ω","3 Ω","9 Ω"],
+answer:1,
+explanation:"1/R=1/6+1/3=1/2. Demak R=2 Ω."
+},
+
+{
+topic:"To‘lqinlar",
+question:"To‘lqin chastotasi 5 Hz bo‘lsa, uning davri qancha?",
+options:["0.1 s","0.2 s","2 s","5 s"],
+answer:1,
+explanation:"T=1/f=1/5=0.2 s."
+},
+
+{
+topic:"Optika",
+question:"Yig‘uvchi linza parallel tushayotgan nurlarni qayerda yig‘adi?",
+options:[
+"Optik markazda",
+"Fokus nuqtasida",
+"Linzaning orqa sirtida",
+"Istalgan nuqtada"
+],
+answer:1,
+explanation:"Yig‘uvchi linza optik o‘qqa parallel nurlarni fokusda yig‘adi."
+},
+
+{
+topic:"Quvvat",
+question:"Mexanizm 600 J ishni 20 sekundda bajardi. Uning quvvati qancha?",
+options:["20 W","30 W","40 W","60 W"],
+answer:1,
+explanation:"P=A/t=600/20=30 W."
+},
+
+{
+topic:"Issiqlik",
+question:"1 kg suvni 20°C ga isitish uchun c=4200 J/(kg·°C) bo‘lsa, qancha issiqlik kerak?",
+options:["42 kJ","84 kJ","420 kJ","840 kJ"],
+answer:1,
+explanation:"Q=mcΔT=1·4200·20=84000 J=84 kJ."
+}
+
+],
+
+
+economics:[
+
+{
+topic:"Talab va taklif",
+question:"Boshqa omillar o‘zgarmasa, mahsulot narxi oshsa talab miqdori odatda qanday o‘zgaradi?",
+options:[
+"Oshadi",
+"Kamayadi",
+"O‘zgarmaydi",
+"Avval oshib, keyin nol bo‘ladi"
+],
+answer:1,
+explanation:"Talab qonuniga ko‘ra narx oshishi odatda talab qilinadigan miqdorning kamayishiga olib keladi."
+},
+
+{
+topic:"Inflyatsiya",
+question:"Inflyatsiyaning asosiy mazmuni qaysi javobda to‘g‘ri berilgan?",
+options:[
+"Pulning xarid qobiliyati umumiy pasayishi bilan bog‘liq narxlar darajasining oshishi",
+"Faqat bitta mahsulot narxining oshishi",
+"Ishsizlikning to‘liq yo‘qolishi",
+"Valyuta nomining o‘zgarishi"
+],
+answer:0,
+explanation:"Inflyatsiya umumiy narxlar darajasining davomli o‘sishi bilan bog‘liq."
+},
+
+{
+topic:"Makroiqtisodiyot",
+question:"YAIM asosan nimani o‘lchaydi?",
+options:[
+"Faqat davlat budjetini",
+"Muayyan davrda mamlakat hududida ishlab chiqarilgan yakuniy mahsulot va xizmatlar qiymatini",
+"Faqat eksport hajmini",
+"Faqat aholining jamg‘armasini"
+],
+answer:1,
+explanation:"YAIM — mamlakat hududida ma’lum davrda ishlab chiqarilgan yakuniy tovar va xizmatlarning bozor qiymati."
+},
+
+{
+topic:"Xarajatlar",
+question:"Mahsulot ishlab chiqarish 100 birlikdan 110 birlikka oshganda umumiy xarajat 500 dan 560 ga oshdi. Qo‘shimcha 10 birlik mahsulotning o‘rtacha chegaraviy xarajati qancha?",
+options:["5","6","10","60"],
+answer:1,
+explanation:"Chegaraviy xarajat=(560−500)/(110−100)=60/10=6."
+},
+
+{
+topic:"Bozor",
+question:"Monopoliyada bozorda asosan nechta asosiy sotuvchi mavjud bo‘ladi?",
+options:["Bitta","Ikki","Ko‘p","Faqat davlat"],
+answer:0,
+explanation:"Monopoliya — muayyan bozorda bitta asosiy sotuvchi hukmron bo‘lgan holat."
+},
+
+{
+topic:"Fiskal siyosat",
+question:"Davlat soliqlarni kamaytirib, davlat xarajatlarini oshirsa, bu qaysi siyosatga misol?",
+options:[
+"Qattiq monetar siyosat",
+"Rag‘batlantiruvchi fiskal siyosat",
+"Valyuta siyosati",
+"Faqat tashqi savdo siyosati"
+],
+answer:1,
+explanation:"Davlat xarajatlarini oshirish va soliqlarni kamaytirish talabni rag‘batlantiruvchi fiskal siyosat bo‘lishi mumkin."
+},
+
+{
+topic:"Ishsizlik",
+question:"Ishlashga tayyor va ish qidirayotgan, ammo ish topa olmayotgan shaxs qaysi guruhga kiradi?",
+options:[
+"Iqtisodiy faol bo‘lmaganlar",
+"Ishsizlar",
+"Faqat nafaqaxo‘rlar",
+"Yollanma ish beruvchilar"
+],
+answer:1,
+explanation:"Ishsiz — ishlashga tayyor, ish qidirayotgan, ammo ishga ega bo‘lmagan shaxs."
+},
+
+{
+topic:"Foyda",
+question:"Korxonaning daromadi 250 mln so‘m, umumiy xarajatlari 190 mln so‘m bo‘lsa, foyda qancha?",
+options:["40 mln","50 mln","60 mln","70 mln"],
+answer:2,
+explanation:"Foyda=daromad−xarajat=250−190=60 mln so‘m."
+},
+
+{
+topic:"Muqobil xarajat",
+question:"Bir variantni tanlash sababli voz kechilgan eng yaxshi alternativ imkoniyat nima deyiladi?",
+options:[
+"Doimiy xarajat",
+"Muqobil xarajat",
+"Chegaraviy foyda",
+"Amortizatsiya"
+],
+answer:1,
+explanation:"Opportunity cost — tanlov natijasida voz kechilgan eng yaxshi alternativ imkoniyat qiymati."
+},
+
+{
+topic:"Bozor muvozanati",
+question:"Talab va taklif egri chiziqlari kesishgan nuqtada odatda nima aniqlanadi?",
+options:[
+"Faqat foyda",
+"Muvozanat narxi va muvozanat miqdori",
+"Faqat soliq miqdori",
+"Faqat eksport hajmi"
+],
+answer:1,
+explanation:"Talab va taklif tenglashgan nuqta bozor muvozanatini bildiradi."
+}
+
+],
+
+
+chemistry:[
+
+{
+topic:"Atom tuzilishi",
+question:"Atomning tartib raqami 17 bo‘lsa, neytral atomdagi elektronlar soni nechta?",
+options:["7","17","18","34"],
+answer:1,
+explanation:"Neytral atomda protonlar va elektronlar soni teng. Tartib raqami 17 bo‘lsa, 17 elektron bor."
+},
+
+{
+topic:"Mol",
+question:"18 g suv necha molga teng? H₂O=18 g/mol.",
+options:["0.5 mol","1 mol","2 mol","18 mol"],
+answer:1,
+explanation:"n=m/M=18/18=1 mol."
+},
+
+{
+topic:"Reaksiya",
+question:"2H₂ + O₂ → 2H₂O reaksiyasida 4 mol H₂ to‘liq reaksiyaga kirishsa, necha mol H₂O hosil bo‘ladi?",
+options:["2 mol","4 mol","6 mol","8 mol"],
+answer:1,
+explanation:"2 mol H₂ dan 2 mol H₂O hosil bo‘ladi. Demak 4 mol H₂ dan 4 mol H₂O."
+},
+
+{
+topic:"Eritmalar",
+question:"200 g 10% li NaCl eritmasida necha gramm NaCl mavjud?",
+options:["10 g","20 g","30 g","40 g"],
+answer:1,
+explanation:"m=200·0.10=20 g."
+},
+
+{
+topic:"Kislota-asos",
+question:"pH=3 bo‘lgan eritma pH=7 bo‘lgan eritmaga nisbatan qanday muhitga ega?",
+options:["Neytral","Kislotali","Ishqoriy","Faqat tuzli"],
+answer:1,
+explanation:"pH<7 bo‘lgan eritmalar kislotali muhitga ega."
+},
+
+{
+topic:"Organik kimyo",
+question:"Alkanlarning umumiy formulasi qaysi?",
+options:["CₙH₂ₙ","CₙH₂ₙ₊₂","CₙH₂ₙ₋₂","CₙHₙ"],
+answer:1,
+explanation:"To‘yingan ochiq zanjirli uglevodorodlar — alkanlar — CₙH₂ₙ₊₂ formulaga ega."
+},
+
+{
+topic:"Oksidlanish",
+question:"Fe²⁺ ionining Fe³⁺ ioniga aylanishida nima sodir bo‘ladi?",
+options:[
+"1 elektron qabul qiladi",
+"1 elektron yo‘qotadi",
+"2 elektron qabul qiladi",
+"Proton yo‘qotadi"
+],
+answer:1,
+explanation:"Fe²⁺ → Fe³⁺ jarayonida ion bitta elektron yo‘qotadi."
+},
+
+{
+topic:"Kataliz",
+question:"Katalizator reaksiyaning tezligiga qanday ta’sir qiladi?",
+options:[
+"Faollanish energiyasini pasaytirishi mumkin",
+"Mahsulotni doimiy ravishda o‘zgartiradi",
+"Reaksiyani har doim to‘xtatadi",
+"Atomlar sonini o‘zgartiradi"
+],
+answer:0,
+explanation:"Katalizator muqobil reaksion yo‘l berib, faollanish energiyasini kamaytirishi mumkin."
+},
+
+{
+topic:"Gazlar",
+question:"Normal sharoitda 1 mol ideal gazning hajmi taxminan qancha?",
+options:["11.2 L","22.4 L","44.8 L","2.24 L"],
+answer:1,
+explanation:"Maktab darajasidagi normal sharoitda 1 mol gaz taxminan 22.4 L hajm egallaydi."
+},
+
+{
+topic:"Anorganik kimyo",
+question:"CO₂ gazi ohak suvidan o‘tkazilganda dastlab qanday hodisa kuzatiladi?",
+options:[
+"Eritma ko‘kimtir bo‘ladi",
+"Eritma loyqalanadi",
+"Gaz yonib ketadi",
+"Metall ajraladi"
+],
+answer:1,
+explanation:"CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O. CaCO₃ cho‘kmasi eritmani loyqalatadi."
+}
+
+],
+
+
+biology:[
+
+{
+topic:"Hujayra",
+question:"Hujayrada ATP sintezining asosiy qismi qaysi organoid bilan bog‘liq?",
+options:["Ribosoma","Mitoxondriya","Lizosoma","Golji apparati"],
+answer:1,
+explanation:"Aerob hujayralarda ATP ishlab chiqarishning katta qismi mitoxondriyada amalga oshadi."
+},
+
+{
+topic:"Genetika",
+question:"Agar dominant A allel to‘liq dominant bo‘lsa, Aa genotip qanday fenotipni namoyon qiladi?",
+options:[
+"Faqat retsessiv",
+"Dominant",
+"Har doim yangi belgi",
+"Fenotip hosil qilmaydi"
+],
+answer:1,
+explanation:"To‘liq dominantlikda Aa geterozigota dominant fenotipni namoyon qiladi."
+},
+
+{
+topic:"Fotosintez",
+question:"Fotosintez jarayonida atmosferadan asosan qaysi gaz o‘zlashtiriladi?",
+options:["O₂","N₂","CO₂","H₂"],
+answer:2,
+explanation:"Fotosintezda karbonat angidrid uglevodlar hosil bo‘lishida xomashyo sifatida ishlatiladi."
+},
+
+{
+topic:"Odam anatomiyasi",
+question:"Qonda kislorodni asosan qaysi oqsil tashiydi?",
+options:["Insulin","Gemoglobin","Keratin","Kollagen"],
+answer:1,
+explanation:"Gemoglobin eritrotsitlarda kislorod bilan bog‘lanib, uni tashishda qatnashadi."
+},
+
+{
+topic:"Genetika",
+question:"Odamning somatik hujayrasida odatda nechta xromosoma mavjud?",
+options:["23","44","46","48"],
+answer:2,
+explanation:"Odam somatik hujayralari odatda 46 ta xromosomaga ega."
+},
+
+{
+topic:"Ekologiya",
+question:"Ekotizimda ishlab chiqaruvchilar deb asosan kimlarga aytiladi?",
+options:[
+"Yirtqich hayvonlarga",
+"Yashil o‘simliklar va boshqa avtotroflarga",
+"Faqat parazitlarga",
+"Faqat parchalovchilarga"
+],
+answer:1,
+explanation:"Ishlab chiqaruvchilar organik moddalarni mustaqil ravishda sintez qila oladigan avtotroflardir."
+},
+
+{
+topic:"Evolyutsiya",
+question:"Tabiiy tanlanishning asosiy g‘oyasi nimaga borib taqaladi?",
+options:[
+"Har bir organizm bir xil yashaydi",
+"Muhitga mos belgilar ega bo‘lgan individlarning yashab qolish va ko‘payish imkoniyati yuqoriroq bo‘lishi",
+"Barcha mutatsiyalar foydali bo‘lishi",
+"Evolyutsiya faqat bir avlodda tugashi"
+],
+answer:1,
+explanation:"Tabiiy tanlanishda muhitga moslashishga yordam beradigan irsiy belgilar avlodlarda ko‘proq saqlanishi mumkin."
+},
+
+{
+topic:"Fermentlar",
+question:"Fermentlarning asosiy biologik vazifasi nima?",
+options:[
+"Reaksiyalarning faollanish energiyasini kamaytirib, ularni tezlashtirish",
+"Har doim hujayrani parchalash",
+"DNKni yo‘q qilish",
+"Faqat kislorod tashish"
+],
+answer:0,
+explanation:"Fermentlar biologik katalizatorlar bo‘lib, reaksiyalarni tezlashtiradi."
+},
+
+{
+topic:"Nerv tizimi",
+question:"Neyronning impulsni boshqa hujayralarga uzatishda muhim bo‘lgan uzun o‘simtasi nima deyiladi?",
+options:["Dendrit","Akson","Ribosoma","Yadro"],
+answer:1,
+explanation:"Akson nerv impulsini neyron tanasidan boshqa hujayralar tomon olib boradi."
+},
+
+{
+topic:"Hujayra bo‘linishi",
+question:"Mitoz bo‘linish natijasida bitta ona hujayradan odatda nechta qiz hujayra hosil bo‘ladi?",
+options:["1","2","3","4"],
+answer:1,
+explanation:"Mitoz natijasida genetik jihatdan ona hujayraga juda o‘xshash ikki qiz hujayra hosil bo‘ladi."
+}
+
+]
+
+};
 
 
 /* =========================================================
-   ARRAY ARALASHTIRISH
+   RANDOM / VARIANT TIZIMI
 ========================================================= */
 
-function seededShuffle(
-    array,
-    seed
-){
+function hashString(str){
 
-    const result =
-        [...array];
+    let hash=2166136261;
 
-    for(
-        let i=result.length-1;
-        i>0;
-        i--
-    ){
+    for(let i=0;i<str.length;i++){
 
-        const j =
-            Math.floor(
-                seededRandom(
-                    seed + i * 97
-                ) * (i + 1)
-            );
+        hash ^= str.charCodeAt(i);
 
-        [
-            result[i],
-            result[j]
-        ] =
-        [
+        hash +=
+            (hash<<1) +
+            (hash<<4) +
+            (hash<<7) +
+            (hash<<8) +
+            (hash<<24);
+
+    }
+
+    return hash >>> 0;
+}
+
+
+function mulberry32(a){
+
+    return function(){
+
+        let t=a+=0x6D2B79F5;
+
+        t=Math.imul(t^t>>>15,t|1);
+
+        t^=t+Math.imul(t^t>>>7,t|61);
+
+        return ((t^t>>>14)>>>0)/4294967296;
+
+    };
+
+}
+
+
+function seededShuffle(array,seed){
+
+    const result=[...array];
+
+    const random=mulberry32(seed);
+
+    for(let i=result.length-1;i>0;i--){
+
+        const j=Math.floor(random()*(i+1));
+
+        [result[i],result[j]]=[
             result[j],
             result[i]
         ];
@@ -1497,1593 +2060,816 @@ function seededShuffle(
     }
 
     return result;
-
 }
 
 
-/* =========================================================
-   SAVOL YARATISH YORDAMCHILARI
-========================================================= */
+/*
+   To‘g‘ri javoblar A/B/C/D bo‘yicha balanslanadi.
+   Masalan 10 savolda:
+   A,B,C,D,A,C,B,D...
+   kabi tarqaladi.
+*/
 
-function makeOptions(
-    correct,
-    seed,
-    spread=5
-){
+function createBalancedPattern(length,seed){
 
-    const set =
-        new Set();
+    const pattern=[];
 
-    set.add(correct);
+    for(let i=0;i<length;i++){
 
-    let attempt=1;
-
-    while(
-        set.size < 4 &&
-        attempt < 100
-    ){
-
-        const offset =
-            randomInt(
-                seed + attempt * 11,
-                1,
-                spread
-            );
-
-        const sign =
-            randomInt(
-                seed + attempt * 19,
-                0,
-                1
-            ) === 0
-            ? -1
-            : 1;
-
-        const value =
-            correct + offset * sign;
-
-        if(
-            value !== correct &&
-            Number.isFinite(value)
-        ){
-
-            set.add(value);
-
-        }
-
-        attempt++;
+        pattern.push(i%4);
 
     }
 
-    while(set.size < 4){
+    return seededShuffle(
+        pattern,
+        seed+9981
+    );
+}
 
-        set.add(
-            correct + set.size + 1
-        );
 
-    }
+/*
+   ENG MUHIM QISM:
+   Variantlarning o‘zi ham aralashtiriladi.
+*/
 
-    const values =
-        [...set];
+function randomizeOptions(question,seed,targetIndex){
 
-    const shuffled =
-        seededShuffle(
-            values,
-            seed + 999
-        );
+    const items=question.options.map(
+        (text,index)=>({
+            text:text,
+            correct:index===question.answer
+        })
+    );
+
+    let shuffled=seededShuffle(
+        items,
+        seed
+    );
+
+    const correctIndex=
+        shuffled.findIndex(item=>item.correct);
+
+    [
+        shuffled[correctIndex],
+        shuffled[targetIndex]
+    ]=[
+        shuffled[targetIndex],
+        shuffled[correctIndex]
+    ];
 
     return {
-        options:shuffled,
-        answer:shuffled.indexOf(correct)
+
+        ...question,
+
+        options:shuffled.map(
+            item=>item.text
+        ),
+
+        answer:targetIndex
+
     };
 
 }
 
 
 /* =========================================================
-   45 TA SAVOLNI GLOBAL VARIANT ORQALI YARATISH
-
-   Savol matni va qiymatlar variant slotiga bog'langan.
+   2 SOATLIK VARIANT
 ========================================================= */
 
-function generateQuestions(){
+function getTimeSlot(){
 
-    const slot =
-        getVariantSlot();
+    const twoHours=
+        2*60*60*1000;
 
-    const seed =
-        slot * 1000;
-
-
-    const questions=[];
-
-
-    /* 1 */
-
-    {
-        const a =
-            randomInt(seed+1,2,9);
-
-        const b =
-            randomInt(seed+2,2,9);
-
-        const c =
-            randomInt(seed+3,2,9);
-
-        const correct =
-            a*a + b*b - c*c;
-
-        const data =
-            makeOptions(
-                correct,
-                seed+4,
-                7
-            );
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${a}² + ${b}² − ${c}² ifodaning qiymatini toping.`,
-            options:
-                data.options.map(String),
-            answer:data.answer,
-            explanation:
-                `${a}² = ${a*a}, ${b}² = ${b*b}, ${c}² = ${c*c}. Demak ${a*a} + ${b*b} − ${c*c} = ${correct}.`
-        });
-    }
-
-
-    /* 2 */
-
-    {
-        const n =
-            randomInt(seed+10,2,15);
-
-        const correct =
-            n*n;
-
-        const data =
-            makeOptions(
-                correct,
-                seed+11,
-                10
-            );
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `√${correct} ning qiymatini toping.`,
-            options:
-                data.options.map(String),
-            answer:data.answer,
-            explanation:
-                `${n}² = ${correct}, shuning uchun √${correct} = ${n}.`
-        });
-    }
-
-
-    /* 3 */
-
-    {
-        const number =
-            randomInt(seed+20,50,300);
-
-        const percent =
-            [10,15,20,25][
-                randomInt(seed+21,0,3)
-            ];
-
-        const correct =
-            number * percent / 100;
-
-        const data =
-            makeOptions(
-                correct,
-                seed+22,
-                15
-            );
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${number} sonining ${percent}% ini toping.`,
-            options:
-                data.options.map(String),
-            answer:data.answer,
-            explanation:
-                `${number} × ${percent} / 100 = ${correct}.`
-        });
-    }
-
-
-    /* 4 */
-
-    {
-        const a =
-            randomInt(seed+30,2,6);
-
-        const b =
-            randomInt(seed+31,2,5);
-
-        const correct =
-            a+b;
-
-        const data =
-            makeOptions(
-                correct,
-                seed+32,
-                5
-            );
-
-        questions.push({
-            topic:"Darajalar",
-            question:
-                `${a}^${b} · ${a}^2 ifodani daraja ko‘rinishida yozing.`,
-            options:[
-                `${a}^${correct}`,
-                `${a}^${b*2}`,
-                `${a}^${correct+1}`,
-                `${a}^${b}`
-            ],
-            answer:0,
-            explanation:
-                `Bir xil asosli darajalar ko‘paytirilganda darajalar qo‘shiladi: ${b} + 2 = ${correct}.`
-        });
-    }
-
-
-    /* 5 */
-
-    {
-        const a =
-            randomInt(seed+40,2,8);
-
-        const b =
-            randomInt(seed+41,2,8);
-
-        const correct =
-            a*a + 2*a*b + b*b;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `(${a}+${b})² ni hisoblang.`,
-            options:[
-                String(correct),
-                String(correct+a),
-                String(correct-b),
-                String(a*a+b*b)
-            ],
-            answer:0,
-            explanation:
-                `(${a}+${b})² = ${a*a} + ${2*a*b} + ${b*b} = ${correct}.`
-        });
-    }
-
-
-    /* 6 */
-
-    {
-        const a =
-            randomInt(seed+50,2,9);
-
-        const correct =
-            a*a;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `x² − ${correct} ifodani ko‘paytuvchilarga ajrating.`,
-            options:[
-                `(x−${a})(x+${a})`,
-                `(x−${correct})(x+1)`,
-                `(x−${a})²`,
-                `(x+${a})²`
-            ],
-            answer:0,
-            explanation:
-                `x² − ${a}² = (x−${a})(x+${a}).`
-        });
-    }
-
-
-    /* 7 */
-
-    {
-        const a =
-            randomInt(seed+60,2,9);
-
-        const b =
-            randomInt(seed+61,2,9);
-
-        const correct =
-            4*a*b;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `(${a}+${b})² − (${a}−${b})² ni toping.`,
-            options:[
-                String(correct),
-                String(2*a*b),
-                String(a+b),
-                String(a*a+b*b)
-            ],
-            answer:0,
-            explanation:
-                `(${a}+${b})² − (${a}−${b})² = 4ab = ${correct}.`
-        });
-    }
-
-
-    /* 8 */
-
-    {
-        const x =
-            randomInt(seed+70,3,9);
-
-        const correct =
-            x+2;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `(x²−${x*x})/(x−${x}) ifodani soddalashtirishning mos natijasini toping.`,
-            options:[
-                `x+${x}`,
-                `x−${x}`,
-                `x²+${x}`,
-                `${x}`
-            ],
-            answer:0,
-            explanation:
-                `x²−${x*x} = (x−${x})(x+${x}). Qisqartirilganda x+${x} qoladi.`
-        });
-    }
-
-
-    /* 9 */
-
-    {
-        const n =
-            randomInt(seed+80,2,8);
-
-        const correct =
-            4*n;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `√${16*n*n} ni soddalashtiring.`,
-            options:[
-                String(correct),
-                String(2*n),
-                String(8*n),
-                String(n)
-            ],
-            answer:0,
-            explanation:
-                `√(16·${n}²) = 4·${n} = ${correct}.`
-        });
-    }
-
-
-    /* 10 */
-
-    {
-        const x =
-            randomInt(seed+90,2,6);
-
-        const correct =
-            x*x*x - 2*x + 5;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `x=${x} bo‘lsa, x³−2x+5 qiymatini toping.`,
-            options:[
-                String(correct),
-                String(correct+2),
-                String(correct-2),
-                String(correct+5)
-            ],
-            answer:0,
-            explanation:
-                `${x}³ − 2·${x} + 5 = ${x*x*x} − ${2*x} + 5 = ${correct}.`
-        });
-    }
-
-
-    /* 11 */
-
-    {
-        const a =
-            randomInt(seed+100,2,8);
-
-        const b =
-            randomInt(seed+101,2,8);
-
-        const sum =
-            a+b;
-
-        const product =
-            a*b;
-
-        const correct =
-            sum*sum - 2*product;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `a+b=${sum}, ab=${product} bo‘lsa, a²+b² ni toping.`,
-            options:[
-                String(correct),
-                String(sum*sum),
-                String(product*2),
-                String(correct+2)
-            ],
-            answer:0,
-            explanation:
-                `a²+b²=(a+b)²−2ab=${sum}²−2·${product}=${correct}.`
-        });
-    }
-
-
-    /* 12 */
-
-    {
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `1/x + 1/y ifodani bitta kasr ko‘rinishida yozing.`,
-            options:[
-                "(x+y)/xy",
-                "1/(x+y)",
-                "xy/(x+y)",
-                "(x−y)/xy"
-            ],
-            answer:0,
-            explanation:
-                `Umumiy maxraj xy bo‘ladi: y/xy + x/xy = (x+y)/xy.`
-        });
-    }
-
-
-    /* 13 */
-
-    {
-        const x =
-            randomInt(seed+120,3,9);
-
-        const b =
-            randomInt(seed+121,2,10);
-
-        const a =
-            randomInt(seed+122,2,8);
-
-        const correct =
-            (b-a*x);
-
-        const equationAnswer =
-            correct;
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `${a}x + ${b} = ${a*x+b} tenglamaning yechimini toping.`,
-            options:[
-                String(x),
-                String(x+1),
-                String(x-1),
-                String(x+2)
-            ],
-            answer:0,
-            explanation:
-                `${a}x + ${b} = ${a*x+b}. ${a}x = ${a*x}, shuning uchun x=${x}.`
-        });
-    }
-
-
-    /* 14 */
-
-    {
-        const r1 =
-            randomInt(seed+130,1,6);
-
-        const r2 =
-            randomInt(seed+131,r1+1,9);
-
-        const sum =
-            r1+r2;
-
-        const product =
-            r1*r2;
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `x²−${sum}x+${product}=0 tenglamaning ildizlarini toping.`,
-            options:[
-                `${r1} va ${r2}`,
-                `${r1+1} va ${r2+1}`,
-                `−${r1} va −${r2}`,
-                `0 va ${sum}`
-            ],
-            answer:0,
-            explanation:
-                `(x−${r1})(x−${r2})=0. Demak x=${r1} yoki x=${r2}.`
-        });
-    }
-
-
-    /* 15 */
-
-    {
-        const a =
-            randomInt(seed+140,2,6);
-
-        const b =
-            randomInt(seed+141,2,6);
-
-        const right =
-            a*3+b;
-
-        const x =
-            randomInt(seed+142,3,8);
-
-        const left =
-            a*x+b;
-
-        const relation =
-            left>right
-            ? ">"
-            : left<right
-            ? "<"
-            : "=";
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `${a}x+${b} ${relation} ${right} tengsizlikda x ning mos qiymatini tanlang.`,
-            options:[
-                `x ${relation} ${x}`,
-                `x > ${x+2}`,
-                `x < ${x-1}`,
-                `x = ${x+3}`
-            ],
-            answer:0,
-            explanation:
-                `Tengsizlik yechilganda x ning chegarasi ${x} atrofida olinadi.`
-        });
-    }
-
-
-    /* 16 */
-
-    {
-        const n =
-            randomInt(seed+150,2,12);
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `|x|=${n} tenglamaning nechta haqiqiy ildizi bor?`,
-            options:[
-                "0",
-                "1",
-                "2",
-                `${n}`
-            ],
-            answer:2,
-            explanation:
-                `x=${n} yoki x=−${n}. Demak 2 ta haqiqiy ildiz mavjud.`
-        });
-    }
-
-
-    /* 17 */
-
-    {
-        const n =
-            randomInt(seed+160,2,12);
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `x²=${n*n} tenglamaning musbat ildizini toping.`,
-            options:[
-                `−${n}`,
-                "0",
-                String(n),
-                String(n*n)
-            ],
-            answer:2,
-            explanation:
-                `x=±${n}. Musbat ildiz ${n}.`
-        });
-    }
-
-
-    /* 18 */
-
-    {
-        const x =
-            randomInt(seed+170,5,12);
-
-        const a =
-            randomInt(seed+171,2,6);
-
-        const b =
-            x/a;
-
-        const c =
-            randomInt(seed+172,1,5);
-
-        const right =
-            b+c;
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `x/${a}+${c}=${right} tenglamani yeching.`,
-            options:[
-                String(x),
-                String(x+2),
-                String(x-2),
-                String(x+4)
-            ],
-            answer:0,
-            explanation:
-                `x/${a}=${b}, shuning uchun x=${x}.`
-        });
-    }
-
-
-    /* 19 */
-
-    {
-        const a =
-            randomInt(seed+180,1,8);
-
-        const b =
-            randomInt(seed+181,1,8);
-
-        const correct =
-            2*a+b;
-
-        questions.push({
-            topic:"Funksiyalar",
-            question:
-                `f(x)=2x+${b} bo‘lsa, f(${a}) ni toping.`,
-            options:[
-                String(correct),
-                String(correct+2),
-                String(correct-2),
-                String(a+b)
-            ],
-            answer:0,
-            explanation:
-                `f(${a})=2·${a}+${b}=${correct}.`
-        });
-    }
-
-
-    /* 20 */
-
-    {
-        const a =
-            randomInt(seed+190,2,8);
-
-        const b =
-            randomInt(seed+191,2,8);
-
-        const x =
-            (b*1)/a;
-
-        questions.push({
-            topic:"Funksiyalar",
-            question:
-                `y=${a}x−${b} funksiyaning x o‘qini kesish nuqtasida x nechaga teng?`,
-            options:[
-                `${b}/${a}`,
-                `${a}/${b}`,
-                `${a+b}`,
-                "0"
-            ],
-            answer:0,
-            explanation:
-                `x o‘qida y=0. ${a}x−${b}=0, bundan x=${b}/${a}.`
-        });
-    }
-
-
-    /* 21 */
-
-    {
-        const a =
-            randomInt(seed+200,2,9);
-
-        questions.push({
-            topic:"Matematik analiz asoslari",
-            question:
-                `f(x)=x²+${a}x funksiyaning hosilasini toping.`,
-            options:[
-                `2x+${a}`,
-                `x+${a}`,
-                `2x`,
-                `x²+${a}`
-            ],
-            answer:0,
-            explanation:
-                `(x²)'=2x va (${a}x)'=${a}. Natija 2x+${a}.`
-        });
-    }
-
-
-    /* 22 */
-
-    {
-        const a =
-            randomInt(seed+210,2,8);
-
-        questions.push({
-            topic:"Matematik analiz asoslari",
-            question:
-                `∫${a}x dx ning boshlang‘ich funksiyasini toping.`,
-            options:[
-                `${a/2}x²+C`,
-                `${a}x²+C`,
-                `${a}x+C`,
-                `x²+C`
-            ],
-            answer:0,
-            explanation:
-                `∫ax dx = (a/2)x²+C.`
-        });
-    }
-
-
-    /* 23 */
-
-    {
-        const side =
-            randomInt(seed+220,3,12);
-
-        const correct =
-            side*side;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Tomoni ${side} sm bo‘lgan kvadratning yuzi qancha?`,
-            options:[
-                String(correct),
-                String(side*4),
-                String(side+side),
-                String(correct*2)
-            ],
-            answer:0,
-            explanation:
-                `S=a²=${side}²=${correct} sm².`
-        });
-    }
-
-
-    /* 24 */
-
-    {
-        const a =
-            randomInt(seed+230,3,12);
-
-        const b =
-            randomInt(seed+231,4,14);
-
-        const correct =
-            2*(a+b);
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Tomonlari ${a} va ${b} sm bo‘lgan to‘g‘ri to‘rtburchak perimetrini toping.`,
-            options:[
-                String(correct),
-                String(a+b),
-                String(a*b),
-                String(correct+2)
-            ],
-            answer:0,
-            explanation:
-                `P=2(a+b)=2(${a}+${b})=${correct} sm.`
-        });
-    }
-
-
-    /* 25 */
-
-    {
-        const radius =
-            randomInt(seed+240,2,12);
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Radiusi ${radius} sm bo‘lgan aylananing diametri qancha?`,
-            options:[
-                String(radius*2),
-                String(radius),
-                String(radius*3),
-                String(radius*4)
-            ],
-            answer:0,
-            explanation:
-                `d=2r=${2*radius} sm.`
-        });
-    }
-
-
-    /* 26 */
-
-    {
-        const a =
-            randomInt(seed+250,20,70);
-
-        const b =
-            randomInt(seed+251,20,70);
-
-        const correct =
-            180-a-b;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Uchburchakning ikki burchagi ${a}° va ${b}°. Uchinchi burchakni toping.`,
-            options:[
-                `${correct}°`,
-                `${correct+10}°`,
-                `${correct-10}°`,
-                `${a+b}°`
-            ],
-            answer:0,
-            explanation:
-                `Uchburchak burchaklari yig‘indisi 180°. ${180}−${a}−${b}=${correct}°.`
-        });
-    }
-
-
-    /* 27 */
-
-    {
-        const a =
-            randomInt(seed+260,3,9);
-
-        const b =
-            randomInt(seed+261,3,9);
-
-        const hyp =
-            Math.sqrt(
-                a*a+b*b
-            );
-
-        const correct =
-            Number.isInteger(hyp)
-            ? hyp
-            : Math.round(hyp*10)/10;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Katetlari ${a} va ${b} bo‘lgan to‘g‘ri burchakli uchburchakning gipotenuzasi qaysi?`,
-            options:[
-                String(correct),
-                String(a+b),
-                String(Math.abs(a-b)),
-                String(a*b)
-            ],
-            answer:0,
-            explanation:
-                `Pifagor teoremasi: c=√(${a}²+${b}²)=√${a*a+b*b}=${correct}.`
-        });
-    }
-
-
-    /* 28 */
-
-    {
-        const base =
-            randomInt(seed+270,5,15);
-
-        const height =
-            randomInt(seed+271,4,12);
-
-        const correct =
-            base*height/2;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Asosi ${base} sm, balandligi ${height} sm bo‘lgan uchburchak yuzini toping.`,
-            options:[
-                String(correct),
-                String(base*height),
-                String(base+height),
-                String(correct+5)
-            ],
-            answer:0,
-            explanation:
-                `S=ah/2=${base}·${height}/2=${correct} sm².`
-        });
-    }
-
-
-    /* 29 */
-
-    {
-        const side =
-            randomInt(seed+280,2,8);
-
-        const correct =
-            side*side*side;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Tomoni ${side} sm bo‘lgan kubning hajmini toping.`,
-            options:[
-                String(correct),
-                String(side*side),
-                String(side*6),
-                String(correct+side)
-            ],
-            answer:0,
-            explanation:
-                `V=a³=${side}³=${correct} sm³.`
-        });
-    }
-
-
-    /* 30 */
-
-    {
-        const white =
-            randomInt(seed+290,2,7);
-
-        const black =
-            randomInt(seed+291,2,7);
-
-        const total =
-            white+black;
-
-        questions.push({
-            topic:"Ehtimollar",
-            question:
-                `Qutida ${white} ta oq va ${black} ta qora shar bor. Oq shar chiqish ehtimoli qancha?`,
-            options:[
-                `${white}/${total}`,
-                `${black}/${total}`,
-                `1/${total}`,
-                `${total}/${white}`
-            ],
-            answer:0,
-            explanation:
-                `Jami ${total} ta shar bor. Oq sharlar ${white} ta. P=${white}/${total}.`
-        });
-    }
-
-
-    /* 31 */
-
-    {
-        const number =
-            randomInt(seed+300,3,9);
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `a=${number}, b=${number+1} bo‘lsa, (a−b)²+2ab ni toping.`,
-            options:[
-                String(
-                    (number-(number+1))**2 +
-                    2*number*(number+1)
-                ),
-                String(number+number+1),
-                String(number*(number+1)),
-                String(number*number)
-            ],
-            answer:0,
-            explanation:
-                `(a−b)²+2ab hisoblanib, natija yuqoridagi A variantga teng bo‘ladi.`
-        });
-    }
-
-
-    /* 32 */
-
-    {
-        const n =
-            randomInt(seed+310,2,9);
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `x²−${n*n}<0 tengsizlikning yechimini toping.`,
-            options:[
-                `−${n}<x<${n}`,
-                `x>${n}`,
-                `x<−${n}`,
-                `x>${n} yoki x<−${n}`
-            ],
-            answer:0,
-            explanation:
-                `x²<${n*n}, shuning uchun −${n}<x<${n}.`
-        });
-    }
-
-
-    /* 33 */
-
-    {
-        const n =
-            randomInt(seed+320,2,9);
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${n}³ ning qiymatini toping.`,
-            options:[
-                String(n*n*n),
-                String(n*n),
-                String(n*3),
-                String(n+3)
-            ],
-            answer:0,
-            explanation:
-                `${n}³=${n}·${n}·${n}=${n*n*n}.`
-        });
-    }
-
-
-    /* 34 */
-
-    {
-        const numerator =
-            randomInt(seed+330,1,9);
-
-        const denominator =
-            randomInt(seed+331,2,9);
-
-        const value =
-            numerator/denominator;
-
-        const decimal =
-            Number.isInteger(value)
-            ? String(value)
-            : value.toFixed(2);
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${numerator}/${denominator} kasrining qiymatini tanlang.`,
-            options:[
-                `${numerator}/${denominator}`,
-                `${denominator}/${numerator}`,
-                String(decimal),
-                "1"
-            ],
-            answer:0,
-            explanation:
-                `Kasrning qiymati suratni maxrajga bo‘lish orqali aniqlanadi.`
-        });
-    }
-
-
-    /* 35 */
-
-    {
-        const x =
-            randomInt(seed+340,2,8);
-
-        const correct =
-            2*x*x-x+1;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `x=${x} bo‘lsa, 2x²−x+1 qiymatini toping.`,
-            options:[
-                String(correct),
-                String(correct+2),
-                String(correct-2),
-                String(x*x)
-            ],
-            answer:0,
-            explanation:
-                `2·${x}²−${x}+1 = 2·${x*x}−${x}+1 = ${correct}.`
-        });
-    }
-
-
-    /* 36 */
-
-    {
-        const x =
-            randomInt(seed+350,2,12);
-
-        const a =
-            randomInt(seed+351,2,7);
-
-        const b =
-            a*x;
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `${a}x−${b}=0 tenglamaning yechimini toping.`,
-            options:[
-                String(x),
-                String(x+1),
-                String(x-1),
-                String(b)
-            ],
-            answer:0,
-            explanation:
-                `${a}x=${b}, shuning uchun x=${x}.`
-        });
-    }
-
-
-    /* 37 */
-
-    {
-        const x =
-            randomInt(seed+360,2,10);
-
-        const b =
-            randomInt(seed+361,1,9);
-
-        const correct =
-            x+b;
-
-        questions.push({
-            topic:"Funksiyalar",
-            question:
-                `f(x)=x+${b} bo‘lsa, f(${x}) ni toping.`,
-            options:[
-                String(correct),
-                String(x*b),
-                String(correct+1),
-                String(x)
-            ],
-            answer:0,
-            explanation:
-                `f(${x})=${x}+${b}=${correct}.`
-        });
-    }
-
-
-    /* 38 */
-
-    {
-        const a =
-            randomInt(seed+370,4,12);
-
-        const b =
-            randomInt(seed+371,4,12);
-
-        const correct =
-            a*b;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Tomonlari ${a} sm va ${b} sm bo‘lgan to‘g‘ri to‘rtburchak yuzi qancha?`,
-            options:[
-                String(correct),
-                String(a+b),
-                String(2*(a+b)),
-                String(correct*2)
-            ],
-            answer:0,
-            explanation:
-                `S=a·b=${a}·${b}=${correct} sm².`
-        });
-    }
-
-
-    /* 39 */
-
-    {
-        const perimeter =
-            randomInt(seed+380,20,60);
-
-        const side =
-            perimeter/4;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Kvadrat perimetri ${perimeter} sm bo‘lsa, tomoni qancha?`,
-            options:[
-                String(side),
-                String(perimeter/2),
-                String(perimeter),
-                String(side+2)
-            ],
-            answer:0,
-            explanation:
-                `a=P/4=${perimeter}/4=${side} sm.`
-        });
-    }
-
-
-    /* 40 */
-
-    {
-        questions.push({
-            topic:"Ehtimollar",
-            question:
-                `Adolatli tangani bir marta tashlaganda gerb tushish ehtimoli qancha?`,
-            options:[
-                "0",
-                "1/4",
-                "1/2",
-                "1"
-            ],
-            answer:2,
-            explanation:
-                `Ikki teng ehtimolli natija bor: gerb va raqam. Shuning uchun P=1/2.`
-        });
-    }
-
-
-    /* 41 */
-
-    {
-        const a =
-            randomInt(seed+400,2,9);
-
-        const b =
-            randomInt(seed+401,2,9);
-
-        const correct =
-            a*b;
-
-        questions.push({
-            topic:"Algebraik shakl almashtirishlar",
-            question:
-                `(x+${a})(x+${b}) ifodadagi ozod hadni toping.`,
-            options:[
-                String(correct),
-                String(a+b),
-                String(a*b+1),
-                String(a+b+1)
-            ],
-            answer:0,
-            explanation:
-                `Ko‘paytirishda ozod had ${a}·${b}=${correct}.`
-        });
-    }
-
-
-    /* 42 */
-
-    {
-        const a =
-            randomInt(seed+410,4,9);
-
-        const b =
-            a*randomInt(seed+411,3,8);
-
-        const correct =
-            b/a;
-
-        questions.push({
-            topic:"Tenglama va tengsizliklar",
-            question:
-                `${a}x=${b} bo‘lsa, x ni toping.`,
-            options:[
-                String(correct),
-                String(correct+1),
-                String(correct-1),
-                String(b)
-            ],
-            answer:0,
-            explanation:
-                `x=${b}/${a}=${correct}.`
-        });
-    }
-
-
-    /* 43 */
-
-    {
-        const number =
-            randomInt(seed+420,100,500);
-
-        const percent =
-            [10,15,20,25][
-                randomInt(seed+421,0,3)
-            ];
-
-        const decrease =
-            number*percent/100;
-
-        const correct =
-            number-decrease;
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${number} soni ${percent}% ga kamaytirilsa, yangi qiymat qancha bo‘ladi?`,
-            options:[
-                String(correct),
-                String(number+decrease),
-                String(decrease),
-                String(number-percent)
-            ],
-            answer:0,
-            explanation:
-                `${percent}% kamayish miqdori ${decrease}. ${number}−${decrease}=${correct}.`
-        });
-    }
-
-
-    /* 44 */
-
-    {
-        const a =
-            randomInt(seed+430,2,8);
-
-        const b =
-            randomInt(seed+431,2,8);
-
-        const correct =
-            2*a+2*b;
-
-        questions.push({
-            topic:"Geometriya",
-            question:
-                `Tomonlari ${a} sm va ${b} sm bo‘lgan to‘g‘ri to‘rtburchakning perimetrini toping.`,
-            options:[
-                String(correct),
-                String(a*b),
-                String(a+b),
-                String(correct+2)
-            ],
-            answer:0,
-            explanation:
-                `P=2(${a}+${b})=${correct} sm.`
-        });
-    }
-
-
-    /* 45 */
-
-    {
-        const a =
-            randomInt(seed+440,2,9);
-
-        const b =
-            randomInt(seed+441,2,9);
-
-        const c =
-            randomInt(seed+442,1,5);
-
-        const correct =
-            a*b+c;
-
-        questions.push({
-            topic:"Sonlar va amallar",
-            question:
-                `${a}·${b}+${c} ifodaning qiymatini toping.`,
-            options:[
-                String(correct),
-                String(a*b-c),
-                String(a+b+c),
-                String(a*b)
-            ],
-            answer:0,
-            explanation:
-                `Avval ko‘paytirish: ${a}·${b}=${a*b}. So‘ng ${a*b}+${c}=${correct}.`
-        });
-    }
-
-
-    return questions;
+    return Math.floor(
+        Date.now()/twoHours
+    );
 
 }
 
 
-/* =========================================================
-   O'ZGARUVCHILAR
-========================================================= */
+function getVariantKey(subjectKey){
 
-let testQuestions=[];
-
-let currentQuestion=0;
-
-let selectedAnswer=null;
-
-let answerChecked=false;
-
-let userAnswers=[];
-
-let remainingSeconds=150*60;
-
-let timerInterval=null;
-
-let currentVariantSlot=null;
-
-
-/* =========================================================
-   TESTNI BOSHLASH
-========================================================= */
-
-function startMath(){
-
-    document.getElementById("home").style.display="none";
-
-    document.getElementById("result").style.display="none";
-
-    document.getElementById("test").style.display="block";
-
-
-    currentQuestion=0;
-
-    selectedAnswer=null;
-
-    answerChecked=false;
-
-    userAnswers=[];
-
-
-    currentVariantSlot =
-        getVariantSlot();
-
-
-    testQuestions =
-        generateQuestions();
-
-
-    document.getElementById("variant").textContent =
-        "Variant #" +
-        getVariantNumber();
-
-
-    remainingSeconds =
-        150*60;
-
-
-    clearInterval(timerInterval);
-
-
-    timerInterval =
-        setInterval(
-            updateTimer,
-            1000
-        );
-
-
-    document.getElementById("timer").textContent =
-        "150:00";
-
-
-    document
-        .getElementById("timer")
-        .classList.remove("warning");
-
-
-    buildQuestionGrid();
-
-    renderQuestion();
+    return subjectKey+
+        ":"+
+        getTimeSlot();
 
 }
 
 
-/* =========================================================
-   SAVOLLAR PANELI
-========================================================= */
+function getVariantNumber(subjectKey){
 
-function buildQuestionGrid(){
+    const slot=getTimeSlot();
 
-    const grid =
-        document.getElementById(
-            "questionGrid"
+    const subjectHash=
+        hashString(subjectKey);
+
+    return 1000+
+        ((slot*37+subjectHash)%8000);
+
+}
+
+
+function buildVariant(subjectKey,attemptSeed){
+
+    const config=
+        SUBJECTS[subjectKey];
+
+    const bank=
+        questionBank[subjectKey] || [];
+
+    const seed=
+        hashString(
+            getVariantKey(subjectKey)+
+            ":"+
+            attemptSeed
         );
 
+    let questions=
+        seededShuffle(
+            bank,
+            seed
+        );
 
-    grid.innerHTML="";
+    questions=
+        questions.slice(
+            0,
+            Math.min(
+                config.testLength,
+                questions.length
+            )
+        );
 
+    const answerPattern=
+        createBalancedPattern(
+            questions.length,
+            seed
+        );
 
-    testQuestions.forEach(
-        (_,index)=>{
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "q-number";
-
-
-            button.textContent =
-                index+1;
-
-
-            button.onclick =
-                ()=>{
-                    goToQuestion(index);
-                };
-
-
-            grid.appendChild(
-                button
-            );
-
-        }
+    return questions.map(
+        (question,index)=>
+            randomizeOptions(
+                question,
+                seed+(index*7919),
+                answerPattern[index]
+            )
     );
 
 }
 
 
 /* =========================================================
-   SAVOLGA O'TISH
+   TEST HOLATI
 ========================================================= */
 
-function goToQuestion(index){
+const STORAGE_KEY=
+    "milliy_final_test_v4";
 
-    if(
-        index<0 ||
-        index>=testQuestions.length
-    ){
-        return;
+let state=null;
+
+let timerInterval=null;
+
+let selectedAnswer=null;
+
+let answerChecked=false;
+
+
+/* =========================================================
+   ELEMENTLAR
+========================================================= */
+
+const homePage=
+    document.getElementById("homePage");
+
+const testPage=
+    document.getElementById("testPage");
+
+const resultPage=
+    document.getElementById("resultPage");
+
+const testSubject=
+    document.getElementById("testSubject");
+
+const variantInfo=
+    document.getElementById("variantInfo");
+
+const timer=
+    document.getElementById("timer");
+
+const questionCounter=
+    document.getElementById("questionCounter");
+
+const scoreLive=
+    document.getElementById("scoreLive");
+
+const progressBar=
+    document.getElementById("progressBar");
+
+const questionTopic=
+    document.getElementById("questionTopic");
+
+const questionText=
+    document.getElementById("questionText");
+
+const options=
+    document.getElementById("options");
+
+const solution=
+    document.getElementById("solution");
+
+const actionButton=
+    document.getElementById("actionButton");
+
+
+/* =========================================================
+   SAQLASH
+========================================================= */
+
+function saveState(){
+
+    if(!state) return;
+
+    state.selectedAnswer=
+        selectedAnswer;
+
+    state.answerChecked=
+        answerChecked;
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(state)
+    );
+
+}
+
+
+function loadState(){
+
+    const saved=
+        localStorage.getItem(
+            STORAGE_KEY
+        );
+
+    if(!saved) return null;
+
+    try{
+
+        return JSON.parse(saved);
+
+    }catch{
+
+        localStorage.removeItem(
+            STORAGE_KEY
+        );
+
+        return null;
+
     }
 
-
-    currentQuestion=index;
-
-
-    const saved =
-        userAnswers[
-            currentQuestion
-        ];
+}
 
 
-    if(saved){
+function clearState(){
 
-        selectedAnswer =
-            saved.answer;
-
-        answerChecked=true;
-
-    }else{
-
-        selectedAnswer=null;
-
-        answerChecked=false;
-
-    }
-
-
-    renderQuestion();
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
 
 }
 
 
 /* =========================================================
-   OLDINGI
+   TESTNI BOSHLASH
 ========================================================= */
 
-function previousQuestion(){
+function startSubject(subjectKey){
 
-    if(currentQuestion>0){
+    const existing=
+        loadState();
 
-        currentQuestion--;
+    if(existing){
 
-        renderQuestion();
+        const stillActive=
+            existing.deadline>
+            Date.now();
+
+        if(stillActive){
+
+            const choice=
+                confirm(
+                    "Sizda tugallanmagan test mavjud. Uni davom ettirasizmi?"
+                );
+
+            if(choice){
+
+                resumeTest();
+
+                return;
+
+            }
+
+            clearState();
+
+        }else{
+
+            clearState();
+
+        }
 
     }
+
+    const config=
+        SUBJECTS[subjectKey];
+
+    const attemptSeed=
+        Date.now();
+
+    state={
+
+        subjectKey:subjectKey,
+
+        variantKey:
+            getVariantKey(subjectKey),
+
+        variantNumber:
+            getVariantNumber(subjectKey),
+
+        attemptSeed:
+
+            attemptSeed,
+
+        questions:
+            buildVariant(
+                subjectKey,
+                attemptSeed
+            ),
+
+        currentIndex:0,
+
+        answers:[],
+
+        startedAt:
+            Date.now(),
+
+        deadline:
+            Date.now()+
+            config.time*
+            60*
+            1000
+
+    };
+
+    selectedAnswer=null;
+
+    answerChecked=false;
+
+    saveState();
+
+    showTest();
+
+}
+
+
+/* =========================================================
+   TESTNI DAVOM ETTIRISH
+========================================================= */
+
+function resumeTest(){
+
+    const saved=
+        loadState();
+
+    if(!saved){
+
+        return;
+
+    }
+
+    if(
+        !saved.deadline ||
+        saved.deadline<=Date.now()
+    ){
+
+        clearState();
+
+        alert(
+            "Saqlangan test vaqti tugagan."
+        );
+
+        return;
+
+    }
+
+    if(
+        saved.variantKey !==
+        getVariantKey(saved.subjectKey)
+    ){
+
+        clearState();
+
+        alert(
+            "Yangi 2 soatlik variant mavjud. Eski test yopildi."
+        );
+
+        return;
+
+    }
+
+    state=saved;
+
+    selectedAnswer=
+        state.selectedAnswer ?? null;
+
+    answerChecked=
+        state.answerChecked ?? false;
+
+    showTest();
+
+}
+
+
+/* =========================================================
+   TESTNI KO‘RSATISH
+========================================================= */
+
+function showTest(){
+
+    homePage.classList.add(
+        "hidden"
+    );
+
+    resultPage.classList.add(
+        "hidden"
+    );
+
+    testPage.classList.remove(
+        "hidden"
+    );
+
+    const config=
+        SUBJECTS[
+            state.subjectKey
+        ];
+
+    testSubject.textContent=
+        config.title;
+
+    variantInfo.textContent=
+        "Variant #"+
+        state.variantNumber+
+        " · Har 2 soatda yangilanadi";
+
+    renderQuestion();
+
+    startTimer();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   SAVOLNI CHIQARISH
+========================================================= */
+
+function renderQuestion(){
+
+    const question=
+        state.questions[
+            state.currentIndex
+        ];
+
+    if(!question){
+
+        finishTest();
+
+        return;
+
+    }
+
+    const total=
+        state.questions.length;
+
+    questionCounter.textContent=
+        (state.currentIndex+1)+
+        " / "+
+        total;
+
+    const answered=
+        state.answers.filter(
+            a=>a && a.checked
+        ).length;
+
+    scoreLive.textContent=
+        answered+
+        " ta javob tekshirilgan";
+
+    progressBar.style.width=
+        (
+            (state.currentIndex)/total
+        )*100+
+        "%";
+
+    questionTopic.textContent=
+        question.topic;
+
+    questionText.textContent=
+        question.question;
+
+    options.innerHTML="";
+
+    const letters=[
+        "A",
+        "B",
+        "C",
+        "D"
+    ];
+
+    const savedAnswer=
+        state.answers[
+            state.currentIndex
+        ];
+
+    if(
+        savedAnswer &&
+        savedAnswer.checked
+    ){
+
+        selectedAnswer=
+            savedAnswer.answer;
+
+        answerChecked=true;
+
+    }
+
+    question.options.forEach(
+        (option,index)=>{
+
+            const button=
+                document.createElement(
+                    "button"
+                );
+
+            button.className=
+                "option";
+
+            button.innerHTML=
+                `<span class="option-letter">
+                    ${letters[index]}
+                </span>
+                ${option}`;
+
+            button.onclick=()=>{
+                selectAnswer(index);
+            };
+
+            options.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    if(
+        selectedAnswer!==null
+    ){
+
+        const buttons=
+            document.querySelectorAll(
+                ".option"
+            );
+
+        if(buttons[selectedAnswer]){
+
+            buttons[
+                selectedAnswer
+            ].classList.add(
+                "selected"
+            );
+
+        }
+
+    }
+
+
+    if(answerChecked){
+
+        showCheckedState();
+
+    }else{
+
+        solution.classList.add(
+            "hidden"
+        );
+
+        actionButton.textContent=
+            "Javobni tekshirish";
+
+        actionButton.disabled=
+            selectedAnswer===null;
+
+    }
+
+}
+
+
+/* =========================================================
+   JAVOB TANLASH
+========================================================= */
+
+function selectAnswer(index){
+
+    if(answerChecked) return;
+
+    selectedAnswer=index;
+
+    document
+        .querySelectorAll(".option")
+        .forEach(
+            (button,i)=>{
+
+                button.classList.toggle(
+                    "selected",
+                    i===index
+                );
+
+            }
+        );
+
+    actionButton.disabled=false;
+
+    saveState();
+
+}
+
+
+/* =========================================================
+   JAVOBNI TEKSHIRISH
+========================================================= */
+
+function checkAnswer(){
+
+    if(
+        selectedAnswer===null
+    ){
+
+        return;
+
+    }
+
+    if(answerChecked){
+
+        nextQuestion();
+
+        return;
+
+    }
+
+    const question=
+        state.questions[
+            state.currentIndex
+        ];
+
+    const correct=
+        selectedAnswer===
+        question.answer;
+
+    state.answers[
+        state.currentIndex
+    ]={
+        answer:selectedAnswer,
+        correct:correct,
+        checked:true,
+        topic:question.topic
+    };
+
+    answerChecked=true;
+
+    saveState();
+
+    showCheckedState();
+
+}
+
+
+function showCheckedState(){
+
+    const question=
+        state.questions[
+            state.currentIndex
+        ];
+
+    const buttons=
+        document.querySelectorAll(
+            ".option"
+        );
+
+    buttons.forEach(
+        (button,index)=>{
+
+            button.classList.remove(
+                "selected"
+            );
+
+            if(
+                index===
+                question.answer
+            ){
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+            if(
+                index===
+                selectedAnswer &&
+                index!==
+                question.answer
+            ){
+
+                button.classList.add(
+                    "wrong"
+                );
+
+            }
+
+        }
+    );
+
+    const correct=
+        selectedAnswer===
+        question.answer;
+
+    solution.innerHTML=
+        `<strong>
+            ${correct ? "✓ To‘g‘ri javob!" : "✕ Noto‘g‘ri javob!"}
+        </strong>
+        <br><br>
+        <strong>Izoh:</strong>
+        ${question.explanation}`;
+
+    solution.classList.remove(
+        "hidden"
+    );
+
+    actionButton.disabled=false;
+
+    actionButton.textContent=
+        state.currentIndex===
+        state.questions.length-1
+        ?
+        "Natijani ko‘rish"
+        :
+        "Keyingi savol →";
+
+}
+
+
+/* =========================================================
+   KEYINGI SAVOL
+========================================================= */
+
+function nextQuestion(){
+
+    if(!answerChecked){
+
+        checkAnswer();
+
+        return;
+
+    }
+
+    if(
+        state.currentIndex===
+        state.questions.length-1
+    ){
+
+        finishTest();
+
+        return;
+
+    }
+
+    state.currentIndex++;
+
+    selectedAnswer=null;
+
+    answerChecked=false;
+
+    saveState();
+
+    renderQuestion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
@@ -3092,16 +2878,40 @@ function previousQuestion(){
    TIMER
 ========================================================= */
 
+function startTimer(){
+
+    clearInterval(
+        timerInterval
+    );
+
+    updateTimer();
+
+    timerInterval=
+        setInterval(
+            updateTimer,
+            1000
+        );
+
+}
+
+
 function updateTimer(){
 
-    remainingSeconds--;
+    if(!state) return;
 
+    const remaining=
+        Math.max(
+            0,
+            state.deadline-
+            Date.now()
+        );
 
-    if(
-        remainingSeconds<=0
-    ){
+    const seconds=
+        Math.ceil(
+            remaining/1000
+        );
 
-        remainingSeconds=0;
+    if(seconds<=0){
 
         clearInterval(
             timerInterval
@@ -3113,535 +2923,58 @@ function updateTimer(){
 
     }
 
-
-    const minutes =
+    const minutes=
         Math.floor(
-            remainingSeconds/60
+            seconds/60
         );
 
+    const sec=
+        seconds%60;
 
-    const seconds =
-        remainingSeconds%60;
-
-
-    document.getElementById(
-        "timer"
-    ).textContent =
-
+    timer.textContent=
         String(minutes)
-            .padStart(2,"0")
-        +":"
-        +String(seconds)
-            .padStart(2,"0");
-
-
-    if(
-        remainingSeconds<=600
-    ){
-
-        document
-            .getElementById("timer")
-            .classList.add(
-                "warning"
-            );
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVOLNI KO'RSATISH
-========================================================= */
-
-function renderQuestion(){
-
-    const q =
-        testQuestions[
-            currentQuestion
-        ];
-
-
-    const saved =
-        userAnswers[
-            currentQuestion
-        ];
-
-
-    if(saved){
-
-        selectedAnswer =
-            saved.answer;
-
-        answerChecked=true;
-
-    }else{
-
-        selectedAnswer=null;
-
-        answerChecked=false;
-
-    }
-
-
-    document.getElementById(
-        "questionNumber"
-    ).textContent =
-
-        (currentQuestion+1)
-        +" / "
-        +testQuestions.length;
-
-
-    document.getElementById(
-        "numberInside"
-    ).textContent =
-        currentQuestion+1;
-
-
-    document.getElementById(
-        "topicLabel"
-    ).textContent =
-        q.topic;
-
-
-    document.getElementById(
-        "questionText"
-    ).textContent =
-        q.question;
-
-
-    const progress =
-        (
-            (currentQuestion+1)
-            /
-            testQuestions.length
-        )*100;
-
-
-    document.getElementById(
-        "progressBar"
-    ).style.width =
-        progress+"%";
-
-
-    const optionsContainer =
-        document.getElementById(
-            "options"
-        );
-
-
-    optionsContainer.innerHTML="";
-
-
-    q.options.forEach(
-        (option,index)=>{
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "option";
-
-
-            button.textContent =
-                String.fromCharCode(
-                    65+index
-                )
-                +". "
-                +option;
-
-
-            if(
-                saved &&
-                saved.answer===index
-            ){
-
-                button.classList.add(
-                    "selected"
-                );
-
-            }
-
-
-            if(answerChecked){
-
-                button.disabled=true;
-
-
-                if(
-                    index===q.answer
-                ){
-
-                    button.classList.add(
-                        "correct"
-                    );
-
-                }
-
-
-                if(
-                    saved &&
-                    index===saved.answer &&
-                    index!==q.answer
-                ){
-
-                    button.classList.add(
-                        "wrong"
-                    );
-
-                }
-
-            }else{
-
-                button.onclick =
-                    ()=>{
-                        selectAnswer(
-                            button,
-                            index
-                        );
-                    };
-
-            }
-
-
-            optionsContainer.appendChild(
-                button
-            );
-
-        }
+        .padStart(2,"0")
+        +
+        ":"+
+        String(sec)
+        .padStart(2,"0");
+
+    timer.classList.toggle(
+        "warning",
+        seconds<=600
     );
 
-
-    const solution =
-        document.getElementById(
-            "solution"
-        );
-
-
-    if(
-        answerChecked &&
-        saved
-    ){
-
-        solution.classList.add(
-            "show"
-        );
-
-
-        const correct =
-            saved.answer===
-            q.answer;
-
-
-        document.getElementById(
-            "solutionTitle"
-        ).textContent =
-
-            correct
-            ? "✓ To‘g‘ri javob"
-            : "✕ Noto‘g‘ri javob";
-
-
-        document.getElementById(
-            "solutionText"
-        ).textContent =
-            q.explanation;
-
-    }else{
-
-        solution.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    document.getElementById(
-        "actionButton"
-    ).textContent =
-
-        answerChecked
-
-        ? (
-            currentQuestion===
-            testQuestions.length-1
-            ? "Natijani ko‘rish"
-            : "Keyingi →"
-        )
-
-        : "Javobni tekshirish";
-
-
-    updateQuestionGrid();
-
-}
-
-
-/* =========================================================
-   PANEL RANGI
-========================================================= */
-
-function updateQuestionGrid(){
-
-    const buttons =
-        document.querySelectorAll(
-            ".q-number"
-        );
-
-
-    buttons.forEach(
-        (button,index)=>{
-
-            button.className =
-                "q-number";
-
-
-            if(
-                index===
-                currentQuestion
-            ){
-
-                button.classList.add(
-                    "current"
-                );
-
-            }
-
-
-            const answer =
-                userAnswers[index];
-
-
-            if(answer){
-
-                if(answer.correct){
-
-                    button.classList.add(
-                        "correct"
-                    );
-
-                }else{
-
-                    button.classList.add(
-                        "wrong"
-                    );
-
-                }
-
-            }
-
-        }
+    timer.classList.toggle(
+        "danger",
+        seconds<=120
     );
 
 }
 
 
 /* =========================================================
-   JAVOB TANLASH
+   TESTDAN CHIQISH
 ========================================================= */
 
-function selectAnswer(
-    button,
-    index
-){
+function exitTest(){
 
-    if(answerChecked){
-
-        return;
-
-    }
-
-
-    document
-        .querySelectorAll(".option")
-        .forEach(
-            item=>{
-                item.classList.remove(
-                    "selected"
-                );
-            }
-        );
-
-
-    button.classList.add(
-        "selected"
-    );
-
-
-    selectedAnswer=index;
-
-}
-
-
-/* =========================================================
-   TEKSHIRISH
-========================================================= */
-
-function checkAnswer(){
-
-    if(answerChecked){
-
-        if(
-            currentQuestion<
-            testQuestions.length-1
-        ){
-
-            currentQuestion++;
-
-            renderQuestion();
-
-        }else{
-
-            finishTest();
-
-        }
-
-        return;
-
-    }
-
-
-    if(selectedAnswer===null){
-
-        alert(
-            "Avval A, B, C yoki D variantidan birini tanlang."
-        );
-
-        return;
-
-    }
-
-
-    const q =
-        testQuestions[
-            currentQuestion
-        ];
-
-
-    const correct =
-        selectedAnswer===
-        q.answer;
-
-
-    userAnswers[
-        currentQuestion
-    ]={
-
-        answer:selectedAnswer,
-
-        correct:correct
-
-    };
-
-
-    answerChecked=true;
-
-
-    renderQuestion();
-
-}
-
-
-/* =========================================================
-   YAKUNLASH OYNASI
-========================================================= */
-
-function finishFromButton(){
-
-    let answered=0;
-
-
-    testQuestions.forEach(
-        (_,index)=>{
-
-            if(
-                userAnswers[index]
-            ){
-
-                answered++;
-
-            }
-
-        }
-    );
-
-
-    const unanswered =
-        testQuestions.length-
-        answered;
-
-
-    document.getElementById(
-        "finishMessage"
-    ).textContent =
-
-        unanswered>0
-
-        ? `Siz ${answered} ta savolga javob berdingiz. ${unanswered} ta savol javobsiz qoladi.`
-
-        : "Barcha savollarga javob berildi.";
-
-
-    document
-        .getElementById(
-            "finishModal"
-        )
-        .classList.add(
-            "show"
-        );
-
-}
-
-
-function closeFinishModal(){
-
-    document
-        .getElementById(
-            "finishModal"
-        )
-        .classList.remove(
-            "show"
-        );
-
-}
-
-
-function confirmFinish(){
-
-    closeFinishModal();
-
-    finishTest();
-
-}
-
-
-/* =========================================================
-   TEST YAKUNI
-========================================================= */
-
-function finishTest(){
+    saveState();
 
     clearInterval(
         timerInterval
     );
 
+    testPage.classList.add(
+        "hidden"
+    );
 
-    document.getElementById(
-        "test"
-    ).style.display="none";
+    resultPage.classList.add(
+        "hidden"
+    );
 
-
-    document.getElementById(
-        "result"
-    ).style.display="block";
-
-
-    calculateResult();
-
+    homePage.classList.remove(
+        "hidden"
+    );
 
     window.scrollTo({
         top:0,
@@ -3655,379 +2988,243 @@ function finishTest(){
    NATIJA
 ========================================================= */
 
-function calculateResult(){
+function finishTest(){
 
-    let correct=0;
-
-    let wrong=0;
-
-    let empty=0;
-
-
-    const topics={};
-
-
-    testQuestions.forEach(
-        (q,index)=>{
-
-            if(!topics[q.topic]){
-
-                topics[q.topic]={
-                    total:0,
-                    correct:0
-                };
-
-            }
-
-
-            topics[q.topic].total++;
-
-
-            const answer =
-                userAnswers[index];
-
-
-            if(!answer){
-
-                empty++;
-
-            }else if(answer.correct){
-
-                correct++;
-
-                topics[q.topic].correct++;
-
-            }else{
-
-                wrong++;
-
-            }
-
-        }
+    clearInterval(
+        timerInterval
     );
 
+    if(!state) return;
 
-    const score =
+    const total=
+        state.questions.length;
+
+    const correct=
+        state.answers.filter(
+            a=>a && a.checked && a.correct
+        ).length;
+
+    const wrong=
+        total-correct;
+
+    const percent=
         Math.round(
-            correct/
-            testQuestions.length*
-            100
+            correct/total*100
         );
 
-
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        score;
-
-
-    document.getElementById(
-        "correctCount"
-    ).textContent =
-        correct;
-
-
-    document.getElementById(
-        "wrongCount"
-    ).textContent =
-        wrong;
-
-
-    document.getElementById(
-        "emptyCount"
-    ).textContent =
-        empty;
-
-
-    const usedSeconds =
-        (150*60)-
-        remainingSeconds;
-
-
-    const usedMinutes =
-        Math.max(
-            1,
-            Math.round(
-                usedSeconds/60
-            )
-        );
-
-
-    document.getElementById(
-        "timeUsed"
-    ).textContent =
-        usedMinutes;
-
-
-    document.getElementById(
-        "certificateLevel"
-    ).textContent =
-        getLevel(score);
-
-
-    showTopics(topics);
-
-    showMistakes();
+    showResult(
+        correct,
+        wrong,
+        percent
+    );
 
 }
 
 
-/* =========================================================
-   TAXMINIY DARAJA
-========================================================= */
+function getGeneralLevel(score){
 
-function getLevel(score){
+    if(score>=70)
+        return "A+";
 
-    if(score>=70){
+    if(score>=65)
+        return "A";
 
-        return "Taxminiy daraja: A+";
+    if(score>=60)
+        return "B+";
 
-    }
+    if(score>=55)
+        return "B";
 
-    if(score>=65){
+    if(score>=50)
+        return "C+";
 
-        return "Taxminiy daraja: A";
-
-    }
-
-    if(score>=60){
-
-        return "Taxminiy daraja: B+";
-
-    }
-
-    if(score>=55){
-
-        return "Taxminiy daraja: B";
-
-    }
-
-    if(score>=50){
-
-        return "Taxminiy daraja: C+";
-
-    }
-
-    if(score>=46){
-
-        return "Taxminiy daraja: C";
-
-    }
+    if(score>=46)
+        return "C";
 
     return "46 balldan past";
 
 }
 
 
+function showResult(
+    correct,
+    wrong,
+    percent
+){
+
+    clearState();
+
+    testPage.classList.add(
+        "hidden"
+    );
+
+    homePage.classList.add(
+        "hidden"
+    );
+
+    resultPage.classList.remove(
+        "hidden"
+    );
+
+    const config=
+        SUBJECTS[
+            state.subjectKey
+        ];
+
+    resultTitle.textContent=
+        config.title+
+        " — natija";
+
+    resultScore.textContent=
+        percent+
+        "%";
+
+    correctCount.textContent=
+        correct;
+
+    wrongCount.textContent=
+        wrong;
+
+    percentCount.textContent=
+        percent+
+        "%";
+
+
+    if(config.type==="general"){
+
+        resultLevel.textContent=
+            "Taxminiy daraja: "+
+            getGeneralLevel(percent);
+
+        resultNotice.textContent=
+            "Bu mashq testi uchun taxminiy ko‘rsatkich. Rasmiy sertifikat natijasi aynan shu oddiy foiz orqali emas, tegishli rasmiy baholash metodikasi asosida aniqlanadi.";
+
+    }
+
+    else if(
+        config.type==="english"
+    ){
+
+        resultLevel.textContent=
+            "Practice natijasi: "+
+            percent+
+            "/100";
+
+        resultNotice.textContent=
+            "Ingliz tili uchun bu natija mashq ko‘rsatkichi hisoblanadi. Rasmiy CEFR darajasini faqat ushbu oddiy test foizidan chiqarib bo‘lmaydi.";
+
+    }
+
+    else{
+
+        resultLevel.textContent=
+            "Taxminiy natija: "+
+            percent+
+            "/100";
+
+        resultNotice.textContent=
+            "Iqtisodiyot bo‘yicha bu platformadagi natija mashq ko‘rsatkichi sifatida beriladi. Rasmiy sertifikat mezoni bilan tenglashtirilmaydi.";
+
+    }
+
+
+    showTopicAnalysis();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
 /* =========================================================
-   MAVZULAR
+   MAVZULAR TAHLILI
 ========================================================= */
 
-function showTopics(topics){
+function showTopicAnalysis(){
 
-    const container =
-        document.getElementById(
-            "topicAnalysis"
-        );
+    const map={};
+
+    state.questions.forEach(
+        (question,index)=>{
+
+            const topic=
+                question.topic;
+
+            if(!map[topic]){
+
+                map[topic]={
+                    total:0,
+                    correct:0
+                };
+
+            }
+
+            map[topic].total++;
+
+            const answer=
+                state.answers[index];
+
+            if(
+                answer &&
+                answer.checked &&
+                answer.correct
+            ){
+
+                map[topic].correct++;
+
+            }
+
+        }
+    );
 
 
-    container.innerHTML="";
+    topicAnalysis.innerHTML="";
 
+    Object.entries(map)
+    .forEach(
+        ([topic,data])=>{
 
-    let weakestTopic="";
-
-    let weakestPercent=101;
-
-
-    Object.entries(topics).forEach(
-        ([name,data])=>{
-
-            const percent =
+            const percent=
                 Math.round(
                     data.correct/
                     data.total*
                     100
                 );
 
-
-            if(
-                percent<
-                weakestPercent
-            ){
-
-                weakestPercent=
-                    percent;
-
-                weakestTopic=
-                    name;
-
-            }
-
-
-            const div =
+            const row=
                 document.createElement(
                     "div"
                 );
 
+            row.className=
+                "topic-row";
 
-            div.className="topic";
-
-
-            div.innerHTML=`
-
-                <div class="topic-top">
-
-                    <strong>
-                        ${name}
-                    </strong>
-
+            row.innerHTML=
+                `
+                <div class="topic-head">
+                    <span>${topic}</span>
                     <span>
                         ${data.correct}/${data.total}
-                        — ${percent}%
+                        · ${percent}%
                     </span>
-
                 </div>
 
                 <div class="topic-bar">
-
                     <div
                         class="topic-fill"
                         style="width:${percent}%">
                     </div>
-
                 </div>
+                `;
 
-            `;
-
-
-            container.appendChild(
-                div
+            topicAnalysis.appendChild(
+                row
             );
 
         }
     );
-
-
-    document.getElementById(
-        "recommendationText"
-    ).textContent =
-
-        weakestTopic
-
-        ? `"${weakestTopic}" mavzusida natijangiz ${weakestPercent}% bo‘ldi. Keyingi mashg‘ulotda shu mavzuga ko‘proq e’tibor berish tavsiya etiladi.`
-
-        : "Natijangiz yaxshi.";
-
-}
-
-
-/* =========================================================
-   XATOLAR
-========================================================= */
-
-function showMistakes(){
-
-    const container =
-        document.getElementById(
-            "mistakesList"
-        );
-
-
-    container.innerHTML="";
-
-
-    let mistakeCount=0;
-
-
-    testQuestions.forEach(
-        (q,index)=>{
-
-            const answer =
-                userAnswers[index];
-
-
-            if(
-                answer &&
-                !answer.correct
-            ){
-
-                mistakeCount++;
-
-
-                const item =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                item.className =
-                    "mistake-item";
-
-
-                item.innerHTML=`
-
-                    <strong>
-                        ${index+1}. ${q.question}
-                    </strong>
-
-                    <p>
-                        Sizning javobingiz:
-                        <b>
-                            ${String.fromCharCode(
-                                65+answer.answer
-                            )}.
-                            ${q.options[answer.answer]}
-                        </b>
-                    </p>
-
-                    <p>
-                        To‘g‘ri javob:
-                        <b>
-                            ${String.fromCharCode(
-                                65+q.answer
-                            )}.
-                            ${q.options[q.answer]}
-                        </b>
-                    </p>
-
-                    <p>
-                        ${q.explanation}
-                    </p>
-
-                `;
-
-
-                container.appendChild(
-                    item
-                );
-
-            }
-
-        }
-    );
-
-
-    if(
-        mistakeCount===0
-    ){
-
-        container.innerHTML=`
-
-            <div class="mistake-item">
-
-                <strong>
-                    🎉 Xato javoblar yo‘q!
-                </strong>
-
-                <p>
-                    Barcha javoblaringiz to‘g‘ri.
-                </p>
-
-            </div>
-
-        `;
-
-    }
 
 }
 
@@ -4038,12 +3235,14 @@ function showMistakes(){
 
 function restartTest(){
 
-    document.getElementById(
-        "result"
-    ).style.display="none";
+    const subjectKey=
+        state.subjectKey;
 
+    clearState();
 
-    startMath();
+    startSubject(
+        subjectKey
+    );
 
 }
 
@@ -4058,21 +3257,21 @@ function goHome(){
         timerInterval
     );
 
+    clearState();
 
-    document.getElementById(
-        "test"
-    ).style.display="none";
+    state=null;
 
+    resultPage.classList.add(
+        "hidden"
+    );
 
-    document.getElementById(
-        "result"
-    ).style.display="none";
+    testPage.classList.add(
+        "hidden"
+    );
 
-
-    document.getElementById(
-        "home"
-    ).style.display="block";
-
+    homePage.classList.remove(
+        "hidden"
+    );
 
     window.scrollTo({
         top:0,
@@ -4083,38 +3282,43 @@ function goHome(){
 
 
 /* =========================================================
-   SAYT OCHIQ TURGANDA GLOBAL VARIANTNI KUZATISH
-
-   Agar foydalanuvchi sahifani ochiq qoldirsa,
-   2 soatlik yangi davr boshlanganda sahifa
-   yangi variantga o'tishga tayyorligini aniqlaydi.
+   SAHIFA OCHILGANDA
 ========================================================= */
 
-setInterval(
+window.addEventListener(
+    "load",
     ()=>{
 
-        const newSlot =
-            getVariantSlot();
-
+        const saved=
+            loadState();
 
         if(
-            currentVariantSlot!==null &&
-            newSlot!==currentVariantSlot
+            saved &&
+            saved.deadline>Date.now()
         ){
 
-            /*
-             Test davomida variantni majburan
-             almashtirmaymiz.
-             Foydalanuvchi joriy testini tugatadi.
-            */
+            const resume=
+                confirm(
+                    "Tugallanmagan test topildi. Testni davom ettirasizmi?"
+                );
 
-            currentVariantSlot =
-                newSlot;
+            if(resume){
+
+                resumeTest();
+
+            }else{
+
+                clearState();
+
+            }
+
+        }else if(saved){
+
+            clearState();
 
         }
 
-    },
-    30000
+    }
 );
 
 </script>
