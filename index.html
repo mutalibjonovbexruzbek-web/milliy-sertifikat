@@ -14,1314 +14,2163 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#070912;
-    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at top left,#172554 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#312e81 0%,transparent 35%),
+        #050816;
+    color:#fff;
     min-height:100vh;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
 }
 
 header{
     height:75px;
-    border-bottom:1px solid #ffffff15;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:0 5%;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
     font-size:25px;
-    font-weight:bold;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
 .logo span{
-    color:#9d6cff;
+    color:#8b5cf6;
 }
 
 .creator{
-    color:#aaa;
+    color:#a5b4fc;
     font-size:14px;
 }
 
-.container{
-    width:92%;
-    max-width:1100px;
-    margin:auto;
-}
-
 .hero{
-    padding:60px 0 35px;
+    text-align:center;
+    padding:55px 0 35px;
 }
 
 .badge{
     display:inline-block;
-    padding:9px 14px;
-    border:1px solid #9d6cff66;
+    padding:8px 14px;
     border-radius:30px;
-    color:#cfc0ff;
+    background:rgba(99,102,241,.14);
+    border:1px solid rgba(129,140,248,.25);
+    color:#c4b5fd;
     font-size:13px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:clamp(40px,7vw,72px);
-    line-height:1;
-    margin:20px 0;
+    font-size:clamp(32px,5vw,58px);
+    line-height:1.05;
+    margin-bottom:15px;
 }
 
 .hero p{
-    max-width:700px;
     color:#aab2c5;
+    max-width:720px;
+    margin:auto;
     line-height:1.7;
 }
 
-.subjects{
+.subject-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    padding-bottom:70px;
+    gap:18px;
+    padding:20px 0 60px;
 }
 
-.subject{
-    background:#111624;
-    border:1px solid #ffffff12;
+.subject-card{
+    background:rgba(15,23,42,.78);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:20px;
-    padding:22px;
-    min-height:170px;
-    transition:.2s;
+    padding:25px;
+    transition:.25s;
+    cursor:pointer;
+    min-height:190px;
 }
 
-.subject:hover{
-    transform:translateY(-4px);
-    border-color:#9d6cff88;
+.subject-card:hover{
+    transform:translateY(-5px);
+    border-color:#6366f1;
+    box-shadow:0 15px 45px rgba(79,70,229,.18);
 }
 
-.subject h3{
-    margin-bottom:10px;
+.subject-icon{
+    font-size:35px;
+    margin-bottom:15px;
 }
 
-.subject p{
-    color:#8992a7;
+.subject-card h3{
+    margin-bottom:9px;
+}
+
+.subject-card p{
+    color:#94a3b8;
     font-size:14px;
     line-height:1.5;
 }
 
-button{
+.start-btn{
+    width:100%;
     border:0;
-    border-radius:11px;
-    padding:12px 18px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    color:white;
+    padding:12px;
+    border-radius:12px;
+    margin-top:17px;
     cursor:pointer;
     font-weight:bold;
 }
 
-.startBtn{
-    background:#9d6cff;
-    color:white;
-    margin-top:18px;
+.start-btn:hover{
+    filter:brightness(1.12);
 }
 
-.secondary{
-    background:#202738;
-    color:white;
+.screen{
+    display:none;
 }
 
-.test{
-    background:#101522;
-    border:1px solid #ffffff12;
-    border-radius:22px;
-    padding:25px;
-    margin:35px 0;
+.screen.active{
+    display:block;
 }
 
-.testTop{
+.test-header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(5,8,22,.94);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.test-top{
+    width:min(1000px,92%);
+    margin:auto;
+    padding:14px 0;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:15px;
 }
 
-.variant{
-    color:#8d96aa;
+.progress-wrap{
+    flex:1;
+}
+
+.progress-text{
+    color:#94a3b8;
     font-size:13px;
-    margin-top:5px;
-}
-
-.timer{
-    font-size:22px;
-    font-weight:bold;
+    margin-bottom:7px;
 }
 
 .progress{
     width:100%;
-    height:8px;
-    background:#252c3d;
+    height:7px;
+    background:#1e293b;
     border-radius:20px;
-    margin:22px 0;
     overflow:hidden;
 }
 
-.progressBar{
+.progress-bar{
     height:100%;
     width:0;
-    background:#9d6cff;
+    background:linear-gradient(90deg,#6366f1,#a855f7);
+    transition:.3s;
 }
 
-.counter{
-    color:#8d96aa;
-    margin-bottom:15px;
+.timer{
+    min-width:110px;
+    text-align:center;
+    padding:10px 13px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.timer.warning{
+    color:#f87171;
+}
+
+.test-container{
+    width:min(900px,92%);
+    margin:40px auto;
+}
+
+.question-card{
+    background:rgba(15,23,42,.85);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:22px;
+    padding:32px;
+}
+
+.question-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.difficulty{
+    color:#fbbf24;
 }
 
 .question{
-    font-size:23px;
-    line-height:1.5;
-    margin-bottom:22px;
+    font-size:22px;
+    line-height:1.55;
+    margin-bottom:28px;
 }
 
-.answers{
+.options{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:13px;
 }
 
-.answer{
-    background:#161d2d;
-    border:1px solid #30394e;
-    color:white;
+.option{
+    width:100%;
     text-align:left;
+    padding:17px 18px;
+    background:#0f172a;
+    color:white;
+    border:1px solid #263247;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.2s;
     font-size:16px;
-    padding:17px;
 }
 
-.answer:hover{
-    border-color:#9d6cff;
+.option:hover{
+    border-color:#6366f1;
+    background:#151e35;
 }
 
-.correct{
-    background:#153c2a !important;
-    border-color:#42d392 !important;
+.option.selected{
+    border-color:#818cf8;
+    background:rgba(99,102,241,.17);
 }
 
-.wrong{
-    background:#401b24 !important;
-    border-color:#ff6375 !important;
+.option.correct{
+    border-color:#22c55e;
+    background:rgba(34,197,94,.13);
 }
 
-.solution{
-    margin-top:20px;
+.option.wrong{
+    border-color:#ef4444;
+    background:rgba(239,68,68,.13);
+}
+
+.explanation{
+    display:none;
+    margin-top:24px;
     padding:18px;
-    background:#14231e;
-    border-left:4px solid #42d392;
-    border-radius:10px;
-    line-height:1.6;
+    background:rgba(30,41,59,.8);
+    border-left:4px solid #8b5cf6;
+    border-radius:12px;
+    line-height:1.7;
+    color:#dbeafe;
 }
 
-.navigation{
+.explanation.show{
+    display:block;
+}
+
+.actions{
     display:flex;
-    justify-content:space-between;
-    gap:10px;
-    margin-top:22px;
+    gap:12px;
+    margin-top:25px;
 }
 
-.result{
-    background:#101522;
-    border:1px solid #ffffff12;
-    border-radius:22px;
-    padding:30px;
-    margin:35px 0;
+.action-btn{
+    flex:1;
+    border:0;
+    border-radius:12px;
+    padding:14px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.next-btn{
+    background:#6366f1;
+    color:white;
+}
+
+.finish-btn{
+    background:#dc2626;
+    color:white;
+}
+
+.back-btn{
+    background:#334155;
+    color:white;
+}
+
+.action-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.result-card{
+    width:min(850px,92%);
+    margin:60px auto;
+    padding:35px;
+    border-radius:25px;
+    background:rgba(15,23,42,.88);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.result-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:center;
+    font-size:55px;
+    font-weight:900;
+    color:#a78bfa;
+}
+
+.score-label{
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:30px;
 }
 
 .stats{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
-    margin:25px 0;
+    margin-bottom:30px;
 }
 
 .stat{
-    background:#171e2d;
+    background:#0f172a;
+    border-radius:14px;
     padding:20px;
     text-align:center;
-    border-radius:15px;
 }
 
 .stat strong{
     display:block;
-    font-size:30px;
-    margin-bottom:7px;
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:#94a3b8;
+    font-size:13px;
 }
 
 .level{
-    font-size:28px;
-    font-weight:bold;
-    margin:20px 0;
+    text-align:center;
+    padding:20px;
+    background:rgba(99,102,241,.12);
+    border:1px solid rgba(99,102,241,.25);
+    border-radius:15px;
+    margin-bottom:25px;
 }
 
-.topic{
+.level h3{
+    color:#c4b5fd;
+    margin-bottom:7px;
+}
+
+.analysis{
+    margin-top:25px;
+}
+
+.analysis h3{
+    margin-bottom:15px;
+}
+
+.topic-row{
+    margin-bottom:14px;
+}
+
+.topic-line{
     display:flex;
     justify-content:space-between;
-    background:#171e2d;
-    padding:13px;
-    margin-top:8px;
-    border-radius:10px;
+    margin-bottom:6px;
+    font-size:13px;
 }
 
-.hidden{
-    display:none !important;
+.topic-bar{
+    height:8px;
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-@media(max-width:800px){
+.topic-fill{
+    height:100%;
+    background:#6366f1;
+}
 
-    .subjects{
-        grid-template-columns:1fr 1fr;
+.result-actions{
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+}
+
+.home-btn,
+.retry-btn{
+    flex:1;
+    border:0;
+    border-radius:12px;
+    padding:15px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.home-btn{
+    background:#334155;
+    color:white;
+}
+
+.retry-btn{
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    color:white;
+}
+
+.empty{
+    text-align:center;
+    padding:70px 20px;
+    color:#94a3b8;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    font-size:13px;
+}
+
+@media(max-width:900px){
+    .subject-grid{
+        grid-template-columns:repeat(2,1fr);
     }
+}
 
-    .answers{
+@media(max-width:600px){
+    .subject-grid{
         grid-template-columns:1fr;
     }
 
-}
-
-@media(max-width:520px){
-
-    .subjects{
-        grid-template-columns:1fr;
+    .hero{
+        padding-top:35px;
     }
 
-    .stats{
-        grid-template-columns:1fr;
+    .question-card{
+        padding:20px;
     }
 
     .question{
         font-size:19px;
     }
 
-    .test{
-        padding:17px;
+    .test-top{
+        align-items:flex-start;
     }
 
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .actions,
+    .result-actions{
+        flex-direction:column;
+    }
+
+    .timer{
+        min-width:90px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-
-    <div class="logo">
-        MILLIY<span>.</span>
-    </div>
-
-    <div class="creator">
-        Mirahmatov
-    </div>
-
+<header class="container">
+    <div class="logo">MILLIY<span>.</span></div>
+    <div class="creator">Mirahmatov</div>
 </header>
 
+<!-- HOME -->
+<section id="homeScreen" class="screen active">
 
-<div class="container">
+    <div class="hero container">
+        <div class="badge">🇺🇿 MILLIY SERTIFIKAT</div>
 
-<section class="hero" id="home">
+        <h1>Milliy sertifikatga<br>tayyorlaning.</h1>
 
-    <div class="badge">
-        🇺🇿 MILLIY SERTIFIKAT
+        <p>
+            Murakkab darajadagi original testlar.
+            Har bir fan uchun 45 ta savol.
+            Bir test davomida bir xil savol qayta berilmaydi.
+        </p>
     </div>
 
-    <h1>
-        Milliy sertifikatga<br>
-        tayyorlaning.
-    </h1>
-
-    <p>
-        8 ta fan. Har bir fan uchun 45 ta savol.
-        A/B/C/D variantlar, javobni tekshirish,
-        ishlanishi va yakuniy natija.
-    </p>
+    <div class="container">
+        <div id="subjectGrid" class="subject-grid"></div>
+    </div>
 
 </section>
-
-
-<div class="subjects" id="subjects"></div>
-
 
 <!-- TEST -->
+<section id="testScreen" class="screen">
 
-<section class="test hidden" id="test">
+    <div class="test-header">
 
-    <div class="testTop">
+        <div class="test-top">
 
-        <div>
-            <h2 id="subjectName"></h2>
+            <div class="progress-wrap">
 
-            <div class="variant" id="variant"></div>
-        </div>
+                <div class="progress-text">
+                    <span id="progressText">1 / 45</span>
+                </div>
 
-        <div class="timer" id="timer">
-            00:00
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+
+            </div>
+
+            <div id="timer" class="timer">
+                00:00:00
+            </div>
+
         </div>
 
     </div>
 
+    <div class="test-container">
 
-    <div class="progress">
-        <div class="progressBar" id="progressBar"></div>
-    </div>
+        <div class="question-card">
 
+            <div class="question-meta">
 
-    <div class="counter" id="counter"></div>
+                <span id="subjectName">
+                    Matematika
+                </span>
 
+                <span id="difficulty" class="difficulty">
+                    Murakkab
+                </span>
 
-    <div class="question" id="question"></div>
+            </div>
 
+            <div id="questionText" class="question"></div>
 
-    <div class="answers" id="answers"></div>
+            <div id="options" class="options"></div>
 
+            <div id="explanation" class="explanation"></div>
 
-    <div class="solution hidden" id="solution"></div>
+            <div class="actions">
 
+                <button
+                    id="backBtn"
+                    class="action-btn back-btn"
+                    onclick="previousQuestion()">
+                    ← Oldingi
+                </button>
 
-    <div class="navigation">
+                <button
+                    id="nextBtn"
+                    class="action-btn next-btn"
+                    onclick="nextQuestion()"
+                    disabled>
+                    Keyingi →
+                </button>
 
-        <button
-            class="secondary"
-            id="previous">
-            ← Oldingi
-        </button>
+                <button
+                    id="finishBtn"
+                    class="action-btn finish-btn"
+                    onclick="finishTest()">
+                    Testni yakunlash
+                </button>
 
-        <button
-            class="secondary"
-            id="finish">
-            Testni yakunlash
-        </button>
+            </div>
 
-        <button
-            class="startBtn"
-            id="next">
-            Keyingi →
-        </button>
+        </div>
 
     </div>
 
 </section>
 
+<!-- RESULT -->
+<section id="resultScreen" class="screen">
 
-<!-- NATIJA -->
+    <div class="result-card">
 
-<section class="result hidden" id="result">
-
-    <h2>Test natijasi</h2>
-
-    <div class="stats">
-
-        <div class="stat">
-            <strong id="correctCount">0</strong>
-            To‘g‘ri
+        <div class="result-title">
+            <h1>Test natijasi</h1>
+            <p id="resultSubject" style="color:#94a3b8;margin-top:8px;"></p>
         </div>
 
-        <div class="stat">
-            <strong id="wrongCount">0</strong>
-            Noto‘g‘ri
+        <div id="score" class="score">0%</div>
+
+        <div class="score-label">
+            Natija
         </div>
 
-        <div class="stat">
-            <strong id="emptyCount">0</strong>
-            Javobsiz
+        <div class="stats">
+
+            <div class="stat">
+                <strong id="correctCount">0</strong>
+                <span>To‘g‘ri</span>
+            </div>
+
+            <div class="stat">
+                <strong id="wrongCount">0</strong>
+                <span>Noto‘g‘ri</span>
+            </div>
+
+            <div class="stat">
+                <strong id="unansweredCount">0</strong>
+                <span>Javobsiz</span>
+            </div>
+
+        </div>
+
+        <div class="level">
+
+            <h3 id="levelTitle">
+                Natija
+            </h3>
+
+            <p id="levelText"></p>
+
+        </div>
+
+        <div class="analysis">
+
+            <h3>Mavzular bo‘yicha natija</h3>
+
+            <div id="topicAnalysis"></div>
+
+        </div>
+
+        <div class="result-actions">
+
+            <button
+                class="home-btn"
+                onclick="goHome()">
+                Fanlarga qaytish
+            </button>
+
+            <button
+                class="retry-btn"
+                onclick="retryTest()">
+                Qayta ishlash
+            </button>
+
         </div>
 
     </div>
 
-
-    <div class="level" id="level"></div>
-
-    <p id="levelText"></p>
-
-
-    <h3 style="margin-top:30px;">
-        Mavzular bo‘yicha natija
-    </h3>
-
-    <div id="topics"></div>
-
-
-    <br>
-
-    <button
-        class="startBtn"
-        id="again">
-        Qayta ishlash
-    </button>
-
-    <button
-        class="secondary"
-        id="back">
-        Fanlarga qaytish
-    </button>
-
 </section>
 
-</div>
+<footer>
+    © Mirahmatov — Milliy Sertifikat tayyorgarlik platformasi
+</footer>
 
 
 <script>
 
 /* =========================================================
-   FANLAR
+   ASOSIY SOZLAMALAR
 ========================================================= */
 
-const subjects = [
-    "Matematika",
-    "Ingliz tili",
-    "Ona tili va adabiyot",
-    "Tarix",
-    "Fizika",
-    "Iqtisodiyot",
-    "Kimyo",
-    "Biologiya"
-];
+const QUESTIONS_PER_TEST = 45;
+
+/*
+   2 soatlik variant.
+   Har 2 soatda yangi variant raqami hosil bo‘ladi.
+*/
+const VARIANT_TIME = 2 * 60 * 60 * 1000;
 
 
 /* =========================================================
-   SAVOLLAR
-   HAR BIR FAN 45 TA SAVOLGA TO‘LDIRILADI
+   FANLAR
 ========================================================= */
 
-const questionBank = {
-
-
-/* ================= MATEMATIKA ================= */
-
-"Matematika":[
-
-{
-topic:"Algebra",
-q:"Agar x + 1/x = 3 bo‘lsa, x² + 1/x² nechaga teng?",
-a:["7","8","9","11"],
-correct:0,
-exp:"(x + 1/x)² = x² + 2 + 1/x². 9 = x² + 2 + 1/x². Demak javob 7."
-},
-
-{
-topic:"Algebra",
-q:"2x² − 5x − 3 = 0 tenglamaning katta ildizini toping.",
-a:["3","1,5","−0,5","−3"],
-correct:0,
-exp:"Diskriminant 49. Ildizlar 3 va −0,5."
-},
-
-{
-topic:"Funksiya",
-q:"f(x)=x²−4x+1 funksiyaning eng kichik qiymati nechaga teng?",
-a:["−3","−4","1","3"],
-correct:0,
-exp:"f(x)=(x−2)²−3. Shuning uchun minimum −3."
-},
-
-{
-topic:"Geometriya",
-q:"Tomonlari 13, 14 va 15 bo‘lgan uchburchak yuzini toping.",
-a:["84","90","91","96"],
-correct:0,
-exp:"Geron formulasi: p=21. S=√(21·8·7·6)=84."
-},
-
-{
-topic:"Ehtimollik",
-q:"Ikki marta tanga tashlanganda aynan bir marta gerb tushish ehtimoli?",
-a:["1/2","1/4","3/4","1/3"],
-correct:0,
-exp:"HT va TH — 4 holatdan 2 tasi. 2/4=1/2."
-},
-
-{
-topic:"Algebra",
-q:"a+b=10 va ab=21 bo‘lsa, a²+b² nechaga teng?",
-a:["58","79","100","121"],
-correct:0,
-exp:"a²+b²=(a+b)²−2ab=100−42=58."
-},
-
-{
-topic:"Progressiya",
-q:"5, 9, 13, ... arifmetik progressiyaning 20-hadi?",
-a:["81","77","85","89"],
-correct:0,
-exp:"a20=5+19·4=81."
-},
-
-{
-topic:"Geometriya",
-q:"Radiusi 6 bo‘lgan doiraning yuzi nechaga teng? π=3,14",
-a:["113,04","37,68","75,36","226,08"],
-correct:0,
-exp:"S=πr²=3,14·36=113,04."
-},
-
-{
-topic:"Tenglama",
-q:"|2x−5|=7 tenglamaning ildizlari?",
-a:["6 va −1","1 va 6","−6 va 1","5 va −6"],
-correct:0,
-exp:"2x−5=7 yoki −7. x=6 yoki −1."
-}
-
-],
-
-
-/* ================= ONA TILI ================= */
-
-"Ona tili va adabiyot":[
-
-{
-topic:"Morfologiya",
-q:"Qaysi so‘z ravish hisoblanadi?",
-a:["sekin","yashil","kitob","uch"],
-correct:0,
-exp:"“Sekin” harakatning tarzini bildiradi."
-},
-
-{
-topic:"Sintaksis",
-q:"“Bahor keldi va dalalar yashnadi” gapida nechta grammatik asos bor?",
-a:["2","1","3","4"],
-correct:0,
-exp:"“Bahor keldi” va “dalalar yashnadi” — 2 ta grammatik asos."
-},
-
-{
-topic:"Leksikologiya",
-q:"“Ko‘ngli tog‘dek ko‘tarildi” birikmasida qaysi vosita bor?",
-a:["O‘xshatish","Metonimiya","Kinoya","Sinekdoxa"],
-correct:0,
-exp:"“-dek” qo‘shimchasi o‘xshatish ma’nosini bildiradi."
-},
-
-{
-topic:"Adabiyot",
-q:"Epik turning asosiy belgisi qaysi?",
-a:["Voqeabandlik","Faqat dialog","Faqat kechinma","Faqat sahnaviylik"],
-correct:0,
-exp:"Epik asarlarda voqea-hodisalar bayon qilinadi."
-},
-
-{
-topic:"Adabiyot",
-q:"G‘azalning asosiy tarkibiy birligi?",
-a:["Bayt","Bob","Parda","Band"],
-correct:0,
-exp:"G‘azal baytlardan tashkil topadi."
-},
-
-{
-topic:"Sintaksis",
-q:"Qaysi gap qo‘shma gap?",
-a:[
-"Quyosh chiqdi va havo isidi.",
-"Quyosh chiqdi.",
-"Havo iliq.",
-"Bolalar keldi."
-],
-correct:0,
-exp:"Gapda ikkita grammatik asos mavjud."
-},
-
-{
-topic:"Morfologiya",
-q:"“Kitoblarimiz” so‘zida nechta qo‘shimcha bor?",
-a:["2","1","3","4"],
-correct:0,
-exp:"-lar ko‘plik, -imiz egalik qo‘shimchasi."
-},
-
-{
-topic:"Adabiyot",
-q:"Lirik asarda asosan nima ifodalanadi?",
-a:[
-"Kechinma va tuyg‘u",
-"Tarixiy sana",
-"Ilmiy dalil",
-"Texnik jarayon"
-],
-correct:0,
-exp:"Lirika insonning ichki kechinmalarini ifodalaydi."
-},
-
-{
-topic:"Leksikologiya",
-q:"Qaysi juftlik sinonim?",
-a:[
-"go‘zal — chiroyli",
-"katta — kichik",
-"issiq — sovuq",
-"kelmoq — ketmoq"
-],
-correct:0,
-exp:"Go‘zal va chiroyli ma’nodosh so‘zlardir."
-}
-
-],
-
-
-/* ================= TARIX ================= */
-
-"Tarix":[
-
-{
-topic:"O‘zbekiston tarixi",
-q:"O‘zbekiston davlat mustaqilligi qachon e’lon qilingan?",
-a:[
-"1991-yil 31-avgust",
-"1991-yil 1-sentabr",
-"1990-yil 20-iyun",
-"1992-yil 8-dekabr"
-],
-correct:0,
-exp:"Mustaqillik 1991-yil 31-avgustda e’lon qilingan."
-},
-
-{
-topic:"O‘rta asrlar",
-q:"Amir Temur davlatining poytaxti qaysi shahar bo‘lgan?",
-a:["Samarqand","Buxoro","Xiva","Toshkent"],
-correct:0,
-exp:"Samarqand Amir Temur davlatining poytaxti bo‘lgan."
-},
-
-{
-topic:"Qadimgi tarix",
-q:"Qadimgi Misrning mashhur yozuv turi?",
-a:["Iyeroglif","Mixxat","Runik","Lotin"],
-correct:0,
-exp:"Qadimgi Misrda iyeroglif yozuvi ishlatilgan."
-},
-
-{
-topic:"Jahon tarixi",
-q:"Renessans dastlab qaysi hududda kuchli rivojlangan?",
-a:["Italiya","Angliya","Rossiya","Hindiston"],
-correct:0,
-exp:"Uyg‘onish davri dastlab Italiya shaharlarida rivojlangan."
-},
-
-{
-topic:"Manbashunoslik",
-q:"Birlamchi tarixiy manbaga misol qaysi?",
-a:[
-"Davrga oid farmon",
-"Zamonaviy darslik",
-"Keyingi maqola",
-"Ensiklopediya"
-],
-correct:0,
-exp:"Voqea davrida yaratilgan hujjat birlamchi manbadir."
-},
-
-{
-topic:"O‘zbekiston tarixi",
-q:"O‘zbekiston Respublikasi Konstitutsiyasi qachon qabul qilingan?",
-a:[
-"1992-yil 8-dekabr",
-"1991-yil 31-avgust",
-"1990-yil 20-iyun",
-"1993-yil 1-sentabr"
-],
-correct:0,
-exp:"Konstitutsiya 1992-yil 8-dekabrda qabul qilingan."
-},
-
-{
-topic:"Jahon tarixi",
-q:"Birinchi jahon urushi qaysi yillarda bo‘lgan?",
-a:["1914–1918","1939–1945","1905–1907","1920–1924"],
-correct:0,
-exp:"Birinchi jahon urushi 1914–1918-yillarda davom etgan."
-},
-
-{
-topic:"O‘zbekiston tarixi",
-q:"Temuriylar davrida mashhur astronom kim bo‘lgan?",
-a:["Mirzo Ulug‘bek","Alisher Navoiy","Bobur","Beruniy"],
-correct:0,
-exp:"Mirzo Ulug‘bek astronomiya rivojiga katta hissa qo‘shgan."
-},
-
-{
-topic:"Jahon tarixi",
-q:"Sanoat inqilobi dastlab qaysi davlatda boshlangan?",
-a:["Buyuk Britaniya","Fransiya","Ispaniya","AQSh"],
-correct:0,
-exp:"Sanoat inqilobining dastlabki markazi Buyuk Britaniya bo‘lgan."
-}
-
-],
-
-
-/* ================= FIZIKA ================= */
-
-"Fizika":[
-
-{
-topic:"Mexanika",
-q:"10 m/s tezlikdagi jism 6 sekundda qancha yo‘l bosadi?",
-a:["60 m","16 m","36 m","600 m"],
-correct:0,
-exp:"s=v·t=10·6=60 m."
-},
-
-{
-topic:"Elektr",
-q:"12 V kuchlanish va 3 Ω qarshilikda tok kuchi qancha?",
-a:["4 A","36 A","0,25 A","9 A"],
-correct:0,
-exp:"I=U/R=12/3=4 A."
-},
-
-{
-topic:"Mexanika",
-q:"2 kg jismga 6 N kuch ta’sir qilsa tezlanish qancha?",
-a:["3 m/s²","12 m/s²","4 m/s²","8 m/s²"],
-correct:0,
-exp:"a=F/m=6/2=3 m/s²."
-},
-
-{
-topic:"Issiqlik",
-q:"0,5 kg suvni 20°C ga isitish uchun qancha issiqlik kerak? c=4200 J/(kg·°C)",
-a:["42000 J","21000 J","84000 J","4200 J"],
-correct:0,
-exp:"Q=cmΔT=0,5·4200·20=42000 J."
-},
-
-{
-topic:"Optika",
-q:"Yorug‘lik vakuumda taxminan qanday tezlikda tarqaladi?",
-a:["3·10⁸ m/s","3·10⁶ m/s","3·10⁵ m/s","3·10⁴ m/s"],
-correct:0,
-exp:"Yorug‘lik tezligi taxminan 3·10⁸ m/s."
-},
-
-{
-topic:"Mexanika",
-q:"72 km/soat necha m/s ga teng?",
-a:["20","18","25","30"],
-correct:0,
-exp:"72÷3,6=20 m/s."
-},
-
-{
-topic:"Elektr",
-q:"6 Ω qarshilikdan 2 A tok o‘tsa kuchlanish qancha?",
-a:["12 V","3 V","8 V","18 V"],
-correct:0,
-exp:"U=IR=2·6=12 V."
-},
-
-{
-topic:"Impuls",
-q:"2 kg massa 5 m/s tezlik bilan harakat qilsa impulsi?",
-a:["10 kg·m/s","7 kg·m/s","2,5 kg·m/s","25 kg·m/s"],
-correct:0,
-exp:"p=mv=2·5=10 kg·m/s."
-},
-
-{
-topic:"Energiya",
-q:"2 kg jism 5 m balandlikda. g=10 m/s². Potensial energiyasi?",
-a:["100 J","50 J","25 J","200 J"],
-correct:0,
-exp:"Ep=mgh=2·10·5=100 J."
-}
-
-],
-
-
-/* ================= IQTISODIYOT ================= */
-
-"Iqtisodiyot":[
-
-{
-topic:"Talab",
-q:"Narx oshganda boshqa shartlar o‘zgarmasa talab miqdori odatda qanday o‘zgaradi?",
-a:["Kamayadi","Ortadi","O‘zgarmaydi","Nol bo‘ladi"],
-correct:0,
-exp:"Talab qonuniga ko‘ra narx oshishi talab miqdorini kamaytiradi."
-},
-
-{
-topic:"Makroiqtisodiyot",
-q:"YAIM nimani ifodalaydi?",
-a:[
-"Yakuniy tovar va xizmatlar qiymatini",
-"Faqat eksportni",
-"Faqat davlat qarzini",
-"Faqat inflyatsiyani"
-],
-correct:0,
-exp:"YAIM ma’lum davrda yaratilgan yakuniy mahsulot va xizmatlar qiymatidir."
-},
-
-{
-topic:"Inflyatsiya",
-q:"Inflyatsiya nima?",
-a:[
-"Umumiy narxlar darajasining o‘sishi",
-"Ishsizlikning yo‘qolishi",
-"Eksportning kamayishi",
-"Valyuta zaxirasining ko‘payishi"
-],
-correct:0,
-exp:"Inflyatsiya umumiy narxlar darajasining o‘sishidir."
-},
-
-{
-topic:"Moliya",
-q:"1 000 000 so‘m 10% oddiy foiz bilan bir yilga qo‘yilsa foiz daromadi?",
-a:["100 000","10 000","1 100 000","900 000"],
-correct:0,
-exp:"1 000 000×0,10=100 000."
-},
-
-{
-topic:"Bozor",
-q:"Raqobatning muhim vazifalaridan biri?",
-a:[
-"Samaradorlik va tanlovni rag‘batlantirish",
-"Barcha firmalarni birlashtirish",
-"Narxni doim bir xil qilish",
-"Talabni yo‘qotish"
-],
-correct:0,
-exp:"Raqobat firmalarni samaradorlikka undaydi."
-},
-
-{
-topic:"Talab",
-q:"Normal tovar uchun iste’molchi daromadi oshsa talab odatda?",
-a:["Ortadi","Kamayadi","Nol bo‘ladi","Har doim o‘zgarmaydi"],
-correct:0,
-exp:"Normal tovarlarda daromad oshishi talabni oshirishi mumkin."
-},
-
-{
-topic:"Mehnat bozori",
-q:"Ishsizlik darajasi nimani bildiradi?",
-a:[
-"Ishchi kuchidagi ishsizlar ulushini",
-"Barcha aholi sonini",
-"Eksport hajmini",
-"Inflyatsiya tezligini"
-],
-correct:0,
-exp:"Ishsizlik darajasi ishchi kuchidagi ishsizlar ulushidir."
-},
-
-{
-topic:"Moliya",
-q:"Daromad 5 mln, xarajat 4 mln bo‘lsa jamg‘arma qancha?",
-a:["1 mln","9 mln","4 mln","0,5 mln"],
-correct:0,
-exp:"5−4=1 mln so‘m."
-},
-
-{
-topic:"Bozor",
-q:"Monopoliya bozorida odatda nechta asosiy sotuvchi hukmron bo‘ladi?",
-a:["Bitta","Ikkita","Ko‘p","Hech biri"],
-correct:0,
-exp:"Monopoliyada bitta asosiy sotuvchi bo‘ladi."
-}
-
-],
-
-
-/* ================= KIMYO ================= */
-
-"Kimyo":[
-
-{
-topic:"Atom",
-q:"Atom raqami 17 bo‘lgan element qaysi?",
-a:["Cl","K","Ca","Ar"],
-correct:0,
-exp:"17 — xlorning atom raqami."
-},
-
-{
-topic:"Stexiometriya",
-q:"H₂O ning nisbiy molekulyar massasi?",
-a:["18","16","17","20"],
-correct:0,
-exp:"2·1+16=18."
-},
-
-{
-topic:"Kislota-asos",
-q:"pH=7 bo‘lgan eritma qanday muhitga ega?",
-a:["Neytral","Kislotali","Ishqoriy","Kuchli kislotali"],
-correct:0,
-exp:"25°C atrofida pH=7 neytral muhit."
-},
-
-{
-topic:"Redoks",
-q:"Oksidlanish jarayonida zarracha nima qiladi?",
-a:["Elektron beradi","Elektron oladi","Neytron beradi","Faqat proton oladi"],
-correct:0,
-exp:"Oksidlanish elektron berish bilan bog‘liq."
-},
-
-{
-topic:"Organik kimyo",
-q:"Metanning formulasi?",
-a:["CH₄","C₂H₆","C₂H₄","CH₃OH"],
-correct:0,
-exp:"Metan CH₄."
-},
-
-{
-topic:"Atom",
-q:"Kislorodning atom raqami?",
-a:["8","16","6","10"],
-correct:0,
-exp:"Kislorodning atom raqami 8."
-},
-
-{
-topic:"Kimyoviy bog‘",
-q:"NaCl kristallidagi asosiy bog‘ turi?",
-a:["Ion bog‘","Metall bog‘","Vodorod bog‘i","Faqat kovalent"],
-correct:0,
-exp:"Na⁺ va Cl⁻ ionlari orasida ion bog‘ hosil bo‘ladi."
-},
-
-{
-topic:"Stexiometriya",
-q:"CO₂ ning molyar massasi?",
-a:["44 g/mol","28 g/mol","32 g/mol","18 g/mol"],
-correct:0,
-exp:"12+2·16=44 g/mol."
-},
-
-{
-topic:"Organik kimyo",
-q:"Etanol formulasi?",
-a:["C₂H₅OH","CH₄","C₂H₄","CH₃COOH"],
-correct:0,
-exp:"Etanolning formulasi C₂H₅OH."
-}
-
-],
-
-
-/* ================= BIOLOGIYA ================= */
-
-"Biologiya":[
-
-{
-topic:"Hujayra",
-q:"Irsiy axborotni asosan qaysi molekula saqlaydi?",
-a:["DNK","Lipid","Glikogen","Suv"],
-correct:0,
-exp:"Irsiy axborot DNK molekulasida saqlanadi."
-},
-
-{
-topic:"Genetika",
-q:"Aa genotip qanday ataladi?",
-a:["Geterozigota","Gomozigota dominant","Gomozigota retsessiv","Poliploid"],
-correct:0,
-exp:"Turli allellarga ega genotip geterozigota deyiladi."
-},
-
-{
-topic:"Ekologiya",
-q:"Oziq zanjirida ishlab chiqaruvchilar odatda kimlar?",
-a:["Yashil o‘simliklar","Yirtqichlar","Parazitlar","Faqat zamburug‘lar"],
-correct:0,
-exp:"O‘simliklar fotosintez orqali organik modda hosil qiladi."
-},
-
-{
-topic:"Fiziologiya",
-q:"Qonda kislorodni asosan nima tashiydi?",
-a:["Gemoglobin","Insulin","Keratin","Kollagen"],
-correct:0,
-exp:"Gemoglobin kislorod tashishda qatnashadi."
-},
-
-{
-topic:"Evolyutsiya",
-q:"Tabiiy tanlanish nimani anglatadi?",
-a:[
-"Moslashgan variantlarning ko‘proq avlod qoldirishi",
-"Barcha organizmlarning bir xil bo‘lishi",
-"Mutatsiyaning yo‘qolishi",
-"Bo‘linishning to‘xtashi"
-],
-correct:0,
-exp:"Moslashgan variantlarning reproduktiv ustunligi tanlanishga olib keladi."
-},
-
-{
-topic:"Hujayra",
-q:"Fotosintez asosan qaysi organoidda kechadi?",
-a:["Xloroplast","Ribosoma","Lizosoma","Yadro"],
-correct:0,
-exp:"Fotosintez xloroplastlarda kechadi."
-},
-
-{
-topic:"Genetika",
-q:"Dominant allel odatda qanday belgilanadi?",
-a:["Katta harf bilan","Kichik harf bilan","Raqam bilan","Belgilanmaydi"],
-correct:0,
-exp:"Genetik yozuvda dominant allel odatda katta harf bilan belgilanadi."
-},
-
-{
-topic:"Fiziologiya",
-q:"Insulin qaysi bez bilan bog‘liq?",
-a:[
-"Oshqozon osti bezi",
-"Qalqonsimon bez",
-"Buyrak usti bezi",
-"Gipofiz"
-],
-correct:0,
-exp:"Insulin oshqozon osti bezining beta hujayralarida ishlab chiqariladi."
-},
-
-{
-topic:"Ekologiya",
-q:"Ekotizimda parchalovchilarga misol?",
-a:[
-"Ko‘plab bakteriya va zamburug‘lar",
-"Faqat qushlar",
-"Faqat o‘simliklar",
-"Yirtqich sutemizuvchilar"
-],
-correct:0,
-exp:"Bakteriya va zamburug‘larning ko‘plab turlari organik qoldiqlarni parchalaydi."
-}
-
-],
-
-
-/* ================= INGLIZ TILI ================= */
-
-"Ingliz tili":[
-
-{
-topic:"Grammar",
-q:"If I ___ more time, I would learn another language.",
-a:["had","have","will have","am having"],
-correct:0,
-exp:"Second conditional: If + Past Simple, would + verb."
-},
-
-{
-topic:"Grammar",
-q:"Choose the correct sentence.",
-a:[
-"She has lived here since 2020.",
-"She is live here since 2020.",
-"She lived here since 2020.",
-"She has live here since 2020."
-],
-correct:0,
-exp:"Present Perfect va since bilan to‘g‘ri tuzilma."
-},
-
-{
-topic:"Vocabulary",
-q:"What is the closest meaning of “reliable”?",
-a:["dependable","temporary","expensive","uncertain"],
-correct:0,
-exp:"Reliable = dependable."
-},
-
-{
-topic:"Reading",
-q:"A student studies every evening because she wants to improve her results. Why does she study?",
-a:[
-"To improve her results",
-"To avoid studying",
-"To change schools",
-"To finish earlier"
-],
-correct:0,
-exp:"Matnda uning maqsadi natijalarini yaxshilash ekani aytilgan."
-},
-
-{
-topic:"Grammar",
-q:"By next month, they ___ the project.",
-a:["will have completed","complete","completed","are complete"],
-correct:0,
-exp:"Future Perfect: will have + V3."
-},
-
-{
-topic:"Grammar",
-q:"He ___ to school every day.",
-a:["goes","go","going","gone"],
-correct:0,
-exp:"He/She/It bilan Present Simple’da goes."
-},
-
-{
-topic:"Vocabulary",
-q:"What is the opposite of “ancient”?",
-a:["modern","old","historic","early"],
-correct:0,
-exp:"Ancient so‘zining qarama-qarshisi modern."
-},
-
-{
-topic:"Grammar",
-q:"I have never ___ to London.",
-a:["been","went","go","going"],
-correct:0,
-exp:"Present Perfect: have + past participle."
-},
-
-{
-topic:"Reading",
-q:"The road was closed because of heavy snow. What caused the closure?",
-a:["Heavy snow","A festival","A traffic light","A new road"],
-correct:0,
-exp:"Matnda sabab heavy snow deb ko‘rsatilgan."
-}
-
-]
+const SUBJECTS = {
+
+    matematika:{
+        name:"Matematika",
+        icon:"📐",
+        description:"Murakkab algebra, geometriya, funksiya va mantiqiy masalalar.",
+        time:90
+    },
+
+    english:{
+        name:"Ingliz tili",
+        icon:"🇬🇧",
+        description:"Grammar, vocabulary, reading va murakkab kontekstli savollar.",
+        time:60
+    },
+
+    ona:{
+        name:"Ona tili va adabiyot",
+        icon:"📚",
+        description:"Til qurilishi, grammatika, uslubiyat va adabiyot.",
+        time:90
+    },
+
+    tarix:{
+        name:"Tarix",
+        icon:"🏛️",
+        description:"O‘zbekiston va jahon tarixidan sabab-oqibatli savollar.",
+        time:90
+    },
+
+    fizika:{
+        name:"Fizika",
+        icon:"⚛️",
+        description:"Formula, hisoblash va fizik hodisalarni tahlil qilish.",
+        time:90
+    },
+
+    iqtisod:{
+        name:"Iqtisodiyot",
+        icon:"📊",
+        description:"Iqtisodiy tushunchalar, bozor va hisob-kitoblar.",
+        time:70
+    },
+
+    kimyo:{
+        name:"Kimyo",
+        icon:"🧪",
+        description:"Reaksiya, mol, massa, eritma va kimyoviy mantiq.",
+        time:90
+    },
+
+    biologiya:{
+        name:"Biologiya",
+        icon:"🧬",
+        description:"Genetika, fiziologiya, ekologiya va hujayra biologiyasi.",
+        time:90
+    }
 
 };
 
 
 /* =========================================================
-   9 TA ASOSIY SAVOLDAN 45 TA SAVOL YARATISH
+   YORDAMCHI FUNKSIYALAR
 ========================================================= */
 
-function create45Questions(base){
+function shuffle(array){
 
-    let result=[];
+    const a = [...array];
 
-    for(let i=0;i<45;i++){
+    for(let i=a.length-1;i>0;i--){
 
-        let original=base[i % base.length];
+        const j = Math.floor(Math.random()*(i+1));
 
-        result.push({
-
-            topic:original.topic,
-
-            q:original.q,
-
-            a:[...original.a],
-
-            correct:original.correct,
-
-            exp:original.exp
-
-        });
+        [a[i],a[j]] = [a[j],a[i];
 
     }
 
-    return result;
+    return a;
+}
+
+
+function hashString(str){
+
+    let hash = 0;
+
+    for(let i=0;i<str.length;i++){
+
+        hash =
+            ((hash << 5) - hash) +
+            str.charCodeAt(i);
+
+        hash |= 0;
+
+    }
+
+    return Math.abs(hash);
+
+}
+
+
+function randomInt(min,max){
+
+    return Math.floor(
+        Math.random()*(max-min+1)
+    ) + min;
+
+}
+
+
+/*
+   Savol yaratish.
+   correctIndex har doim original to‘g‘ri javobni bildiradi.
+*/
+function makeQuestion(
+    id,
+    text,
+    options,
+    correct,
+    explanation,
+    topic,
+    difficulty="Murakkab"
+){
+
+    const optionObjects = options.map(
+        (text,index)=>({
+            text:text,
+            correct:index===correct
+        })
+    );
+
+    return {
+        id,
+        text,
+        options:shuffle(optionObjects),
+        explanation,
+        topic,
+        difficulty
+    };
+
 }
 
 
 /* =========================================================
-   HAR BIR FAN 45 TA
+   MATEMATIKA
+   45 TA TURFA SAVOL
 ========================================================= */
 
-let finalBank={};
+function createMathQuestions(){
 
-subjects.forEach(subject=>{
+    const q=[];
 
-    finalBank[subject]=create45Questions(
-        questionBank[subject]
+    q.push(
+        makeQuestion(
+            "M001",
+            "Agar x + 1/x = 5 bo‘lsa, x² + 1/x² qiymatini toping.",
+            ["23","25","27","21"],
+            0,
+            "(x + 1/x)² = x² + 2 + 1/x². Demak 25 = x² + 1/x² + 2, natija 23.",
+            "Algebra"
+        )
     );
 
-});
+    q.push(
+        makeQuestion(
+            "M002",
+            "f(x)=x²−6x+11 funksiyaning eng kichik qiymatini toping.",
+            ["2","3","1","5"],
+            0,
+            "f(x)=(x−3)²+2. Kvadratning eng kichik qiymati 0 bo‘lgani uchun minimum 2.",
+            "Funksiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M003",
+            "3^(x+1)=27^(2x−1) bo‘lsa, x ni toping.",
+            ["4/5","2/5","5/4","1/2"],
+            0,
+            "27=3³. Shuning uchun x+1=3(2x−1). Bundan 5=5x, x=1.",
+            "Darajalar"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M004",
+            "Arifmetik progressiyada a₃=11 va a₈=31. a₁ ni toping.",
+            ["3","5","7","1"],
+            0,
+            "a8−a3=5d=20, d=4. a3=a1+2d, a1=3.",
+            "Progressiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M005",
+            "Geometrik progressiyada b₂=6 va b₅=162. Musbat maxrajni toping.",
+            ["3","2","4","6"],
+            0,
+            "b5/b2=q³=27, demak q=3.",
+            "Progressiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M006",
+            "Tenglamaning nechta haqiqiy ildizi bor: |x−2|=x−4?",
+            ["0","1","2","3"],
+            0,
+            "O‘ng tomon musbat bo‘lishi uchun x≥4. Bu holatda x−2=x−4 bo‘lib, ziddiyat kelib chiqadi.",
+            "Tenglama"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M007",
+            "log₂(x−1)+log₂(x−3)=3 tenglamaning katta ildizini toping.",
+            ["5","4","6","3"],
+            0,
+            "(x−1)(x−3)=8. x²−4x−5=0, ildizlar 5 va −1. Soha x>3, demak 5.",
+            "Logarifm"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M008",
+            "sin²x+cos²x ifodaning qiymati nechaga teng?",
+            ["1","0","2","x"],
+            0,
+            "Asosiy trigonometrik ayniyatga ko‘ra sin²x+cos²x=1.",
+            "Trigonometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M009",
+            "Tomonlari 13, 14, 15 bo‘lgan uchburchak yuzini toping.",
+            ["84","90","72","96"],
+            0,
+            "Geron formulasi: p=21. S=√(21·8·7·6)=84.",
+            "Geometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M010",
+            "Radiusi 6 bo‘lgan doiraning yuzini toping.",
+            ["36π","12π","18π","72π"],
+            0,
+            "S=πr²=36π.",
+            "Geometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M011",
+            "2x²−5x−3=0 tenglamaning musbat ildizini toping.",
+            ["3","1/2","−1/2","−3"],
+            0,
+            "D=49. Ildizlar (5±7)/4, musbat ildiz 3.",
+            "Kvadrat tenglama"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M012",
+            "x²−4x+7 ifodaning eng kichik qiymati nechaga teng?",
+            ["3","7","4","−3"],
+            0,
+            "x²−4x+7=(x−2)²+3.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M013",
+            "Agar 2^a=8 va 3^b=27 bo‘lsa, a+b nechaga teng?",
+            ["6","5","7","9"],
+            0,
+            "a=3, b=3. Shuning uchun a+b=6.",
+            "Darajalar"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M014",
+            "5 ta turli kitobdan 3 tasini tanlash nechta usulda amalga oshiriladi?",
+            ["10","15","20","60"],
+            0,
+            "C(5,3)=5!/(3!2!)=10.",
+            "Kombinatorika"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M015",
+            "Tanga 3 marta tashlanganda aynan 2 marta gerb tushish ehtimoli qancha?",
+            ["3/8","1/2","1/4","5/8"],
+            0,
+            "3 ta qulay holat mavjud, jami 8 holat. P=3/8.",
+            "Ehtimollik"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M016",
+            "x+y=10 va xy=21 bo‘lsa, x²+y² ni toping.",
+            ["58","79","42","100"],
+            0,
+            "x²+y²=(x+y)²−2xy=100−42=58.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M017",
+            "a+b=12, ab=35. |a−b| qiymatini toping.",
+            ["2","4","6","8"],
+            0,
+            "(a−b)²=(a+b)²−4ab=144−140=4. |a−b|=2.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M018",
+            "x/3 + x/4 = 14 bo‘lsa, x ni toping.",
+            ["24","21","28","18"],
+            0,
+            "7x/12=14, x=24.",
+            "Tenglama"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M019",
+            "Funksiya f(x)=2x−3 bo‘lsa, f(f(3)) qiymatini toping.",
+            ["3","6","0","9"],
+            0,
+            "f(3)=3, yana f(3)=3.",
+            "Funksiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M020",
+            "x²+y²=25 va x+y=7 bo‘lsa, xy ni toping.",
+            ["12","10","14","6"],
+            0,
+            "25=49−2xy, demak 2xy=24 va xy=12.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M021",
+            "Bir sonning 20% i 36 ga teng. Sonni toping.",
+            ["180","160","200","144"],
+            0,
+            "0.2x=36, x=180.",
+            "Foiz"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M022",
+            "Agar a:b=3:5 va b:c=10:7 bo‘lsa, a:c nisbatni toping.",
+            ["6:7","3:7","5:7","6:5"],
+            0,
+            "a:b=6:10 qilib olsak, b:c=10:7. Demak a:c=6:7.",
+            "Nisbat"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M023",
+            "Uchburchak ichki burchaklari 2x, 3x va 4x. Eng katta burchakni toping.",
+            ["80°","60°","90°","100°"],
+            0,
+            "9x=180, x=20. Eng katta burchak 4x=80°.",
+            "Geometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M024",
+            "To‘g‘ri burchakli uchburchak katetlari 6 va 8. Gipotenuzani toping.",
+            ["10","12","14","8"],
+            0,
+            "c=√(36+64)=10.",
+            "Geometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M025",
+            "x²−9<0 tengsizlikning yechimini toping.",
+            ["−3<x<3","x>3","x<−3","x≤3"],
+            0,
+            "(x−3)(x+3)<0 bo‘lgani uchun −3<x<3.",
+            "Tengsizlik"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M026",
+            "2x−7>5 tengsizlikning eng kichik butun yechimi qaysi?",
+            ["7","6","8","5"],
+            0,
+            "2x>12, x>6. Eng kichik butun yechim 7.",
+            "Tengsizlik"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M027",
+            "a₁=2, d=3 bo‘lgan arifmetik progressiyaning 10-hadini toping.",
+            ["29","30","27","32"],
+            0,
+            "a10=2+9·3=29.",
+            "Progressiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M028",
+            "1+2+3+...+50 yig‘indisini toping.",
+            ["1275","1250","1300","1225"],
+            0,
+            "S=50·51/2=1275.",
+            "Progressiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M029",
+            "x²−10x+25=0 tenglama nechta turli ildizga ega?",
+            ["1","2","0","3"],
+            0,
+            "Tenglama (x−5)²=0 ko‘rinishida, yagona ildiz x=5.",
+            "Kvadrat tenglama"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M030",
+            "Agar sin x=3/5 va x o‘tkir burchak bo‘lsa, cos x ni toping.",
+            ["4/5","3/4","5/4","2/5"],
+            0,
+            "cos²x=1−9/25=16/25. x o‘tkir bo‘lgani uchun cos x=4/5.",
+            "Trigonometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M031",
+            "log₃81 qiymatini toping.",
+            ["4","3","5","9"],
+            0,
+            "81=3⁴.",
+            "Logarifm"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M032",
+            "2, 5, 11, 23, 47 ketma-ketligining keyingi hadi qaysi?",
+            ["95","94","96","91"],
+            0,
+            "Har safar 2 ga ko‘paytirib 1 qo‘shilgan: 47·2+1=95.",
+            "Mantiq"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M033",
+            "Bir ishni A 12 kunda, B 18 kunda bajaradi. Birgalikda necha kunda bajaradilar?",
+            ["36/5 kun","6 kun","7 kun","9 kun"],
+            0,
+            "1/12+1/18=5/36. Vaqt=36/5 kun.",
+            "Masala"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M034",
+            "Tomoni 10 bo‘lgan kvadratning diagonalini toping.",
+            ["10√2","20","5√2","100"],
+            0,
+            "d=a√2=10√2.",
+            "Geometriya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M035",
+            "x+y=5, x−y=1 bo‘lsa, x²−y² ni toping.",
+            ["5","4","6","10"],
+            0,
+            "x²−y²=(x−y)(x+y)=1·5=5.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M036",
+            "4, 7, 10, 13, ... progressiyaning 20-hadini toping.",
+            ["61","64","60","63"],
+            0,
+            "a20=4+19·3=61.",
+            "Progressiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M037",
+            "Agar x+y=9 va x²+y²=53 bo‘lsa, xy ni toping.",
+            ["14","16","13","12"],
+            0,
+            "81=53+2xy, xy=14.",
+            "Algebra"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M038",
+            "8 ta elementdan 2 tasini tartib bilan tanlash nechta usulda?",
+            ["56","28","16","64"],
+            0,
+            "A(8,2)=8·7=56.",
+            "Kombinatorika"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M039",
+            "Qutida 5 ta oq va 3 ta qora shar bor. Tasodifiy olingan shar oq bo‘lish ehtimoli?",
+            ["5/8","3/8","1/2","5/3"],
+            0,
+            "Jami 8 ta shar, 5 tasi oq. P=5/8.",
+            "Ehtimollik"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M040",
+            "y=3x−2 to‘g‘ri chiziqning y o‘qini kesish nuqtasi qaysi?",
+            ["(0;−2)","(−2;0)","(0;2)","(2;0)"],
+            0,
+            "x=0 qo‘yilsa y=−2.",
+            "Funksiya"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M041",
+            "x²−5x+6=0 tenglama ildizlari yig‘indisi nechaga teng?",
+            ["5","6","−5","−6"],
+            0,
+            "Vieta bo‘yicha ildizlar yig‘indisi 5.",
+            "Vieta"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M042",
+            "x²−5x+6=0 tenglama ildizlari ko‘paytmasi nechaga teng?",
+            ["6","5","−6","−5"],
+            0,
+            "Vieta bo‘yicha ildizlar ko‘paytmasi 6.",
+            "Vieta"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M043",
+            "Agar 3x−2=10 bo‘lsa, x³ qiymatini toping.",
+            ["64","16","8","32"],
+            0,
+            "3x=12, x=4, x³=64.",
+            "Tenglama"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M044",
+            "Bir son 30% ga oshirilganda 91 bo‘ldi. Dastlabki sonni toping.",
+            ["70","63","75","65"],
+            0,
+            "1.3x=91, x=70.",
+            "Foiz"
+        )
+    );
+
+    q.push(
+        makeQuestion(
+            "M045",
+            "Agar x−1/x=2 bo‘lsa, x²+1/x² qiymatini toping.",
+            ["6","4","8","2"],
+            0,
+            "(x−1/x)²=x²−2+1/x²=4. Demak x²+1/x²=6.",
+            "Algebra"
+        )
+    );
+
+    return q;
+}
 
 
 /* =========================================================
-   FANLARNI EKRANGA CHIQARISH
+   QOLGAN FANLAR UCHUN NOYOB SAVOLLAR
+   Har bir fan uchun alohida ID va mavzu.
 ========================================================= */
 
-const subjectsBox=
-document.getElementById("subjects");
+function createEnglishQuestions(){
 
-subjects.forEach((subject,index)=>{
+    const q=[];
 
-    const div=document.createElement("div");
+    const data=[
 
-    div.className="subject";
+        ["E001","If she had known about the problem, she ___ earlier.","would have arrived","will arrive","arrived","would arrive",0,"Third conditional.","Grammar"],
+        ["E002","By the time we arrived, the lecture ___.","had started","starts","has started","would start",0,"Past perfect is used for an earlier past action.","Grammar"],
+        ["E003","The word 'substantial' is closest in meaning to:","considerable","temporary","uncertain","minor",0,"Substantial means considerable or significant.","Vocabulary"],
+        ["E004","He insisted ___ paying for the meal.","on","to","at","for",0,"The verb insist is followed by on + gerund.","Grammar"],
+        ["E005","If I ___ you, I would reconsider the decision.","were","am","was","be",0,"In hypothetical conditionals, were is standard after I.","Grammar"],
+        ["E006","The report was rejected because the evidence was ___.","insufficient","deliberate","accurate","relevant",0,"Insufficient means not enough.","Vocabulary"],
+        ["E007","She is believed ___ the most experienced candidate.","to be","being","be","to being",0,"Passive reporting structure: is believed to be.","Grammar"],
+        ["E008","Hardly had he entered the room ___ the lights went out.","when","than","then","while",0,"Hardly ... when is the correct paired structure.","Grammar"],
+        ["E009","The opposite of 'reluctant' is:","willing","uncertain","careless","silent",0,"Reluctant means unwilling; willing is the opposite.","Vocabulary"],
+        ["E010","Despite ___ exhausted, he continued working.","being","be","was","to be",0,"Despite is followed by a noun or gerund.","Grammar"],
+        ["E011","The committee ___ the proposal after a lengthy discussion.","approved","has approving","approve","was approve",0,"Approved is the correct past form.","Grammar"],
+        ["E012","If the temperature drops below zero, water ___.","freezes","would freeze","froze","has frozen",0,"Zero conditional expresses general truths.","Grammar"],
+        ["E013","'To undermine' most nearly means:","to weaken gradually","to construct quickly","to explain clearly","to improve completely",0,"Undermine means weaken, often gradually or indirectly.","Vocabulary"],
+        ["E014","No sooner had the meeting begun ___ the fire alarm sounded.","than","when","then","while",0,"No sooner ... than is the standard construction.","Grammar"],
+        ["E015","She asked me where ___.","I lived","did I live","I live","do I live",0,"Indirect questions use statement word order.","Grammar"],
+        ["E016","The research findings are ___ with previous studies.","consistent","dependent","opposite","temporary",0,"Consistent with means in agreement with.","Vocabulary"],
+        ["E017","He denied ___ the confidential document.","leaking","to leak","leaked","leak",0,"Deny is followed by a gerund.","Grammar"],
+        ["E018","Were I to accept the offer, I ___ abroad.","would move","will move","moved","had moved",0,"Were I to... expresses a hypothetical condition.","Grammar"],
+        ["E019","The manager had the report ___ before publication.","revised","revising","revise","to revising",0,"Have + object + past participle expresses arranged completion.","Grammar"],
+        ["E020","The phrase 'in light of' means:","considering","despite","instead of","without",0,"In light of means considering the information.","Vocabulary"],
+        ["E021","She would rather you ___ the issue privately.","discussed","discuss","will discuss","had discuss",0,"Would rather + subject + past form for present preference.","Grammar"],
+        ["E022","The results were ___ different from what researchers expected.","considerably","considerable","consideration","consider",0,"Considerably is the adverb modifying different.","Grammar"],
+        ["E023","He is responsible ___ ensuring that the rules are followed.","for","to","at","with",0,"Responsible for is the standard collocation.","Grammar"],
+        ["E024","The evidence was too ___ to support the conclusion.","ambiguous","obvious","certain","precise",0,"Ambiguous evidence allows multiple interpretations.","Vocabulary"],
+        ["E025","Only after the experiment ___ the error.","did they discover","they discovered","discovered they","they did discover",0,"Negative adverbial inversion requires auxiliary + subject.","Grammar"],
+        ["E026","She has worked here ___ 2019.","since","for","from","during",0,"Since is used with a starting point.","Grammar"],
+        ["E027","The scientist emphasized the need for further ___.","investigation","investigate","investigated","investigative",0,"A noun is needed after further.","Vocabulary"],
+        ["E028","If he had followed the instructions, the accident ___.","would not have happened","will not happen","does not happen","did not happen",0,"Third conditional refers to an unreal past result.","Grammar"],
+        ["E029","The proposal was rejected on the ___ that it was too expensive.","grounds","reasons","causes","basis",0,"On the grounds that is the standard expression.","Vocabulary"],
+        ["E030","I wish I ___ more time yesterday.","had had","have","would have","am having",0,"Past regret uses wish + past perfect.","Grammar"],
+        ["E031","The lecture was so complex that several students found it difficult to ___ the main idea.","grasp","grab","catch","hold",0,"Grasp means understand.","Vocabulary"],
+        ["E032","By next June, they ___ the project.","will have completed","complete","completed","have completing",0,"Future perfect describes an action completed before a future time.","Grammar"],
+        ["E033","He objected ___ being treated unfairly.","to","for","at","on",0,"Object to is followed by a noun or gerund.","Grammar"],
+        ["E034","The new policy is intended to ___ unnecessary costs.","reduce","rise","raise","grow",0,"Reduce costs is the correct collocation.","Vocabulary"],
+        ["E035","Scarcely had she finished speaking ___ someone interrupted her.","when","than","then","while",0,"Scarcely ... when is the correct construction.","Grammar"],
+        ["E036","The article provides a ___ analysis of the issue.","comprehensive","temporary","accidental","narrowly",0,"Comprehensive means covering all or nearly all aspects.","Vocabulary"],
+        ["E037","He suggested that the meeting ___ postponed.","be","was","is","being",0,"Mandative subjunctive after suggest: that + base form.","Grammar"],
+        ["E038","The company is on the verge ___ bankruptcy.","of","to","for","with",0,"On the verge of is the fixed expression.","Grammar"],
+        ["E039","The findings cannot be ___ generalized to the entire population.","reliably","reliable","reliance","relying",0,"An adverb modifies generalized.","Grammar"],
+        ["E040","Her explanation was plausible, but it lacked sufficient ___.","evidence","evident","evidently","prove",0,"Evidence is the appropriate noun.","Vocabulary"],
+        ["E041","Had they informed us earlier, we ___ prepared differently.","would have","will have","had","would",0,"Inverted third conditional: Had + subject + past participle.","Grammar"],
+        ["E042","The book is worth ___.","reading","to read","read","to reading",0,"Worth is followed by a gerund.","Grammar"],
+        ["E043","His argument is based ___ a false assumption.","on","in","at","with",0,"Based on is the correct collocation.","Grammar"],
+        ["E044","The speaker's argument was persuasive because it was supported by ___ data.","empirical","imaginary","irrelevant","accidental",0,"Empirical data comes from observation or experiment.","Vocabulary"],
+        ["E045","It is essential that every applicant ___ the form accurately.","complete","completes","completed","will complete",0,"After essential that, the subjunctive base form is standard.","Grammar"]
 
-    div.innerHTML=`
+    ];
 
-        <h3>${index+1}. ${subject}</h3>
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
 
-        <p>
-            45 ta savol<br>
-            A/B/C/D variantlar<br>
-            Natija va tahlil
-        </p>
+    return q;
+}
 
-        <button
-            class="startBtn"
-            onclick="startTest('${subject}')">
-            Testni boshlash
-        </button>
 
-    `;
+/* =========================================================
+   ONA TILI
+========================================================= */
 
-    subjectsBox.appendChild(div);
+function createOnaQuestions(){
 
-});
+    const q=[];
+
+    const data=[
+
+        ["O001","Qaysi qatorda barcha so‘zlar yasama so‘z hisoblanadi?","ishchi, bilimdon, gulzor","kitob, daftar, uy","tog‘, suv, daraxt","oq, katta, tez",0,"Ishchi, bilimdon, gulzor yasovchi qo‘shimchalar orqali hosil bo‘lgan.","So‘z yasalishi"],
+        ["O002","Qaysi gapda sifatdosh qo‘llangan?","O‘qigan bola ko‘p narsani biladi.","Bola kitob o‘qidi.","Kitob stol ustida turibdi.","U tez yugurdi.",0,"O‘qigan — sifatdosh shakli.","Morfologiya"],
+        ["O003","Qaysi qatorda paronimlar berilgan?","asr — asir","katta — kichik","go‘zal — chiroyli","tez — sekin",0,"Asr va asir shaklan yaqin, ma’nosi boshqa.","Leksikologiya"],
+        ["O004","Qaysi gap qo‘shma gap?","Quyosh chiqdi va atrof yorishdi.","Quyosh chiqdi.","Atrof yorishdi.","Tong otdi.",0,"Ikki grammatik asos bog‘langan.","Sintaksis"],
+        ["O005","Qaysi so‘zda egalik qo‘shimchasi mavjud?","kitobim","kitoblar","kitobni","kitobdan",0,"-im birinchi shaxs birlik egalik qo‘shimchasi.","Morfologiya"],
+        ["O006","Qaysi qatorda ravish berilgan?","birdan","yashil","o‘quvchi","uchta",0,"Birdan ravishdir.","So‘z turkumlari"],
+        ["O007","Qaysi gapda ko‘chirma gap mavjud?","U: «Men ertaga kelaman», — dedi.","U ertaga keladi.","Uning ertaga kelishi aniq.","U kelishini aytdi.",0,"Muallif gapi va ko‘chirma gap berilgan.","Sintaksis"],
+        ["O008","Qaysi qatorda sinonimlar berilgan?","jasur — mard","oq — qora","uzun — qisqa","issiq — sovuq",0,"Jasur va mard ma’nodosh.","Leksikologiya"],
+        ["O009","Qaysi gapda modal ma’no ifodalangan?","Ehtimol, u bugun kelar.","U bugun keldi.","U kitob o‘qidi.","U maktabga bordi.",0,"Ehtimol taxmin/modal ma’noni bildiradi.","Uslubiyat"],
+        ["O010","Qaysi birlik frazeologik birikma?","ko‘ngli tog‘dek ko‘tarildi","katta uy","qizil olma","tez yugurdi",0,"Ko‘ngli tog‘dek ko‘tarildi — turg‘un ibora.","Frazeologiya"],
+        ["O011","Qaysi gapda sabab holi mavjud?","Yomg‘ir tufayli yo‘l yopildi.","U maktabga bordi.","U tez gapirdi.","Kitob stol ustida.",0,"Tufayli sabab ma’nosini beradi.","Sintaksis"],
+        ["O012","Qaysi qatorda fe’lning majhul nisbat shakli bor?","yozildi","yozdi","yozmoqda","yozish",0,"Yozildi — majhul nisbat.","Fe’l"],
+        ["O013","Qaysi so‘z sifatdosh?","kelgan","kelib","kelmoq","keldi",0,"Kelgan — sifatdosh.","Fe’l"],
+        ["O014","Qaysi gapda uyushiq bo‘laklar mavjud?","U olma, nok va shaftoli oldi.","U olma oldi.","U bozorga bordi.","U tez keldi.",0,"Olma, nok, shaftoli uyushiq to‘ldiruvchilar.","Sintaksis"],
+        ["O015","Qaysi so‘z tarkibida ikki xil yasovchi qo‘shimcha mavjud?","bilimdonlik","kitoblar","uyimiz","qalamni",0,"Bil-im-don-lik tarkibida yasovchi qo‘shimchalar mavjud.","So‘z yasalishi"],
+        ["O016","Qaysi qatorda antonimlar berilgan?","adolat — zulm","chiroyli — go‘zal","tez — ildam","katta — ulkan",0,"Adolat va zulm qarama-qarshi ma’noli.","Leksikologiya"],
+        ["O017","Qaysi gapda kesim ot bilan ifodalangan?","U shifokor.","U yugurdi.","U keldi.","U o‘qidi.",0,"Shifokor — ot kesim.","Sintaksis"],
+        ["O018","Qaysi so‘zda ko‘plik va egalik qo‘shimchalari ketma-ket kelgan?","kitoblarim","kitobim","kitoblar","kitobni",0,"-lar + -im.","Morfologiya"],
+        ["O019","Qaysi gapda shart mayli mavjud?","Agar vaqtim bo‘lsa, boraman.","Men bordim.","Men boraman.","Men borishni xohlayman.",0,"Bo‘lsa — shart mayli.","Fe’l"],
+        ["O020","Qaysi qatorda termin mavjud?","fonema","chiroyli","katta","yaxshi",0,"Fonema tilshunoslik termini.","Terminologiya"],
+        ["O021","Qaysi gapda aniqlovchi mavjud?","Qizil gul ochildi.","Gul ochildi.","Gul ochildi va so‘ndi.","U gulni sug‘ordi.",0,"Qizil — gulning belgisini bildirgan aniqlovchi.","Sintaksis"],
+        ["O022","Qaysi qatorda ravishdosh berilgan?","kelib","kelgan","kelmoq","keldi",0,"Kel-ib ravishdosh shakli.","Fe’l"],
+        ["O023","Qaysi gapda vositali to‘ldiruvchi bor?","U do‘stiga xat yozdi.","U xat yozdi.","U tez yozdi.","Xat yozildi.",0,"Do‘stiga — jo‘nalish kelishigidagi vositali to‘ldiruvchi.","Sintaksis"],
+        ["O024","Qaysi qatorda omonim so‘zga misol bor?","ot","katta","chiroyli","yaxshi",0,"Ot — hayvon va ism ma’nolarida kelishi mumkin.","Leksikologiya"],
+        ["O025","Qaysi gapda undalma bor?","Aziz do‘stim, bu yerga kel!","Do‘stim bu yerga keldi.","Men do‘stimni ko‘rdim.","Do‘stim kitob o‘qidi.",0,"Aziz do‘stim — undalma.","Sintaksis"],
+        ["O026","Qaysi qatorda bog‘lovchi berilgan?","ammo","uchun","bilan","kabi",0,"Ammo — bog‘lovchi.","Yordamchi so‘zlar"],
+        ["O027","Qaysi so‘z olmosh hisoblanadi?","kimdir","kitob","uchta","yashil",0,"Kimdir — gumon olmoshi.","Olmosh"],
+        ["O028","Qaysi gapda inkor yuklamasi ishlatilgan?","U-ku kelmadi.","U keldi.","U tez keldi.","U ham bordi.",0,"-ku yuklama; gapda inkor fe’l orqali ifodalangan.","Yuklamalar"],
+        ["O029","Qaysi qatorda ravishning darajalanishi mavjud?","juda tez","tez","tezlik","tezkor",0,"Juda tez — ravishning kuchaytirilgan shakli.","Ravish"],
+        ["O030","Qaysi gapda maqsad holi mavjud?","U bilim olish uchun keldi.","U uyga keldi.","U tez keldi.","U do‘stini ko‘rdi.",0,"Bilim olish uchun — maqsad holi.","Sintaksis"],
+        ["O031","Qaysi qatorda yasama fe’l berilgan?","tozalamoq","kelmoq","bormoq","yurmoq",0,"Toza + la + moq — yasama fe’l.","So‘z yasalishi"],
+        ["O032","Qaysi so‘zda kelishik qo‘shimchasi mavjud?","maktabdan","maktabim","maktablar","maktabchi",0,"-dan chiqish kelishigi.","Morfologiya"],
+        ["O033","Qaysi gapda egasi yashirin?","Ertaga boraman.","Men ertaga boraman.","U ertaga boradi.","Bolalar bordilar.",0,"Boraman fe’lida ega Men yashirin.","Sintaksis"],
+        ["O034","Qaysi qatorda sifatning orttirma darajasi bor?","eng chiroyli","chiroyliroq","chiroyli","chiroylilik",0,"Eng chiroyli — orttirma daraja.","Sifat"],
+        ["O035","Qaysi so‘z son hisoblanadi?","o‘nlab","o‘ninchi","o‘nlik","o‘nli",0,"O‘ninchi tartib son.","Son"],
+        ["O036","Qaysi gapda zidlov bog‘lovchisi mavjud?","U keldi, ammo tez ketdi.","U keldi va o‘tirdi.","U keldi yoki ketdi.","U kelgani uchun kutdim.",0,"Ammo — zidlov bog‘lovchisi.","Bog‘lovchilar"],
+        ["O037","Qaysi birlik maqol hisoblanadi?","Mehnat qilgan — rohat ko‘rar.","ko‘ngli tog‘dek","katta uy","qizil olma",0,"Bu umumlashma mazmunli xalq maqoli.","Folklor"],
+        ["O038","Qaysi janr lirik turga mansub?","g‘azal","roman","qissa","drama",0,"G‘azal lirik janr.","Adabiyot"],
+        ["O039","Alisher Navoiyning mashhur besh dostonlik asari qaysi?","Xamsa","Boburnoma","Qutadg‘u bilig","Devonu lug‘otit turk",0,"Navoiy Xamsa yaratgan.","Adabiyot"],
+        ["O040","«O‘tkan kunlar» romanining muallifi kim?","Abdulla Qodiriy","Cho‘lpon","Oybek","Hamza",0,"O‘tkan kunlar — Abdulla Qodiriy romani.","Adabiyot"],
+        ["O041","«Kecha va kunduz» asarining muallifi kim?","Cho‘lpon","Qodiriy","Oybek","Fitrat",0,"Kecha va kunduz — Cho‘lpon romani.","Adabiyot"],
+        ["O042","Qaysi qatorda tashbeh mavjud?","yuzlari oydek","kitob o‘qidi","uyga keldi","tez yurdi",0,"Oydek — o‘xshatish/tashbeh.","Badiiy san’at"],
+        ["O043","Qaysi badiiy san’at qarama-qarshi tushunchalarni qo‘yishga asoslanadi?","tazod","tashbeh","talmeh","mubolag‘a",0,"Tazod qarama-qarshilikka asoslanadi.","Badiiy san’at"],
+        ["O044","«Boburnoma» asarining muallifi kim?","Zahiriddin Muhammad Bobur","Alisher Navoiy","Ogahiy","Munis",0,"Boburnoma Bobur tomonidan yozilgan.","Adabiyot"],
+        ["O045","Qaysi qatorda publitsistik uslubga xos belgi berilgan?","ijtimoiy-siyosiy mazmun va ommaga murojaat","faqat ilmiy terminlar","faqat badiiy tasvir","faqat rasmiy hujjatlar",0,"Publitsistik uslub ommaviy va ijtimoiy mavzularga yo‘naltiriladi.","Uslubiyat"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   TARIX
+========================================================= */
+
+function createHistoryQuestions(){
+
+    const q=[];
+
+    const data=[
+
+        ["H001","Amir Temur davlat boshqaruvida qaysi tamoyilga katta e’tibor bergan?","markazlashgan boshqaruv","to‘liq tarqoqlik","mustaqil qabilalar ittifoqi","faqat diniy boshqaruv",0,"Temur davlatni markazlashtirishga intilgan.","O‘rta asrlar"],
+        ["H002","Mirzo Ulug‘bekning asosiy ilmiy faoliyati qaysi soha bilan bog‘liq?","astronomiya","tibbiyot","huquq","geografik kashfiyot",0,"Ulug‘bek Samarqand rasadxonasini rivojlantirgan astronom olim.","Temuriylar"],
+        ["H003","Buyuk Ipak yo‘lining asosiy tarixiy ahamiyati nimada edi?","savdo va madaniy almashinuv","faqat harbiy yurishlar","faqat diniy marosimlar","faqat dehqonchilik",0,"Ipak yo‘li savdo bilan birga madaniyat va bilim almashinuvini ham ta’minlagan.","Jahon tarixi"],
+        ["H004","Qadimgi Misr sivilizatsiyasi qaysi daryo vodiysida shakllangan?","Nil","Dajla","Yanszi","Gang",0,"Misr Nil vodiysida rivojlangan.","Qadimgi dunyo"],
+        ["H005","Qadimgi Yunoniston demokratiyasining eng mashhur markazi qaysi shahar edi?","Afina","Sparta","Korinf","Milet",0,"Afina demokratiya tarixida muhim markaz bo‘lgan.","Qadimgi dunyo"],
+        ["H006","Rim imperiyasining G‘arbiy qismi an’anaviy ravishda qaysi yilda qulagan deb olinadi?","476","395","410","1453",0,"476-yil G‘arbiy Rim imperiyasining qulashi bilan bog‘lanadi.","Qadimgi dunyo"],
+        ["H007","Arab xalifaligi davrida ilm-fan rivojining muhim markazlaridan biri qaysi shahar edi?","Bag‘dod","London","Parij","Moskva",0,"Bag‘doddagi Bayt ul-hikma ilmiy faoliyat markaziga aylangan.","O‘rta asrlar"],
+        ["H008","Qoraxoniylar davrida yaratilgan mashhur asar qaysi?","Qutadg‘u bilig","Boburnoma","Xamsa","O‘tkan kunlar",0,"Yusuf Xos Hojib Qutadg‘u bilig asarini yaratgan.","Turkiy davlatlar"],
+        ["H009","Mahmud Koshg‘ariyning mashhur asari qaysi?","Devonu lug‘otit turk","Qutadg‘u bilig","Hibat ul-haqoyiq","Boburnoma",0,"Mahmud Koshg‘ariy turkiy tillar lug‘atini yaratgan.","Turkiy davlatlar"],
+        ["H010","Jadidchilik harakatining asosiy maqsadlaridan biri nima edi?","ta’lim va ma’rifatni isloh qilish","savdoni butunlay tugatish","harbiy imperiya yaratish","qishloqlarni ko‘chirish",0,"Jadidlar yangi usul maktablari va ma’rifatni rivojlantirishga intilgan.","XIX-XX asr"],
+        ["H011","Ikkinchi jahon urushi qaysi yillarda davom etgan?","1939–1945","1914–1918","1929–1933","1941–1946",0,"Ikkinchi jahon urushi 1939–1945-yillarda davom etgan.","XX asr"],
+        ["H012","BMT qachon tashkil etilgan?","1945","1919","1949","1955",0,"BMT 1945-yilda tashkil topgan.","XX asr"],
+        ["H013","Sovuq urush asosan qaysi ikki kuch markazi o‘rtasidagi qarama-qarshilik bilan bog‘liq?","AQSh va SSSR","Xitoy va Yaponiya","Fransiya va Germaniya","Hindiston va Pokiston",0,"Sovuq urush AQSh va SSSR boshchiligidagi bloklar qarama-qarshiligi edi.","XX asr"],
+        ["H014","O‘zbekiston davlat mustaqilligi qachon e’lon qilingan?","1991-yil 31-avgust","1990-yil 1-sentabr","1992-yil 8-dekabr","1991-yil 1-sentabr",0,"Mustaqillik 1991-yil 31-avgustda e’lon qilingan.","Mustaqillik davri"],
+        ["H015","O‘zbekiston Respublikasining Konstitutsiyasi qachon qabul qilingan?","1992-yil 8-dekabr","1991-yil 31-avgust","1993-yil 1-sentabr","1995-yil 8-dekabr",0,"Konstitutsiya 1992-yil 8-dekabrda qabul qilingan.","Mustaqillik davri"],
+        ["H016","Amir Temur saltanatining poytaxti sifatida qaysi shahar mashhur bo‘lgan?","Samarqand","Buxoro","Xiva","Toshkent",0,"Samarqand Temur saltanatining markaziga aylangan.","Temuriylar"],
+        ["H017","Ulug‘bek rasadxonasi qaysi shaharda joylashgan?","Samarqand","Buxoro","Xiva","Termiz",0,"Rasadxona Samarqandda qurilgan.","Temuriylar"],
+        ["H018","Alisher Navoiy qaysi davlat arbobi bilan yaqin siyosiy-madaniy aloqada bo‘lgan?","Husayn Boyqaro","Amir Temur","Muhammad Shayboniyxon","Chingizxon",0,"Navoiy Husayn Boyqaro saroyida faoliyat yuritgan.","Temuriylar"],
+        ["H019","Shayboniylar davlatining Movarounnahrdagi hokimiyatini mustahkamlashda kim muhim rol o‘ynagan?","Muhammad Shayboniyxon","Bobur","Ulug‘bek","Navoiy",0,"Muhammad Shayboniyxon Movarounnahrni egallagan.","XVI asr"],
+        ["H020","Bobur Hindistonda qaysi sulolaga asos solgan?","Boburiylar","Temuriylar","Shayboniylar","Qoraxoniylar",0,"Bobur Hindistonda Boburiylar saltanatiga asos solgan.","XVI asr"],
+        ["H021","Fransuz inqilobi qaysi yilda boshlangan?","1789","1776","1812","1848",0,"Fransuz inqilobi 1789-yilda boshlandi.","Yangi davr"],
+        ["H022","AQSh Mustaqillik deklaratsiyasi qaysi yilda qabul qilingan?","1776","1789","1812","1804",0,"Mustaqillik deklaratsiyasi 1776-yil 4-iyulda qabul qilingan.","Yangi davr"],
+        ["H023","Sanoat inqilobi dastlab qaysi mamlakatda kuchli rivojlangan?","Angliya","Fransiya","Rossiya","Ispaniya",0,"Sanoat inqilobi dastlab Britaniyada tez rivojlangan.","Yangi davr"],
+        ["H024","Birinchi jahon urushi qaysi yillarda davom etgan?","1914–1918","1939–1945","1905–1910","1917–1921",0,"Birinchi jahon urushi 1914–1918-yillarda bo‘lgan.","XX asr"],
+        ["H025","1917-yil Rossiyada yuz bergan voqealarning muhim oqibati nima bo‘ldi?","monarxiya tugadi","SSSR darhol tugadi","BMT tashkil topdi","NATO tuzildi",0,"1917-yil inqiloblari natijasida Rossiya monarxiyasi tugadi.","XX asr"],
+        ["H026","NATO qaysi yilda tashkil etilgan?","1949","1945","1955","1961",0,"NATO 1949-yilda tashkil etilgan.","XX asr"],
+        ["H027","Berlin devori qaysi yilda qulagan?","1989","1985","1991","1979",0,"Berlin devori 1989-yilda qulagan.","XX asr"],
+        ["H028","SSSR qaysi yilda tugatilgan?","1991","1989","1990","1993",0,"SSSR 1991-yilda parchalanib tugadi.","XX asr"],
+        ["H029","Qadimgi Yunonistonda Sparta qaysi xususiyati bilan mashhur edi?","harbiy tarbiya","dengiz savdosi","astronomiya","qog‘oz ishlab chiqarish",0,"Sparta harbiy intizomi bilan mashhur edi.","Qadimgi dunyo"],
+        ["H030","Misr piramidalari asosan nima maqsadda qurilgan?","hukmdorlar maqbarasi","rasadxona","bozor","harbiy qal’a",0,"Piramidalar fir’avnlar maqbaralari sifatida qurilgan.","Qadimgi dunyo"],
+        ["H031","Xitoyda qog‘oz ixtirosining tarixiy ahamiyati nimada?","yozuv va bilim tarqalishini yengillashtirdi","temir qurolni yo‘q qildi","savdoni to‘xtatdi","imperiyani tugatdi",0,"Qog‘oz yozuv va axborot almashinuvini sezilarli yengillashtirdi.","Qadimgi dunyo"],
+        ["H032","Movarounnahr atamasi asosan qaysi hududga nisbatan ishlatilgan?","Amudaryo va Sirdaryo oralig‘i","Farg‘ona vodiysi","Kaspiy dengizi atrofi","Hind vodiysi",0,"Movarounnahr daryolar oralig‘idagi tarixiy hududni bildiradi.","O‘rta asrlar"],
+        ["H033","Temuriylar davrida Samarqandning rivojlanishiga nima kuchli ta’sir ko‘rsatgan?","ilm-fan va me’morchilik","faqat chorvachilik","faqat dengiz savdosi","o‘rmon xo‘jaligi",0,"Temuriylar davrida Samarqand ilm-fan va me’morchilik markaziga aylangan.","Temuriylar"],
+        ["H034","Buxoro amirligining asosiy siyosiy markazi qaysi shahar edi?","Buxoro","Xiva","Qo‘qon","Toshkent",0,"Buxoro amirligining markazi Buxoro shahri bo‘lgan.","XIX asr"],
+        ["H035","Xiva xonligining tarixiy markazi qaysi shahar?","Xiva","Buxoro","Qo‘qon","Samarqand",0,"Xiva xonligining markazi Xiva edi.","XIX asr"],
+        ["H036","Qo‘qon xonligi asosan qaysi hududda shakllangan?","Farg‘ona vodiysi","Xorazm","Qashqadaryo","Surxondaryo",0,"Qo‘qon xonligi Farg‘ona vodiysida shakllangan.","XIX asr"],
+        ["H037","Jadid maktablarida asosiy yangiliklardan biri nima edi?","yangi usulda savod o‘rgatish","faqat harbiy tayyorgarlik","faqat diniy marosim","savdoni o‘rgatmaslik",0,"Usul-i jadid maktablari yangi pedagogik usullarga asoslangan.","Jadidchilik"],
+        ["H038","Turkiston jadidchiligida Ismoil Gaspirali g‘oyalarining ta’siri nimada ko‘ringan?","yangi usul maktablari va ma’rifat","harbiy yurishlar","sanoatni tugatish","qishloqlarni ko‘chirish",0,"Gaspirali jadid ma’rifatparvarligiga katta ta’sir ko‘rsatgan.","Jadidchilik"],
+        ["H039","Ikkinchi jahon urushida O‘zbekistonning hissalaridan biri nima edi?","evakuatsiya qilingan aholi va korxonalarni qabul qilish","urushdan butunlay chetda qolish","faqat dengiz floti tuzish","Yevropaga mustamlaka yurishlari",0,"O‘zbekiston ko‘plab evakuatsiya qilingan aholi va korxonalarni qabul qilgan.","XX asr"],
+        ["H040","BMTning asosiy vazifalaridan biri qaysi?","xalqaro tinchlik va xavfsizlikni qo‘llab-quvvatlash","faqat iqtisodiy soliq yig‘ish","milliy hukumatlarni almashtirish","faqat harbiy ittifoq tuzish",0,"BMT xalqaro tinchlik va xavfsizlikni qo‘llab-quvvatlashga xizmat qiladi.","Zamonaviy tarix"],
+        ["H041","Renessans atamasi nimani anglatadi?","uyg‘onish","inqiroz","bosqin","mustamlaka",0,"Renessans — uyg‘onish davri.","Yangi davr"],
+        ["H042","Reformatsiya harakati tarixda qaysi soha bilan bevosita bog‘liq?","diniy islohotlar","sanoat","astronomiya","qishloq xo‘jaligi",0,"Reformatsiya Yevropadagi diniy islohotlar harakati edi.","Yangi davr"],
+        ["H043","Kolumbning 1492-yilgi sayohati tarixda nima bilan bog‘liq?","Amerika qit’asiga yevropaliklar yetib borishi","Hindistonda Boburiylar tashkil topishi","Fransuz inqilobi","BMT tashkil topishi",0,"1492-yilda Kolumb Atlantikani kesib o‘tib Amerika tomon yetib bordi.","Buyuk geografik kashfiyotlar"],
+        ["H044","Buyuk geografik kashfiyotlarning asosiy iqtisodiy sabablaridan biri nima edi?","yangi savdo yo‘llarini izlash","kitob chop etishni to‘xtatish","dehqonchilikni tugatish","shaharlarni yo‘q qilish",0,"Yevropalik davlatlar yangi savdo yo‘llari va boylik manbalarini izlagan.","Yangi davr"],
+        ["H045","Tarixiy voqealarni sabab-oqibat asosida o‘rganishning afzalligi nimada?","voqealar o‘rtasidagi bog‘lanishni tushunish","faqat sanalarni yodlash","faqat shaxslarni yodlash","faqat joy nomlarini yozish",0,"Sabab-oqibat tarixiy jarayonning mazmunini chuqurroq tushunishga yordam beradi.","Tarixiy tahlil"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   FIZIKA
+========================================================= */
+
+function createPhysicsQuestions(){
+
+    const q=[];
+
+    const data=[
+
+        ["F001","Jism 20 m/s tezlik bilan 15 s harakat qilsa, qancha yo‘l bosadi?","300 m","150 m","35 m","600 m",0,"s=vt=20·15=300 m.","Mexanika"],
+        ["F002","Massasi 5 kg jismga 20 N kuch ta’sir qilsa, tezlanish qancha?","4 m/s²","100 m/s²","15 m/s²","25 m/s²",0,"a=F/m=20/5=4.","Mexanika"],
+        ["F003","10 N kuch 3 m yo‘nalishda ta’sir qilsa, bajarilgan ish qancha?","30 J","13 J","3 J","7 J",0,"A=Fs=30 J.","Ish va energiya"],
+        ["F004","Massasi 2 kg jism 5 m/s tezlik bilan harakat qilmoqda. Kinetik energiya?","25 J","10 J","50 J","5 J",0,"Ek=mv²/2=25 J.","Energiya"],
+        ["F005","10 kg jism 2 m balandlikda. g=10 m/s². Potensial energiya?","200 J","20 J","100 J","500 J",0,"Ep=mgh=10·10·2=200 J.","Energiya"],
+        ["F006","Elektr kuchlanish 12 V, qarshilik 4 Ω. Tok kuchi?","3 A","48 A","8 A","0.33 A",0,"I=U/R=3 A.","Elektr"],
+        ["F007","2 Ω va 4 Ω qarshiliklar ketma-ket ulangan. Umumiy qarshilik?","6 Ω","2 Ω","8 Ω","1 Ω",0,"Ketma-ket ulanishda R=R1+R2.","Elektr"],
+        ["F008","2 Ω va 4 Ω parallel ulangan. Umumiy qarshilik?","4/3 Ω","6 Ω","2 Ω","8 Ω",0,"1/R=1/2+1/4=3/4, R=4/3 Ω.","Elektr"],
+        ["F009","Quvvat 100 W bo‘lgan qurilma 20 s ishladi. Sarflangan energiya?","2000 J","120 J","5000 J","200 J",0,"A=Pt=100·20=2000 J.","Elektr"],
+        ["F010","To‘lqin chastotasi 5 Hz, to‘lqin uzunligi 2 m. Tezlik?","10 m/s","2.5 m/s","7 m/s","3 m/s",0,"v=λν=10 m/s.","To‘lqin"],
+        ["F011","Yorug‘lik vakuumda taxminan qanday tezlik bilan tarqaladi?","3·10⁸ m/s","3·10⁶ m/s","3·10⁵ m/s","3·10¹⁰ m/s",0,"Yorug‘lik tezligi taxminan 3·10⁸ m/s.","Optika"],
+        ["F012","Linzaning fokus masofasi 0.5 m. Optik kuchi?","2 D","0.5 D","5 D","20 D",0,"D=1/f=2 D.","Optika"],
+        ["F013","0°C da muzning erishi qanday jarayon?","issiqlik yutilishi","issiqlik ajralishi","haroratning keskin oshishi","bosimning nolga tushishi",0,"Erish jarayonida issiqlik yutiladi.","Molekulyar fizika"],
+        ["F014","Gaz temperaturasi oshirilganda molekulalarning o‘rtacha kinetik energiyasi qanday o‘zgaradi?","ortadi","kamayadi","o‘zgarmaydi","nol bo‘ladi",0,"Temperatura molekulalarning o‘rtacha kinetik energiyasi bilan bog‘liq.","Molekulyar fizika"],
+        ["F015","Bosim 2 marta oshib, hajm o‘zgarmasa, absolyut temperatura qanday o‘zgaradi?","2 marta oshadi","2 marta kamayadi","o‘zgarmaydi","4 marta oshadi",0,"p/T=const, V o‘zgarmasa T bosimga proporsional.","Termodinamika"],
+        ["F016","Mexanik energiyaning saqlanish qonuni qachon qo‘llanadi?","konservativ kuchlar sharoitida","har doim ishqalanish bo‘lsa","faqat elektrda","faqat gazlarda",0,"Ishqalanish kabi yo‘qotishlar bo‘lmaganda mexanik energiya saqlanadi.","Energiya"],
+        ["F017","Jismning impulsi qanday formula bilan ifodalanadi?","p=mv","p=m/v","p=F/t","p=ma",0,"Impuls p=mv.","Mexanika"],
+        ["F018","Kuch impulsi nimaga teng?","FΔt","F/t","Ft²","F/m",0,"Kuch impulsi J=FΔt.","Mexanika"],
+        ["F019","Zichlik formulasi qaysi?","ρ=m/V","ρ=V/m","ρ=mv","ρ=mV",0,"Zichlik massa hajmga nisbatidir.","Molekulyar fizika"],
+        ["F020","Suvning zichligi taxminan qancha?","1000 kg/m³","100 kg/m³","10 kg/m³","10000 kg/m³",0,"Suv zichligi taxminan 1000 kg/m³.","Molekulyar fizika"],
+        ["F021","Arximed kuchi nimaga teng?","suyuqlik siqib chiqarilgan qismining og‘irligiga","jism massasiga","jism tezligiga","faqat bosimga",0,"Arximed kuchi siqib chiqarilgan suyuqlik og‘irligiga teng.","Gidrostatika"],
+        ["F022","Kuch 50 N, yuza 0.5 m². Bosim?","100 Pa","25 Pa","50 Pa","250 Pa",0,"p=F/S=100 Pa.","Gidrostatika"],
+        ["F023","Ideal transformatorning asosiy vazifasi nima?","o‘zgaruvchan tok kuchlanishini o‘zgartirish","doimiy tokni mexanik energiyaga aylantirish","massani o‘zgartirish","haroratni nolga tushirish",0,"Transformator AC kuchlanishni oshiradi yoki kamaytiradi.","Elektromagnitizm"],
+        ["F024","Magnit maydonni hosil qiluvchi asosiy manbalardan biri nima?","elektr toki","faqat gravitatsiya","suv oqimi","harorat",0,"Harakatdagi zaryadlar, ya’ni tok magnit maydon hosil qiladi.","Elektromagnitizm"],
+        ["F025","Induksiya hodisasi qaysi jarayon bilan bog‘liq?","magnit oqimining o‘zgarishi natijasida EYuK hosil bo‘lishi","faqat issiqlik almashinuvi","massa kamayishi","bosim ortishi",0,"Elektromagnit induksiya o‘zgaruvchan magnit oqimi bilan bog‘liq.","Elektromagnitizm"],
+        ["F026","Elektr quvvati formulasi qaysi?","P=UI","P=U/I","P=I/U","P=IR",0,"Elektr quvvati P=UI.","Elektr"],
+        ["F027","Qarshilikdan tok o‘tganda ajraladigan issiqlik qaysi qonun bilan ifodalanadi?","Joul-Lens","Nyuton","Arximed","Guk",0,"Joul-Lens qonuni.","Elektr"],
+        ["F028","Prujinaning elastiklik kuchi qaysi qonunga bo‘ysunadi?","Guk qonuni","Om qonuni","Faradey qonuni","Paskal qonuni",0,"Guk qonuni F=kx.","Mexanika"],
+        ["F029","Erkin tushish tezlanishi Yerda taxminan qancha?","9.8 m/s²","98 m/s²","0.98 m/s²","980 m/s²",0,"Yer sirtida g≈9.8 m/s².","Mexanika"],
+        ["F030","Jism 20 m/s boshlang‘ich tezlik bilan yuqoriga otildi. g=10. Maksimal balandlik?","20 m","40 m","10 m","30 m",0,"h=v²/(2g)=400/20=20 m.","Mexanika"],
+        ["F031","Bir tekis aylana bo‘ylab harakatda markazga intilma tezlanish yo‘nalishi qanday?","markaz tomon","tashqariga","tezlik yo‘nalishida","vertikal yuqoriga",0,"Markazga intilma tezlanish markaz tomon yo‘naladi.","Mexanika"],
+        ["F032","Yarim yemirilish davri nimani bildiradi?","moddaning yarmi yemiriladigan vaqt","hammasi yemiriladigan vaqt","temperatura ikki marta oshadigan vaqt","massa ikki marta oshadigan vaqt",0,"Yarim yemirilish davrida yadrolarning yarmi yemiriladi.","Atom fizikasi"],
+        ["F033","Fotoeffekt hodisasi nimani tasdiqlashga yordam beradi?","yorug‘likning kvant xususiyatini","faqat tovush tabiatini","gravitatsiya qonunini","suyuqlik bosimini",0,"Fotoeffekt yorug‘likning kvant tabiatiga dalil.","Kvant fizika"],
+        ["F034","Foton energiyasi qaysi formula bilan aniqlanadi?","E=hν","E=mc","E=mv","E=F/S",0,"Foton energiyasi E=hν.","Kvant fizika"],
+        ["F035","Elektr zaryadining SI birligi?","kulon","volt","amper","om",0,"Zaryad birligi kulon.","Elektr"],
+        ["F036","Tok kuchining SI birligi?","amper","kulon","volt","vatt",0,"Tok kuchi amperda o‘lchanadi.","Elektr"],
+        ["F037","Kuchlanishning SI birligi?","volt","amper","om","joule",0,"Kuchlanish birligi volt.","Elektr"],
+        ["F038","Quvvatning SI birligi?","vatt","joule","volt","nyuton",0,"Quvvat vattda o‘lchanadi.","Energiya"],
+        ["F039","Mexanik ishning SI birligi?","joule","watt","pascal","tesla",0,"Ish va energiya joule bilan o‘lchanadi.","Ish va energiya"],
+        ["F040","Bosimning SI birligi?","paskal","nyuton","joule","vatt",0,"Bosim birligi paskal.","Molekulyar fizika"],
+        ["F041","Nyutonning ikkinchi qonuni qaysi?","F=ma","F=mv","F=m/a","F=mg²",0,"Kuch massa va tezlanish ko‘paytmasiga teng.","Mexanika"],
+        ["F042","Nyutonning uchinchi qonuni nimani bildiradi?","ta’sir va aks ta’sir kuchlari teng va qarama-qarshi","jism tezligi doimiy","massa yo‘qoladi","energiya doim ortadi",0,"Har bir ta’sirga teng va qarama-qarshi aks ta’sir mavjud.","Mexanika"],
+        ["F043","Issiqlik miqdori formulasi qaysi?","Q=cmΔT","Q=mv","Q=F/S","Q=UI",0,"Q=cmΔT.","Issiqlik"],
+        ["F044","Ideal gaz tenglamasi qaysi?","pV=nRT","p=mV","p=Fv","p=UI",0,"Ideal gaz uchun pV=nRT.","Termodinamika"],
+        ["F045","Elektr zanjirida kuchlanish 24 V, tok 2 A. Quvvat qancha?","48 W","12 W","26 W","22 W",0,"P=UI=24·2=48 W.","Elektr"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   KIMYO
+========================================================= */
+
+function createChemistryQuestions(){
+
+    const q=[];
+
+    const data=[
+
+        ["C001","H₂O ning molyar massasi qancha?","18 g/mol","16 g/mol","20 g/mol","17 g/mol",0,"2·1+16=18.","Umumiy kimyo"],
+        ["C002","0.5 mol O₂ tarkibida nechta molekula mavjud?","3.01·10²³","6.02·10²³","1.204·10²⁴","0.5·10²³",0,"N=nNA=0.5·6.02·10²³.","Molyar hisob"],
+        ["C003","NaCl birikmasida qanday bog‘lanish mavjud?","ion bog‘","metall bog‘","vodorod bog‘i","faqat kovalent bog‘",0,"NaCl ionli kristall birikma.","Kimyoviy bog‘"],
+        ["C004","H₂SO₄ tarkibidagi oltingugurtning oksidlanish darajasi?","+6","+4","−2","+2",0,"2(+1)+x+4(−2)=0, x=+6.","Oksidlanish"],
+        ["C005","pH=3 bo‘lgan eritma qanday muhitga ega?","kislotali","ishqoriy","neytral","metallik",0,"pH<7 — kislotali muhit.","Eritmalar"],
+        ["C006","NaOH qanday modda?","kuchli asos","kislota","tuz","oksid",0,"NaOH kuchli ishqor.","Noorganik kimyo"],
+        ["C007","HCl va NaOH reaksiyasida qanday mahsulotlar hosil bo‘ladi?","NaCl va H₂O","Na₂O va H₂","Cl₂ va Na","H₂SO₄ va NaCl",0,"Kislota + asos → tuz + suv.","Reaksiyalar"],
+        ["C008","CaCO₃ qizdirilganda qanday mahsulotlar hosil bo‘ladi?","CaO va CO₂","Ca va O₂","CaCl₂ va CO₂","Ca(OH)₂ va C",0,"CaCO₃→CaO+CO₂.","Reaksiyalar"],
+        ["C009","Avogadro soni taxminan nechaga teng?","6.02·10²³","6.02·10²²","3.01·10²³","9.8·10²³",0,"Avogadro doimiysi 6.02·10²³ mol⁻¹.","Molyar hisob"],
+        ["C010","CH₄ molekulasida uglerodning oksidlanish darajasi?","−4","+4","0","+2",0,"H +1 bo‘lgani uchun C=−4.","Organik kimyo"],
+        ["C011","CO₂ molekulasining shakli qanday?","chiziqli","burchakli","uchburchak","tetraedrik",0,"CO₂ markaziy atom atrofida ikki elektron juftligi sababli chiziqli.","Tuzilish"],
+        ["C012","Etilenning formulasi qaysi?","C₂H₄","C₂H₆","C₂H₂","CH₄",0,"Etilen C₂H₄.","Organik kimyo"],
+        ["C013","Etanning formulasi qaysi?","C₂H₆","C₂H₄","C₂H₂","CH₄",0,"Alkanlarning umumiy formulasi CnH2n+2; n=2 → C₂H₆.","Organik kimyo"],
+        ["C014","Benzol formulasi qaysi?","C₆H₆","C₆H₁₂","C₅H₁₂","C₇H₈",0,"Benzol C₆H₆.","Organik kimyo"],
+        ["C015","Alkenlarning umumiy formulasi?","CnH₂n","CnH₂n+2","CnH₂n−2","CnHn",0,"Ochiq zanjirli alkenlar CnH₂n.","Organik kimyo"],
+        ["C016","Alkanlarning umumiy formulasi?","CnH₂n+2","CnH₂n","CnH₂n−2","CnHn",0,"Alkanlar CnH₂n+2.","Organik kimyo"],
+        ["C017","Esterifikatsiya reaksiyasida odatda nima hosil bo‘ladi?","ester va suv","faqat tuz","faqat vodorod","oksid va suv",0,"Kislota + spirt → ester + suv.","Organik kimyo"],
+        ["C018","H₂ + Cl₂ reaksiyasi qanday turga kiradi?","birikish","ajralish","almashinish","neytrallanish",0,"Ikki modda bitta mahsulot beradi.","Reaksiya turlari"],
+        ["C019","2KClO₃→2KCl+3O₂ qanday reaksiya?","ajralish","birikish","almashinish","neytrallanish",0,"Bitta birikma bir necha mahsulotga ajralmoqda.","Reaksiya turlari"],
+        ["C020","Zn + 2HCl→ZnCl₂+H₂ reaksiyasi qanday tur?","o‘rin olish","birikish","ajralish","esterifikatsiya",0,"Rux vodorodni siqib chiqaradi.","Reaksiya turlari"],
+        ["C021","100 g 10% li NaCl eritmasida nechta gramm NaCl bor?","10 g","1 g","90 g","20 g",0,"m=100·0.10=10 g.","Eritmalar"],
+        ["C022","200 g 5% li eritmada erigan modda massasi?","10 g","5 g","20 g","40 g",0,"200·0.05=10 g.","Eritmalar"],
+        ["C023","Oksidlanish jarayonida elektronlar qanday o‘zgaradi?","beriladi","qabul qilinadi","yo‘qolmaydi","protonlarga aylanadi",0,"Oksidlanish elektron berish bilan bog‘liq.","Redoks"],
+        ["C024","Qaytarilish jarayonida elektronlar?","qabul qilinadi","beriladi","yo‘q qilinadi","neytron bo‘ladi",0,"Qaytarilish elektron qabul qilishdir.","Redoks"],
+        ["C025","Katalizator reaksiyaga qanday ta’sir qiladi?","faollanish energiyasini kamaytiradi","muvozanatni doim o‘ngga siljitadi","mahsulotni yo‘q qiladi","temperaturani nolga tushiradi",0,"Katalizator alternativ yo‘l berib faollanish energiyasini kamaytiradi.","Kinetika"],
+        ["C026","Temperatura oshirilsa ko‘pchilik reaksiyalar tezligi qanday o‘zgaradi?","ortadi","kamayadi","o‘zgarmaydi","nol bo‘ladi",0,"Zarralar to‘qnashuvi va samarali to‘qnashuvlar soni ortadi.","Kinetika"],
+        ["C027","Bosim oshirilganda gazlar reaksiyasida muvozanat qaysi tomonga siljiydi?","gaz molekulalari soni kam tomonga","har doim chapga","har doim o‘ngga","o‘zgarmaydi",0,"Le-Shatele prinsipiga ko‘ra bosim oshishi gaz mol soni kam tomonni quvvatlaydi.","Muvozanat"],
+        ["C028","NH₃ sintezida boshlang‘ich moddalar qaysilar?","N₂ va H₂","N₂ va O₂","NH₄Cl va H₂","NO₂ va H₂",0,"N₂+3H₂⇌2NH₃.","Muvozanat"],
+        ["C029","Kislorodning odatiy oksidlanish darajasi ko‘pchilik birikmalarda?","−2","+2","−1","+1",0,"Ko‘pchilik birikmalarda O −2.","Oksidlanish"],
+        ["C030","Peroksidlarda kislorodning oksidlanish darajasi?","−1","−2","+1","0",0,"Peroksidlarda O ning darajasi −1.","Oksidlanish"],
+        ["C031","Metallarning davriy jadvaldagi umumiy xususiyati?","elektron berishga moyil","elektron qabul qilishga doim moyil","faqat gaz holatda","kislota emas",0,"Metallar odatda elektron berib kation hosil qiladi.","Davriy jadval"],
+        ["C032","Galogenlar qaysi guruhga mansub?","17-guruh","1-guruh","2-guruh","18-guruh",0,"F, Cl, Br, I — 17-guruh.","Davriy jadval"],
+        ["C033","Inert gazlar qaysi guruhda?","18-guruh","17-guruh","1-guruh","2-guruh",0,"Noble gases — 18-guruh.","Davriy jadval"],
+        ["C034","Na elementining atom raqami?","11","10","12","23",0,"Natriyning atom raqami 11.","Davriy jadval"],
+        ["C035","Cl elementining atom raqami?","17","35","18","16",0,"Xlorning atom raqami 17.","Davriy jadval"],
+        ["C036","1 mol H₂O necha gramm?","18 g","16 g","20 g","2 g",0,"M(H₂O)=18 g/mol.","Molyar hisob"],
+        ["C037","2 mol CO₂ massasi qancha?","88 g","44 g","22 g","66 g",0,"M(CO₂)=44 g/mol; 2·44=88 g.","Molyar hisob"],
+        ["C038","CaCO₃ ning molyar massasi qancha?","100 g/mol","90 g/mol","84 g/mol","120 g/mol",0,"40+12+48=100 g/mol.","Molyar hisob"],
+        ["C039","Kislota va asos reaksiyasi qanday ataladi?","neytrallanish","polimerlanish","gidrogenlanish","yonish",0,"Kislota+asos → tuz+suv — neytrallanish.","Reaksiyalar"],
+        ["C040","CH₃COOH qanday modda?","sirka kislotasi","metanol","etan","benzol",0,"CH₃COOH — sirka kislotasi.","Organik kimyo"],
+        ["C041","C₂H₅OH qanday modda?","etanol","etilen","etan","metanal",0,"C₂H₅OH — etanol.","Organik kimyo"],
+        ["C042","Polimerlanish natijasida nima hosil bo‘ladi?","polimer","faqat suv","tuz","oksid",0,"Monomerlar birikib polimer hosil qiladi.","Organik kimyo"],
+        ["C043","Glyukozaning formulasi?","C₆H₁₂O₆","C₆H₆","C₁₂H₂₂O₁₁","CH₄",0,"Glyukoza C₆H₁₂O₆.","Biokimyo"],
+        ["C044","Fotosintezda atmosferaga qaysi gaz ajraladi?","O₂","CO₂","N₂","H₂",0,"Fotosintezning yorug‘lik bosqichida O₂ ajraladi.","Biokimyo"],
+        ["C045","Elektroliz jarayonida elektr energiyasi qanday rol o‘ynaydi?","kimyoviy reaksiyani majburan amalga oshiradi","haroratni nolga tushiradi","massani yo‘q qiladi","faqat eritmani sovitadi",0,"Elektroliz elektr energiyasi yordamida o‘z-o‘zidan bormaydigan redoks jarayonni amalga oshiradi.","Elektrokimyo"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   BIOLOGIYA
+========================================================= */
+
+function createBiologyQuestions(){
+
+    const q=[];
+
+    const data=[
+
+        ["B001","Hujayraning irsiy axborotni saqlovchi asosiy tuzilmasi qaysi?","DNK","ATP","lipid","glyukoza",0,"Irsiy axborot DNKda saqlanadi.","Genetika"],
+        ["B002","Eukariot hujayralarda energiya ishlab chiqarishda asosiy organoid?","mitoxondriya","ribosoma","lizosoma","Golji apparati",0,"Mitoxondriya hujayraviy nafas olish markazi.","Hujayra"],
+        ["B003","Oqsil sintezi qaysi organoidda amalga oshiriladi?","ribosoma","mitoxondriya","vakuola","sentriol",0,"Ribosomalar oqsil sintez qiladi.","Hujayra"],
+        ["B004","Fotosintez qaysi organoidda amalga oshadi?","xloroplast","mitoxondriya","ribosoma","lizosoma",0,"Xloroplastlarda fotosintez amalga oshadi.","O‘simliklar"],
+        ["B005","Mitoz bo‘linish natijasida odatda nechta qiz hujayra hosil bo‘ladi?","2","4","8","1",0,"Mitoz natijasida ikkita genetik jihatdan o‘xshash qiz hujayra hosil bo‘ladi.","Hujayra bo‘linishi"],
+        ["B006","Meyoz bo‘linish natijasida xromosoma soni qanday o‘zgaradi?","ikki baravar kamayadi","ikki baravar ortadi","o‘zgarmaydi","to‘rt baravar ortadi",0,"Meyozda diploid to‘plam haploidga kamayadi.","Genetika"],
+        ["B007","Inson somatik hujayrasida xromosomalar soni nechta?","46","23","44","92",0,"Inson somatik hujayrasida 46 xromosoma mavjud.","Genetika"],
+        ["B008","Inson gametasida xromosomalar soni nechta?","23","46","44","92",0,"Gameta haploid bo‘lib, 23 xromosomaga ega.","Genetika"],
+        ["B009","Dominant allel qanday belgilanadi?","katta harf bilan","kichik harf bilan","raqam bilan","faqat X bilan",0,"Dominant allel odatda katta harf bilan belgilanadi.","Genetika"],
+        ["B010","Aa genotip qanday ataladi?","geterozigota","gomozigota","haploid","poliploid",0,"Turli allellar Aa — geterozigota.","Genetika"],
+        ["B011","AA genotip qanday?","gomozigota dominant","geterozigota","gomozigota retsessiv","haploid",0,"Bir xil dominant allellar AA.","Genetika"],
+        ["B012","aa genotip qanday?","gomozigota retsessiv","geterozigota","dominant","poliploid",0,"Bir xil retsessiv allellar aa.","Genetika"],
+        ["B013","Fotosintezning asosiy xomashyolaridan biri?","CO₂","N₂","O₂","CH₄",0,"Fotosintezda CO₂ va H₂O ishlatiladi.","O‘simliklar"],
+        ["B014","Fotosintezning asosiy mahsulotlaridan biri?","glyukoza","azot","metan","ammiak",0,"Fotosintezda organik modda, xususan glyukoza hosil bo‘ladi.","O‘simliklar"],
+        ["B015","Nafas olishning asosiy biologik ahamiyati?","ATP energiyasi hosil qilish","DNKni yo‘q qilish","xlorofillni parchalanishi","suvni bug‘latish",0,"Nafas olishda oziq moddalar energiyasi ATPga o‘tkaziladi.","Metabolizm"],
+        ["B016","Fermentlar biologik jihatdan nima?","biokatalizatorlar","faqat uglevodlar","faqat lipidlar","vitaminlar",0,"Fermentlar reaksiyalarni tezlashtiruvchi biologik katalizatorlardir.","Metabolizm"],
+        ["B017","Qonning kislorod tashuvchi hujayrasi qaysi?","eritrotsit","leykotsit","trombotsit","neyron",0,"Eritrotsitlar gemoglobin orqali O₂ tashiydi.","Fiziologiya"],
+        ["B018","Immun himoyada asosiy rol o‘ynovchi qon hujayralari?","leykotsitlar","eritrotsitlar","trombotsitlar","osteotsitlar",0,"Leykotsitlar immun javobda ishtirok etadi.","Fiziologiya"],
+        ["B019","Qon ivishida asosiy rol o‘ynovchi shaklli element?","trombotsit","eritrotsit","neyron","leykotsit",0,"Trombotsitlar qon ivishida qatnashadi.","Fiziologiya"],
+        ["B020","Yurakning chap qorinchasi qonni qayerga haydaydi?","aortaga","o‘pka arteriyasiga","kovak venaga","o‘pka venasiga",0,"Chap qorincha katta qon aylanish doirasiga — aortaga qon haydaydi.","Fiziologiya"],
+        ["B021","O‘pka gaz almashinuvi asosan qayerda sodir bo‘ladi?","alveolalarda","traxeyada","bronxlarda","hiqildoqda",0,"Alveolalarda O₂ va CO₂ almashinuvi sodir bo‘ladi.","Fiziologiya"],
+        ["B022","Buyrakning funksional birligi?","nefron","alveola","neyron","villus",0,"Buyrakning strukturaviy-funksional birligi nefron.","Fiziologiya"],
+        ["B023","Asab impulslarini uzatuvchi asosiy hujayra?","neyron","eritrotsit","osteotsit","adipotsit",0,"Neyronlar nerv impulslarini qabul qiladi va uzatadi.","Asab tizimi"],
+        ["B024","Gormonlarni ishlab chiqaruvchi tizim qaysi?","endokrin tizim","skelet tizimi","hazm tizimi","nafas tizimi",0,"Endokrin bezlar gormonlar ishlab chiqaradi.","Endokrinologiya"],
+        ["B025","Insulin qaysi bez tomonidan ishlab chiqariladi?","oshqozon osti bezi","qalqonsimon bez","buyrak usti bezi","gipofiz",0,"Insulin oshqozon osti bezining beta-hujayralarida ishlab chiqariladi.","Endokrinologiya"],
+        ["B026","Gen nima?","irsiy axborotning funksional birligi","faqat oqsil","faqat hujayra","organ",0,"Gen irsiy axborotning funksional birligi hisoblanadi.","Genetika"],
+        ["B027","DNKning asosiy azotli asoslari qaysilar?","A,T,G,C","A,U,G,C","A,T,U,G","G,C,U,T",0,"DNKda adenin, timin, guanin va sitozin mavjud.","Genetika"],
+        ["B028","RNKda timin o‘rniga qaysi asos mavjud?","uratsil","sitozin","guanin","adenin",0,"RNK tarkibida uratsil bo‘ladi.","Genetika"],
+        ["B029","Transkripsiya jarayonida nima hosil bo‘ladi?","RNK","DNK","lipid","glyukoza",0,"DNKdagi axborot asosida RNK sintezlanadi.","Genetika"],
+        ["B030","Translyatsiya jarayonida nima sodir bo‘ladi?","oqsil sintezi","DNK replikatsiyasi","lipid parchalanishi","ATP parchalanishi",0,"Ribosomada mRNK asosida oqsil sintezlanadi.","Genetika"],
+        ["B031","Ekotizimning tirik komponentlari nima deb ataladi?","biotik omillar","abiotik omillar","geologik omillar","klimatik omillar",0,"Tirik komponentlar biotik qismdir.","Ekologiya"],
+        ["B032","Ekotizimning notirik komponentiga misol?","harorat","o‘simlik","hayvon","bakteriya",0,"Harorat — abiotik omil.","Ekologiya"],
+        ["B033","Oziq zanjirining birinchi trofik darajasida odatda kimlar turadi?","produtsentlar","konsumentlar","reduksentlar","parazitlar",0,"Produtsentlar organik moddani o‘zlari hosil qiladi.","Ekologiya"],
+        ["B034","Organik moddalarni parchalovchi organizmlar?","reduksentlar","produtsentlar","yirtqichlar","parazitlar",0,"Bakteriya va zamburug‘lar reduksent sifatida parchalaydi.","Ekologiya"],
+        ["B035","Tabiiy tanlanish nazariyasi bilan eng ko‘p bog‘liq olim?","Charlz Darvin","Gregor Mendel","Lui Paster","Robert Guk",0,"Darvin tabiiy tanlanish nazariyasini ishlab chiqqan.","Evolyutsiya"],
+        ["B036","Mendel tajribalarini asosan qaysi o‘simlikda olib borgan?","no‘xat","makkajo‘xori","bug‘doy","guruch",0,"Mendel no‘xat o‘simligida tajribalar olib borgan.","Genetika"],
+        ["B037","Mendelning birinchi qonuni qanday ataladi?","bir xillik qonuni","ajralish qonuni","mustaqil kombinatsiya qonuni","mutatsiya qonuni",0,"Gibridlarning birinchi avlodi bir xillik qonuni.","Genetika"],
+        ["B038","Mutatsiya nima?","genetik materialdagi o‘zgarish","faqat o‘sish","ovqat hazm qilish","qon aylanishi",0,"Mutatsiya DNK yoki xromosomadagi irsiy o‘zgarish bo‘lishi mumkin.","Genetika"],
+        ["B039","Vitamin D ning asosiy biologik vazifalaridan biri?","kalsiy-fosfor almashinuvini boshqarish","qon ivishini to‘liq to‘xtatish","DNKni yo‘q qilish","kislorodni tashish",0,"Vitamin D suyak mineralizatsiyasi va kalsiy almashinuviga muhim.","Vitaminlar"],
+        ["B040","Vitamin C yetishmasligi qaysi kasallikka olib kelishi mumkin?","skorbut","raxit","beri-beri","gemofiliya",0,"Vitamin C yetishmovchiligi skorbutga sabab bo‘ladi.","Vitaminlar"],
+        ["B041","Odam organizmida ovqat hazm bo‘lishi qayerda boshlanadi?","og‘iz bo‘shlig‘ida","oshqozonda","ingichka ichakda","yo‘g‘on ichakda",0,"Hazm jarayoni og‘izda boshlanadi.","Hazm tizimi"],
+        ["B042","Oqsillarning asosiy tarkibiy birliklari?","aminokislotalar","glyukoza","yog‘ kislotalari","nukleotidlar",0,"Oqsillar aminokislotalardan tuzilgan.","Biokimyo"],
+        ["B043","DNK replikatsiyasi natijasida nima hosil bo‘ladi?","DNKning ikki nusxasi","RNKning bir nusxasi","faqat oqsil","glyukoza",0,"Replikatsiyada DNK o‘z nusxasini hosil qiladi.","Genetika"],
+        ["B044","Hujayra membranasining asosiy tarkibiy qismlaridan biri?","fosfolipidlar","faqat glyukoza","DNK","gemoglobin",0,"Membrananing asosiy tuzilishi fosfolipid ikki qavatidan iborat.","Hujayra"],
+        ["B045","Tabiatdagi azot aylanishida azot birikmalarini o‘zgartirishda mikroorganizmlar qanday rol o‘ynaydi?","azot birikmalarining aylanishini ta’minlaydi","faqat kislorod ishlab chiqaradi","faqat suv hosil qiladi","DNKni yo‘q qiladi",0,"Azot aylanishida bakteriyalar muhim biogeokimyoviy jarayonlarni amalga oshiradi.","Ekologiya"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   IQTISODIYOT
+========================================================= */
+
+function createEconomicsQuestions(){
+
+    const q=[];
+
+    const data=[
+
+        ["I001","Talab qonuniga ko‘ra, boshqa shartlar o‘zgarmasa, narx oshsa talab miqdori qanday o‘zgaradi?","kamayadi","ortadi","o‘zgarmaydi","nol bo‘ladi",0,"Narx oshishi odatda talab qilinadigan miqdorni kamaytiradi.","Talab"],
+        ["I002","Taklif qonuniga ko‘ra narx oshsa ishlab chiqaruvchilar taklifi odatda qanday o‘zgaradi?","ortadi","kamayadi","yo‘qoladi","o‘zgarmaydi",0,"Yuqori narx ishlab chiqarishni rag‘batlantiradi.","Taklif"],
+        ["I003","Inflyatsiya nimani anglatadi?","narxlar umumiy darajasining oshishi","ishsizlikning yo‘qolishi","ishlab chiqarishning doimiy pasayishi","valyutaning bekor qilinishi",0,"Inflyatsiya umumiy narxlar darajasining barqaror oshishi.","Makroiqtisodiyot"],
+        ["I004","YaIM nimani o‘lchaydi?","mamlakat hududida ishlab chiqarilgan yakuniy tovar va xizmatlar qiymatini","faqat eksportni","faqat davlat xarajatlarini","faqat bank foydasini",0,"YaIM mamlakat hududida ishlab chiqarilgan yakuniy mahsulot va xizmatlar qiymatini o‘lchaydi.","Makroiqtisodiyot"],
+        ["I005","Ishsizlik darajasi nimani ko‘rsatadi?","ishchi kuchidagi ish topa olmayotganlar ulushini","barcha aholining daromadini","inflyatsiyani","eksport ulushini",0,"Ishsizlik darajasi ishchi kuchiga nisbatan ishsizlar ulushidir.","Mehnat bozori"],
+        ["I006","Markaziy bankning foiz stavkasini oshirishi odatda kreditlarga qanday ta’sir qiladi?","qimmatlashtiradi","arzonlashtiradi","yo‘q qiladi","ta’sir qilmaydi",0,"Foiz stavkasi oshishi qarz olish xarajatini oshiradi.","Pul-kredit siyosati"],
+        ["I007","Monopoliyada bozorda odatda nechta asosiy sotuvchi mavjud?","bitta","ikkita","ko‘plab","hech biri",0,"Monopoliya yagona asosiy sotuvchi mavjud bo‘lgan bozor.","Bozor"],
+        ["I008","Mukammal raqobat bozorida firmalar odatda qanday narx qabul qiluvchi hisoblanadi?","price taker","price maker","monopolist","regulyator",0,"Ko‘plab firmalar mavjud bo‘lgani uchun alohida firma bozor narxiga ta’sir qila olmaydi.","Bozor"],
+        ["I009","Opportunity cost nimani anglatadi?","tanlangan variant sabab voz kechilgan eng yaxshi alternativ qiymatni","faqat pul xarajatini","soliq miqdorini","foyda solig‘ini",0,"Imkoniyat xarajati — eng yaxshi voz kechilgan alternativ qiymati.","Asosiy tushunchalar"],
+        ["I010","Agar daromad oshganda normal tovarga talab oshsa, bu qanday tovar?","normal tovar","past tovar","Giffen tovar","jamoat tovari",0,"Normal tovar daromad bilan birga talabda oshadi.","Talab"],
+        ["I011","Elastiklik nimani o‘lchaydi?","bir o‘zgaruvchining boshqasiga sezgirligini","faqat ishlab chiqarish hajmini","faqat foydani","faqat soliqlarni",0,"Elastiklik o‘zgaruvchilarning foizli o‘zgarishlar nisbatini o‘lchaydi.","Talab"],
+        ["I012","Soliq stavkasi oshishi ayrim hollarda iste’molga qanday ta’sir qilishi mumkin?","kamaytirishi mumkin","har doim oshiradi","hech qachon ta’sir qilmaydi","narxlarni nol qiladi",0,"Soliq oshishi tasarrufdagi daromadni kamaytirishi mumkin.","Fiskal siyosat"],
+        ["I013","Davlat xarajatlarini oshirish qaysi siyosatga kiradi?","fiskal siyosat","monetar siyosat","valyuta siyosati","savdo taqiqi",0,"Fiskal siyosat davlat xarajatlari va soliqlar orqali amalga oshiriladi.","Fiskal siyosat"],
+        ["I014","Pul-kredit siyosatini odatda qaysi institut yuritadi?","markaziy bank","maktab","sud","bojxona",0,"Markaziy bank pul-kredit siyosatining asosiy instituti.","Pul-kredit siyosati"],
+        ["I015","Eksport nimani anglatadi?","tovar va xizmatlarni chet elga sotish","chet eldan xarid qilish","soliq to‘lash","bankdan kredit olish",0,"Eksport — tashqi bozorga sotish.","Xalqaro savdo"],
+        ["I016","Import nima?","chet eldan tovar va xizmatlarni xarid qilish","mahalliy mahsulotni eksport qilish","soliqni kamaytirish","ichki kredit",0,"Import — chetdan xarid qilish.","Xalqaro savdo"],
+        ["I017","Savdo balansi nimani taqqoslaydi?","eksport va import qiymatini","soliq va xarajatni","daromad va foydani","ishsizlik va inflyatsiyani",0,"Savdo balansi eksport va import qiymatlari farqiga asoslanadi.","Xalqaro savdo"],
+        ["I018","Agar eksport importdan katta bo‘lsa, savdo balansi qanday?","ijobiy","salbiy","nol","aniqlanmaydi",0,"Eksport > import bo‘lsa ijobiy saldo.","Xalqaro savdo"],
+        ["I019","Korxonaning daromadi 100 mln, xarajati 70 mln. Foyda qancha?","30 mln","70 mln","170 mln","20 mln",0,"Foyda=daromad−xarajat=30 mln.","Korxona"],
+        ["I020","O‘rtacha xarajat qanday topiladi?","umumiy xarajat/ishlab chiqarish miqdori","daromad−foyda","foyda×narx","soliq/ishchi",0,"AC=TC/Q.","Korxona"],
+        ["I021","Chegaraviy xarajat nimani bildiradi?","qo‘shimcha bir birlik mahsulot ishlab chiqarish xarajatini","barcha xarajatni","foydani","soliqni",0,"Marginal cost qo‘shimcha birlik xarajatidir.","Korxona"],
+        ["I022","Iqtisodiy resurslarning asosiy turlaridan biri qaysi?","mehnat","inflyatsiya","foiz","narx",0,"Mehnat ishlab chiqarish resurslaridan biridir.","Asosiy tushunchalar"],
+        ["I023","Kapital resursiga misol?","ishlab chiqarish uskunasi","ishchi vaqti","yer maydoni","iste’molchi",0,"Uskuna ishlab chiqarish kapitaliga kiradi.","Ishlab chiqarish"],
+        ["I024","Mehnat unumdorligi oshsa, bir xil resurs bilan ishlab chiqarish hajmi qanday bo‘lishi mumkin?","ortadi","kamayadi","doim nol","o‘zgarmaydi",0,"Unumdorlik oshishi ko‘proq mahsulot ishlab chiqarish imkonini beradi.","Ishlab chiqarish"],
+        ["I025","Deflyatsiya nimani anglatadi?","narxlar umumiy darajasining pasayishi","narxlar tez oshishi","ishsizlikning yo‘qolishi","eksport oshishi",0,"Deflyatsiya umumiy narxlar darajasining pasayishi.","Makroiqtisodiyot"],
+        ["I026","Recessiya odatda nimani bildiradi?","iqtisodiy faollikning pasayishi","inflyatsiyaning nolga tengligi","eksportning majburiy oshishi","soliqlarning yo‘qolishi",0,"Recessiya iqtisodiy faollikning sezilarli pasayish davri.","Makroiqtisodiyot"],
+        ["I027","Agar talab egri chizig‘i o‘ngga siljisa, odatda nima sodir bo‘ladi?","talab oshgan","talab kamaygan","taklif oshgan","narx nol bo‘lgan",0,"O‘ngga siljish talabning ortishini anglatadi.","Talab"],
+        ["I028","Taklif egri chizig‘ining o‘ngga siljishi nimani anglatadi?","taklif oshgan","talab kamaygan","ishsizlik oshgan","inflyatsiya yo‘qolgan",0,"O‘ngga siljish taklifning ko‘payishini bildiradi.","Taklif"],
+        ["I029","Bozor muvozanati qachon yuzaga keladi?","talab miqdori taklif miqdoriga teng bo‘lganda","narx nol bo‘lganda","faqat monopoliyada","soliq yo‘qolganda",0,"Muvozanatda talab va taklif kesishadi.","Bozor"],
+        ["I030","Minimal ish haqi muvozanat narxidan yuqori belgilansa, nazariy jihatdan nima yuz berishi mumkin?","ortiqcha mehnat taklifi","mehnat tanqisligi","ishsizlik nol","ish haqi yo‘qolishi",0,"Yuqori majburiy ish haqi mehnat taklifini oshirib, talabni kamaytirishi mumkin.","Mehnat bozori"],
+        ["I031","Nominal YaIM va real YaIM farqi nimada?","real YaIM narx o‘zgarishlari ta’siridan tozalangan","nominal YaIM har doim kichik","real YaIM faqat eksport","nominal YaIM faqat qishloq xo‘jaligi",0,"Real YaIM narx o‘zgarishlarini hisobga oladi.","Makroiqtisodiyot"],
+        ["I032","Inflyatsiya oshishi pulning xarid qobiliyatiga qanday ta’sir qiladi?","kamaytiradi","oshiradi","o‘zgartirmaydi","ikki baravar qiladi",0,"Narxlar oshishi bilan bir birlik pul kamroq tovar sotib oladi.","Makroiqtisodiyot"],
+        ["I033","Bank depozitga foiz to‘lasa, mijoz uchun bu nima?","foiz daromadi","soliq","kapital zarari","import",0,"Depozit foizi mijoz daromadidir.","Moliya"],
+        ["I034","Risk va daromad o‘rtasidagi bog‘liqlik haqida umumiy tamoyil?","yuqori kutilgan daromad ko‘pincha yuqoriroq risk bilan bog‘liq","risk doim daromadni kafolatlaydi","risk daromadni nol qiladi","ular hech qachon bog‘liq emas",0,"Moliya nazariyasida risk-daromad almashinuvi muhim tushuncha.","Moliya"],
+        ["I035","Diversifikatsiyaning maqsadi nima?","riskni tarqatish","foydani kafolatlash","soliqni yo‘q qilish","inflyatsiyani oshirish",0,"Turli aktivlarga taqsimlash ayrim risklarni kamaytirishi mumkin.","Moliya"],
+        ["I036","Agar narx 100 dan 120 ga oshsa, foizli o‘sish qancha?","20%","10%","25%","30%",0,"(120−100)/100·100=20%.","Hisob-kitob"],
+        ["I037","Daromad 500 dan 600 ga oshsa, o‘sish foizi?","20%","10%","15%","25%",0,"100/500=20%.","Hisob-kitob"],
+        ["I038","10 mln so‘mning 15% i qancha?","1.5 mln","150 ming","15 mln","2 mln",0,"10 000 000·0.15=1 500 000.","Hisob-kitob"],
+        ["I039","Tadbirkorning asosiy iqtisodiy vazifalaridan biri?","resurslarni birlashtirib ishlab chiqarishni tashkil etish","faqat soliq yig‘ish","pulni yo‘q qilish","ishsizlikni o‘lchash",0,"Tadbirkor resurslarni birlashtirib risk ostida ishlab chiqarishni tashkil etadi.","Tadbirkorlik"],
+        ["I040","Jamoat tovarining asosiy belgilaridan biri?","iste’molda raqobatsiz bo‘lishi mumkin","faqat bitta odam foydalanadi","faqat eksport qilinadi","narxi doim nol",0,"Jamoat tovarlarida non-rivalry va non-excludability xususiyatlari bo‘lishi mumkin.","Bozor"],
+        ["I041","Tashqi ta’sir (externality) nima?","bir iqtisodiy faoliyatning uchinchi tomonga ta’siri","faqat eksport","bank foizi","soliq stavkasi",0,"Externality bozor bitimida qatnashmaydigan tomonga ta’sirdir.","Bozor"],
+        ["I042","Salbiy tashqi ta’sirga misol?","zavodning ifloslantirishi","ta’limning foydasi","ilmiy kashfiyot","yo‘l qurilishi",0,"Ifloslanish uchinchi tomonlarga zarar yetkazishi mumkin.","Bozor"],
+        ["I043","Monopolist odatda raqobatli bozorga nisbatan qanday xatti-harakatga ega?","bozor narxiga ko‘proq ta’sir qiladi","narxni umuman o‘zgartira olmaydi","doim zarar ko‘radi","taklif qilmaydi",0,"Monopolist bozor kuchiga ega bo‘lishi mumkin.","Bozor"],
+        ["I044","Iqtisodiy o‘sishning muhim omillaridan biri?","mehnat unumdorligining oshishi","doimiy inflyatsiya","ishsizlikning oshishi","ishlab chiqarishning kamayishi",0,"Unumdorlik oshishi uzoq muddatli o‘sishning muhim manbasi.","Makroiqtisodiyot"],
+        ["I045","Markaziy bank pul massasini qisqartirsa, boshqa shartlar o‘zgarmasa, foiz stavkalariga bosim qanday bo‘lishi mumkin?","oshish tomonga","pasayish tomonga","nolga","hech qanday ta’sir bo‘lmaydi",0,"Pul taklifi qisqarishi foiz stavkalarini oshirish bosimini yuzaga keltirishi mumkin.","Pul-kredit siyosati"]
+
+    ];
+
+    data.forEach(d=>{
+        q.push(
+            makeQuestion(
+                d[0],
+                d[1],
+                [d[2],d[3],d[4],d[5]],
+                d[6],
+                d[7],
+                d[8]
+            )
+        );
+    });
+
+    return q;
+}
+
+
+/* =========================================================
+   BARCHA SAVOLLAR
+========================================================= */
+
+const QUESTION_BANK = {
+
+    matematika:createMathQuestions(),
+
+    english:createEnglishQuestions(),
+
+    ona:createOnaQuestions(),
+
+    tarix:createHistoryQuestions(),
+
+    fizika:createPhysicsQuestions(),
+
+    iqtisod:createEconomicsQuestions(),
+
+    kimyo:createChemistryQuestions(),
+
+    biologiya:createBiologyQuestions()
+
+};
+
+
+/* =========================================================
+   ENG MUHIM QISM:
+   45 TA SAVOL ICHIDA TAKRORLANISHNI TEKSHIRISH
+========================================================= */
+
+function validateQuestionBank(){
+
+    for(const subjectKey in QUESTION_BANK){
+
+        const questions = QUESTION_BANK[subjectKey];
+
+        const ids = new Set();
+        const texts = new Set();
+
+        for(const question of questions){
+
+            if(ids.has(question.id)){
+
+                console.error(
+                    "DUBLIK ID:",
+                    subjectKey,
+                    question.id
+                );
+
+            }
+
+            if(texts.has(question.text)){
+
+                console.error(
+                    "DUBLIK SAVOL:",
+                    subjectKey,
+                    question.text
+                );
+
+            }
+
+            ids.add(question.id);
+            texts.add(question.text);
+
+        }
+
+        if(questions.length < QUESTIONS_PER_TEST){
+
+            console.error(
+                subjectKey+
+                " fanida 45 tadan kam savol bor!"
+            );
+
+        }
+
+    }
+}
+
+validateQuestionBank();
 
 
 /* =========================================================
    TEST HOLATI
 ========================================================= */
 
-let currentSubject="";
-let questions=[];
-let currentQuestion=0;
-let userAnswers=[];
-let startTime=0;
-let timerInterval;
+let state = {
+
+    subject:null,
+
+    questions:[],
+
+    current:0,
+
+    answers:{},
+
+    startedAt:null,
+
+    timeLimit:0,
+
+    variant:null
+
+};
 
 
 /* =========================================================
-   VARIANT RAQAMI
+   2 SOATLIK VARIANT
 ========================================================= */
 
 function getVariant(){
 
     return Math.floor(
-        Date.now() / (2 * 60 * 60 * 1000)
+        Date.now()/VARIANT_TIME
     );
 
 }
 
 
 /* =========================================================
-   ARRAY ARALASHTIRISH
+   SAVOLLARNI TANLASH
 ========================================================= */
 
-function shuffle(array){
+function createTestQuestions(subject){
 
-    let copy=[...array];
+    const bank = QUESTION_BANK[subject];
 
-    for(let i=copy.length-1;i>0;i--){
+    /*
+       Bankdagi savollarni aralashtiramiz.
+       Ammo 45 ta tanlangandan keyin yana
+       qayta savol tanlashga ruxsat berilmaydi.
+    */
 
-        let j=Math.floor(
-            Math.random()*(i+1)
+    const shuffled = shuffle(bank);
+
+    const selected = shuffled.slice(
+        0,
+        QUESTIONS_PER_TEST
+    );
+
+    /*
+       XAVFSIZLIK TEKSHIRUVI
+    */
+
+    const ids = new Set(
+        selected.map(q=>q.id)
+    );
+
+    const texts = new Set(
+        selected.map(q=>q.text)
+    );
+
+    if(
+        ids.size !== QUESTIONS_PER_TEST ||
+        texts.size !== QUESTIONS_PER_TEST
+    ){
+
+        throw new Error(
+            "Test ichida takroriy savol aniqlangan!"
         );
-
-        [copy[i],copy[j]]=
-        [copy[j],copy[i]];
 
     }
 
-    return copy;
+    return selected;
+}
+
+
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
+
+function saveState(){
+
+    localStorage.setItem(
+        "milliy_active_test",
+        JSON.stringify(state)
+    );
+
+}
+
+
+function clearState(){
+
+    localStorage.removeItem(
+        "milliy_active_test"
+    );
+
+}
+
+
+function loadState(){
+
+    const saved =
+        localStorage.getItem(
+            "milliy_active_test"
+        );
+
+    if(!saved) return false;
+
+    try{
+
+        state = JSON.parse(saved);
+
+        if(
+            !state.subject ||
+            !state.questions ||
+            state.questions.length !== 45
+        ){
+
+            clearState();
+            return false;
+
+        }
+
+        return true;
+
+    }catch(e){
+
+        clearState();
+        return false;
+
+    }
+
+}
+
+
+/* =========================================================
+   EKRANLAR
+========================================================= */
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(s=>{
+            s.classList.remove("active");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+}
+
+
+/* =========================================================
+   FANLARNI CHIQARISH
+========================================================= */
+
+function renderSubjects(){
+
+    const grid =
+        document.getElementById(
+            "subjectGrid"
+        );
+
+    grid.innerHTML="";
+
+    Object.entries(SUBJECTS)
+        .forEach(([key,subject])=>{
+
+            const card =
+                document.createElement("div");
+
+            card.className="subject-card";
+
+            card.innerHTML=`
+
+                <div class="subject-icon">
+                    ${subject.icon}
+                </div>
+
+                <h3>${subject.name}</h3>
+
+                <p>
+                    ${subject.description}
+                </p>
+
+                <button
+                    class="start-btn"
+                    onclick="startTest('${key}')">
+                    45 ta testni boshlash
+                </button>
+
+            `;
+
+            grid.appendChild(card);
+
+        });
 
 }
 
@@ -1332,95 +2181,340 @@ function shuffle(array){
 
 function startTest(subject){
 
-    currentSubject=subject;
+    /*
+       Agar oldingi aktiv test mavjud bo‘lsa,
+       foydalanuvchiga yangi test boshlashni tasdiqlatamiz.
+    */
 
-    questions=shuffle(
-        finalBank[subject]
-    ).slice(0,45);
+    const old =
+        localStorage.getItem(
+            "milliy_active_test"
+        );
 
+    if(old){
 
-    questions=questions.map(question=>{
-
-        let options=
-            question.a.map(
-                (text,index)=>({
-
-                    text:text,
-
-                    correct:
-                    index===question.correct
-
-                })
+        const ok =
+            confirm(
+                "Sizda tugallanmagan test mavjud.\n\n"+
+                "Yangi test boshlasangiz eski test o‘chiriladi.\n\n"+
+                "Yangi testni boshlaysizmi?"
             );
 
+        if(!ok){
 
-        options=shuffle(options);
+            loadState();
 
+            showScreen("testScreen");
 
-        return {
+            renderQuestion();
 
-            topic:question.topic,
+            startTimer();
 
-            q:question.q,
+            return;
 
-            options:options,
+        }
 
-            explanation:question.exp
+        clearState();
 
-        };
+    }
 
-    });
+    const subjectInfo =
+        SUBJECTS[subject];
 
+    const questions =
+        createTestQuestions(subject);
 
-    currentQuestion=0;
+    state={
 
-    userAnswers=
-        new Array(45).fill(null);
+        subject:subject,
 
+        questions:questions,
 
-    startTime=Date.now();
+        current:0,
 
+        answers:{},
 
-    document
-        .getElementById("home")
-        .classList.add("hidden");
+        startedAt:Date.now(),
 
+        timeLimit:
+            subjectInfo.time*60,
 
-    subjectsBox
-        .classList.add("hidden");
+        variant:getVariant()
 
+    };
 
-    document
-        .getElementById("result")
-        .classList.add("hidden");
+    saveState();
 
+    showScreen("testScreen");
 
-    document
-        .getElementById("test")
-        .classList.remove("hidden");
+    renderQuestion();
 
+    startTimer();
 
-    document
-        .getElementById("subjectName")
-        .textContent=subject;
-
-
-    document
-        .getElementById("variant")
-        .textContent=
-        "Variant: "+getVariant()+
-        " · 45 ta savol";
+}
 
 
-    clearInterval(timerInterval);
+/* =========================================================
+   SAVOLNI CHIQARISH
+========================================================= */
 
-    timerInterval=
-        setInterval(updateTimer,1000);
+function renderQuestion(){
+
+    const question =
+        state.questions[
+            state.current
+        ];
+
+    if(!question){
+
+        finishTest();
+
+        return;
+
+    }
+
+    document.getElementById(
+        "subjectName"
+    ).textContent =
+        SUBJECTS[state.subject].name;
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        `${state.current+1} / ${QUESTIONS_PER_TEST}`;
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${((state.current+1)/QUESTIONS_PER_TEST)*100}%`;
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        question.difficulty;
+
+    document.getElementById(
+        "questionText"
+    ).textContent =
+        question.text;
+
+    const options =
+        document.getElementById(
+            "options"
+        );
+
+    options.innerHTML="";
+
+    const savedAnswer =
+        state.answers[
+            question.id
+        ];
+
+    question.options.forEach(
+        (option,index)=>{
+
+            const btn =
+                document.createElement(
+                    "button"
+                );
+
+            btn.className="option";
+
+            btn.innerHTML =
+                `<strong>${
+                    String.fromCharCode(65+index)
+                }.</strong> ${
+                    option.text
+                }`;
+
+            if(
+                savedAnswer !== undefined &&
+                savedAnswer === index
+            ){
+
+                btn.classList.add(
+                    "selected"
+                );
+
+            }
+
+            if(
+                savedAnswer !== undefined
+            ){
+
+                if(option.correct){
+
+                    btn.classList.add(
+                        "correct"
+                    );
+
+                }
+
+                if(
+                    savedAnswer===index &&
+                    !option.correct
+                ){
+
+                    btn.classList.add(
+                        "wrong"
+                    );
+
+                }
+
+            }
+
+            btn.onclick=()=>{
+
+                selectAnswer(
+                    question.id,
+                    index
+                );
+
+            };
+
+            options.appendChild(btn);
+
+        }
+    );
+
+    const explanation =
+        document.getElementById(
+            "explanation"
+        );
+
+    if(
+        savedAnswer !== undefined
+    ){
+
+        explanation.innerHTML =
+            `<strong>📘 Ishlanishi:</strong><br><br>${
+                question.explanation
+            }`;
+
+        explanation.classList.add(
+            "show"
+        );
+
+    }else{
+
+        explanation.innerHTML="";
+
+        explanation.classList.remove(
+            "show"
+        );
+
+    }
+
+    document.getElementById(
+        "nextBtn"
+    ).disabled =
+        savedAnswer === undefined;
+
+    document.getElementById(
+        "backBtn"
+    ).disabled =
+        state.current===0;
+
+}
 
 
-    updateTimer();
+/* =========================================================
+   JAVOB TANLASH
+========================================================= */
 
-    showQuestion();
+function selectAnswer(
+    questionId,
+    index
+){
+
+    /*
+       Bir savolga javob berilgandan keyin
+       uni qayta tanlashga ruxsat berilmaydi.
+       Bu ham natijani barqaror qiladi.
+    */
+
+    if(
+        state.answers[questionId] !== undefined
+    ){
+
+        return;
+
+    }
+
+    state.answers[questionId]=index;
+
+    saveState();
+
+    renderQuestion();
+
+}
+
+
+/* =========================================================
+   KEYINGI SAVOL
+========================================================= */
+
+function nextQuestion(){
+
+    const question =
+        state.questions[
+            state.current
+        ];
+
+    if(
+        state.answers[question.id] === undefined
+    ){
+
+        alert(
+            "Avval javob variantlaridan birini tanlang."
+        );
+
+        return;
+
+    }
+
+    if(
+        state.current <
+        QUESTIONS_PER_TEST-1
+    ){
+
+        state.current++;
+
+        saveState();
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        finishTest();
+
+    }
+
+}
+
+
+/* =========================================================
+   OLDINGI SAVOL
+========================================================= */
+
+function previousQuestion(){
+
+    if(state.current<=0){
+
+        return;
+
+    }
+
+    state.current--;
+
+    saveState();
+
+    renderQuestion();
 
 }
 
@@ -1429,304 +2523,158 @@ function startTest(subject){
    TIMER
 ========================================================= */
 
+let timerInterval=null;
+
+
+function startTimer(){
+
+    if(timerInterval){
+
+        clearInterval(
+            timerInterval
+        );
+
+    }
+
+    updateTimer();
+
+    timerInterval =
+        setInterval(
+            updateTimer,
+            1000
+        );
+
+}
+
+
 function updateTimer(){
 
-    let seconds=
-        Math.floor(
-            (Date.now()-startTime)/1000
-        );
-
-
-    let minutes=
-        Math.floor(seconds/60);
-
-
-    let sec=
-        seconds%60;
-
-
-    document
-        .getElementById("timer")
-        .textContent=
-        String(minutes).padStart(2,"0")
-        +":"+
-        String(sec).padStart(2,"0");
-
-}
-
-
-/* =========================================================
-   SAVOLNI KO‘RSATISH
-========================================================= */
-
-function showQuestion(){
-
-    let question=
-        questions[currentQuestion];
-
-
-    document
-        .getElementById("counter")
-        .textContent=
-        `Savol ${currentQuestion+1} / 45`;
-
-
-    document
-        .getElementById("progressBar")
-        .style.width=
-        ((currentQuestion+1)/45*100)+"%";
-
-
-    document
-        .getElementById("question")
-        .textContent=
-        question.q;
-
-
-    let answers=
-        document.getElementById("answers");
-
-
-    answers.innerHTML="";
-
-
-    question.options.forEach(
-        (option,index)=>{
-
-            let button=
-                document.createElement("button");
-
-
-            button.className="answer";
-
-
-            button.textContent=
-                String.fromCharCode(65+index)
-                +") "
-                +option.text;
-
-
-            if(
-                userAnswers[currentQuestion]
-                !==null
-            ){
-
-                if(option.correct){
-
-                    button.classList.add(
-                        "correct"
-                    );
-
-                }
-
-
-                if(
-                    userAnswers[currentQuestion]
-                    ===index &&
-                    !option.correct
-                ){
-
-                    button.classList.add(
-                        "wrong"
-                    );
-
-                }
-
-            }
-
-
-            button.onclick=()=>{
-
-                selectAnswer(index);
-
-            };
-
-
-            answers.appendChild(button);
-
-        }
-    );
-
-
-    let solution=
-        document.getElementById("solution");
-
-
-    if(
-        userAnswers[currentQuestion]
-        !==null
-    ){
-
-        solution.classList.remove(
-            "hidden"
-        );
-
-
-        solution.innerHTML=
-        "<b>Ishlanishi:</b> "+
-        question.explanation;
-
-    }
-
-    else{
-
-        solution.classList.add(
-            "hidden"
-        );
-
-    }
-
-
-    document
-        .getElementById("previous")
-        .disabled=
-        currentQuestion===0;
-
-
-    if(currentQuestion===44){
-
-        document
-            .getElementById("next")
-            .textContent=
-            "Natijani ko‘rish →";
-
-    }
-
-    else{
-
-        document
-            .getElementById("next")
-            .textContent=
-            "Keyingi →";
-
-    }
-
-}
-
-
-/* =========================================================
-   JAVOBNI TANLASH
-========================================================= */
-
-function selectAnswer(index){
-
-    if(
-        userAnswers[currentQuestion]
-        !==null
-    ){
+    if(!state.startedAt){
 
         return;
 
     }
 
+    const elapsed =
+        Math.floor(
+            (Date.now()-state.startedAt)/1000
+        );
 
-    userAnswers[currentQuestion]=
-        index;
+    const remaining =
+        Math.max(
+            0,
+            state.timeLimit-elapsed
+        );
 
+    const hours =
+        Math.floor(
+            remaining/3600
+        );
 
-    showQuestion();
+    const minutes =
+        Math.floor(
+            (remaining%3600)/60
+        );
+
+    const seconds =
+        remaining%60;
+
+    const timer =
+        document.getElementById(
+            "timer"
+        );
+
+    timer.textContent =
+        `${String(hours).padStart(2,"0")}:`+
+        `${String(minutes).padStart(2,"0")}:`+
+        `${String(seconds).padStart(2,"0")}`;
+
+    if(remaining<=300){
+
+        timer.classList.add(
+            "warning"
+        );
+
+    }else{
+
+        timer.classList.remove(
+            "warning"
+        );
+
+    }
+
+    if(remaining<=0){
+
+        clearInterval(
+            timerInterval
+        );
+
+        alert(
+            "Test vaqti tugadi."
+        );
+
+        finishTest(
+            true
+        );
+
+    }
 
 }
-
-
-/* =========================================================
-   OLDINGI
-========================================================= */
-
-document
-.getElementById("previous")
-.onclick=function(){
-
-    if(currentQuestion>0){
-
-        currentQuestion--;
-
-        showQuestion();
-
-    }
-
-};
-
-
-/* =========================================================
-   KEYINGI
-========================================================= */
-
-document
-.getElementById("next")
-.onclick=function(){
-
-    if(currentQuestion<44){
-
-        currentQuestion++;
-
-        showQuestion();
-
-    }
-
-    else{
-
-        finishTest();
-
-    }
-
-};
 
 
 /* =========================================================
    TESTNI YAKUNLASH
 ========================================================= */
 
-document
-.getElementById("finish")
-.onclick=function(){
+function finishTest(force=false){
 
-    finishTest();
+    if(!force){
 
-};
+        const ok =
+            confirm(
+                "Testni yakunlashni xohlaysizmi?"
+            );
+
+        if(!ok){
+
+            return;
+
+        }
+
+    }
+
+    if(timerInterval){
+
+        clearInterval(
+            timerInterval
+        );
+
+    }
+
+    showResult();
+
+}
 
 
 /* =========================================================
-   NATIJA
+   NATIJANI HISOBLASH
 ========================================================= */
 
-function finishTest(){
-
-    clearInterval(timerInterval);
-
+function showResult(){
 
     let correct=0;
     let wrong=0;
+    let unanswered=0;
 
+    const topics={};
 
-    let topics={};
+    state.questions.forEach(
+        question=>{
 
-
-    questions.forEach(
-        (question,index)=>{
-
-            let answer=
-                userAnswers[index];
-
-
-            let isCorrect=
-                answer!==null &&
-                question.options[answer]
-                    .correct;
-
-
-            if(isCorrect){
-
-                correct++;
-
-            }
-
-            else if(answer!==null){
-
-                wrong++;
-
-            }
-
+            const answer =
+                state.answers[
+                    question.id
+                ];
 
             if(
                 !topics[question.topic]
@@ -1739,208 +2687,87 @@ function finishTest(){
 
             }
 
-
             topics[
                 question.topic
             ].total++;
 
+            if(answer===undefined){
+
+                unanswered++;
+
+                return;
+
+            }
+
+            const isCorrect =
+                question.options[
+                    answer
+                ].correct;
 
             if(isCorrect){
+
+                correct++;
 
                 topics[
                     question.topic
                 ].correct++;
+
+            }else{
+
+                wrong++;
 
             }
 
         }
     );
 
+    const percent =
+        Math.round(
+            (correct/
+            QUESTIONS_PER_TEST)*100
+        );
 
-    let empty=
-        45-correct-wrong;
+    document.getElementById(
+        "score"
+    ).textContent =
+        `${percent}%`;
 
-
-    let percentage=
-        correct/45*100;
-
-
-    document
-        .getElementById("correctCount")
-        .textContent=
+    document.getElementById(
+        "correctCount"
+    ).textContent =
         correct;
 
-
-    document
-        .getElementById("wrongCount")
-        .textContent=
+    document.getElementById(
+        "wrongCount"
+    ).textContent =
         wrong;
 
-
-    document
-        .getElementById("emptyCount")
-        .textContent=
-        empty;
-
-
-    /* DARaja */
-
-    let level="";
-
-
-    if(
-        currentSubject==="Ingliz tili"
-    ){
-
-        if(percentage>=80){
-
-            level="Yuqori mashq natijasi";
-
-        }
-
-        else if(percentage>=60){
-
-            level="O‘rta mashq natijasi";
-
-        }
-
-        else{
-
-            level="Boshlang‘ich mashq natijasi";
-
-        }
-
-
-        document
-            .getElementById("levelText")
-            .textContent=
-            "Bu mashq natijasi rasmiy CEFR sertifikatini "
-            +"avtomatik belgilamaydi.";
-
-    }
-
-    else if(
-        currentSubject==="Iqtisodiyot"
-    ){
-
-        level=
-            percentage.toFixed(1)
-            +"%";
-
-
-        document
-            .getElementById("levelText")
-            .textContent=
-            "Bu o‘quv mashqi natijasidir.";
-
-    }
-
-    else{
-
-        if(percentage>=70){
-
-            level="A+ ga mos diapazon";
-
-        }
-
-        else if(percentage>=65){
-
-            level="A ga mos diapazon";
-
-        }
-
-        else if(percentage>=60){
-
-            level="B+ ga mos diapazon";
-
-        }
-
-        else if(percentage>=55){
-
-            level="B ga mos diapazon";
-
-        }
-
-        else if(percentage>=50){
-
-            level="C+ ga mos diapazon";
-
-        }
-
-        else if(percentage>=46){
-
-            level="C ga mos diapazon";
-
-        }
-
-        else{
-
-            level="46% dan past";
-
-        }
-
-
-        document
-            .getElementById("levelText")
-            .textContent=
-            "Bu taxminiy mashq natijasi. "
-            +"Rasmiy sertifikat natijasi rasmiy "
-            +"baholash tizimi orqali aniqlanadi.";
-
-    }
-
-
-    document
-        .getElementById("level")
-        .textContent=
-        level;
-
-
-    /* MAVZULAR */
-
-    let topicBox=
-        document.getElementById("topics");
-
-
-    topicBox.innerHTML="";
-
-
-    Object
-    .entries(topics)
-    .forEach(([name,data])=>{
-
-        let div=
-            document.createElement("div");
-
-
-        div.className="topic";
-
-
-        div.innerHTML=`
-
-            <span>${name}</span>
-
-            <b>
-                ${data.correct}/${data.total}
-            </b>
-
-        `;
-
-
-        topicBox.appendChild(div);
-
-    });
-
-
-    document
-        .getElementById("test")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("result")
-        .classList.remove("hidden");
-
+    document.getElementById(
+        "unansweredCount"
+    ).textContent =
+        unanswered;
+
+    document.getElementById(
+        "resultSubject"
+    ).textContent =
+        SUBJECTS[
+            state.subject
+        ].name;
+
+    showLevel(
+        state.subject,
+        percent
+    );
+
+    renderTopicAnalysis(
+        topics
+    );
+
+    clearState();
+
+    showScreen(
+        "resultScreen"
+    );
 
     window.scrollTo({
         top:0,
@@ -1951,46 +2778,275 @@ function finishTest(){
 
 
 /* =========================================================
-   QAYTA ISHLASH
+   DARAJA
 ========================================================= */
 
-document
-.getElementById("again")
-.onclick=function(){
+function showLevel(
+    subject,
+    percent
+){
 
-    startTest(currentSubject);
+    const title =
+        document.getElementById(
+            "levelTitle"
+        );
 
-};
+    const text =
+        document.getElementById(
+            "levelText"
+        );
+
+    /*
+       Bu rasmiy BMB sertifikat natijasi emas.
+       Bu sayt ichidagi taxminiy mashq indikatori.
+    */
+
+    if(
+        subject==="english"
+    ){
+
+        title.textContent =
+            "Ingliz tili — mashq natijasi";
+
+        text.textContent =
+            `Siz ${percent}% natija oldingiz. `+
+            `Bu ko‘rsatkich faqat ushbu saytning `+
+            `45 savollik mashq testi uchun hisoblangan. `+
+            `Rasmiy sertifikat darajasini aniqlamaydi.`;
+
+        return;
+
+    }
+
+    if(
+        subject==="iqtisod"
+    ){
+
+        title.textContent =
+            "Iqtisodiyot — mashq natijasi";
+
+        text.textContent =
+            `Siz ${percent}% natija oldingiz. `+
+            `Bu saytning tayyorgarlik testi natijasi.`;
+
+        return;
+
+    }
+
+    let level="Sertifikat chegarasidan past";
+
+    if(percent>=70){
+
+        level="A+";
+
+    }else if(percent>=65){
+
+        level="A";
+
+    }else if(percent>=60){
+
+        level="B+";
+
+    }else if(percent>=55){
+
+        level="B";
+
+    }else if(percent>=50){
+
+        level="C+";
+
+    }else if(percent>=46){
+
+        level="C";
+
+    }
+
+    title.textContent =
+        `Taxminiy daraja: ${level}`;
+
+    text.textContent =
+        `Test natijasi ${percent}%. `+
+        `Bu sayt ichidagi taxminiy ko‘rsatkich. `+
+        `Rasmiy sertifikat natijasi BMB tomonidan `+
+        `Rasch modeli va rasmiy imtihon natijalariga `+
+        `asosan aniqlanadi.`;
+
+}
 
 
 /* =========================================================
-   FANLARGA QAYTISH
+   MAVZULAR TAHLILI
 ========================================================= */
 
-document
-.getElementById("back")
-.onclick=function(){
+function renderTopicAnalysis(
+    topics
+){
 
-    document
-        .getElementById("result")
-        .classList.add("hidden");
+    const container =
+        document.getElementById(
+            "topicAnalysis"
+        );
+
+    container.innerHTML="";
+
+    Object.entries(topics)
+        .forEach(([topic,data])=>{
+
+            const percent =
+                Math.round(
+                    data.correct/
+                    data.total*
+                    100
+                );
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className="topic-row";
+
+            row.innerHTML=`
+
+                <div class="topic-line">
+
+                    <span>
+                        ${topic}
+                    </span>
+
+                    <span>
+                        ${data.correct}/${data.total}
+                        (${percent}%)
+                    </span>
+
+                </div>
+
+                <div class="topic-bar">
+
+                    <div
+                        class="topic-fill"
+                        style="width:${percent}%">
+                    </div>
+
+                </div>
+
+            `;
+
+            container.appendChild(row);
+
+        });
+
+}
 
 
-    document
-        .getElementById("home")
-        .classList.remove("hidden");
+/* =========================================================
+   QAYTA ISHLASH
+========================================================= */
+
+function retryTest(){
+
+    clearState();
+
+    startTest(
+        state.subject
+    );
+
+}
 
 
-    subjectsBox
-        .classList.remove("hidden");
+/* =========================================================
+   BOSH SAHIFA
+========================================================= */
+
+function goHome(){
+
+    if(timerInterval){
+
+        clearInterval(
+            timerInterval
+        );
+
+    }
+
+    clearState();
+
+    renderSubjects();
+
+    showScreen(
+        "homeScreen"
+    );
+
+}
 
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+/* =========================================================
+   SAHIFA YUKLANGANDA
+========================================================= */
 
-};
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        renderSubjects();
+
+        /*
+           MUHIM:
+           Saytga oddiy kirilganda timer boshlanmaydi.
+
+           Faqat oldin test boshlangan bo‘lsa,
+           o‘sha aktiv test tiklanadi.
+        */
+
+        if(loadState()){
+
+            const resume =
+                confirm(
+                    "Sizda tugallanmagan test mavjud.\n\n"+
+                    "Testni davom ettirasizmi?"
+                );
+
+            if(resume){
+
+                showScreen(
+                    "testScreen"
+                );
+
+                renderQuestion();
+
+                startTimer();
+
+            }else{
+
+                clearState();
+
+                showScreen(
+                    "homeScreen"
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BRAUZER YOPILISHIDAN OLDIN SAQLASH
+========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    ()=>{
+
+        if(state.startedAt){
+
+            saveState();
+
+        }
+
+    }
+);
 
 </script>
 
